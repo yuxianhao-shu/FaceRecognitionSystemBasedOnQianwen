@@ -724,7 +724,7 @@ class FaceRecognitionApp:
 
         if export_path:
             try:
-                with open(export_path, mode='w', newline='', encoding='utf-8-sig') as csv_file:
+                with open(export_path, mode='w', newline='', encoding='utf-8') as csv_file:
                     fieldnames = ["Timestamp", "Operation", "Result", "Matched_Person"]
                     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
