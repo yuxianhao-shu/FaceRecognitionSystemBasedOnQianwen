@@ -94,6 +94,7 @@ class FaceRecognitionApp:
         self.style.map("TButton",
                        background=[('active', '#16a085')])  # 鼠标悬停时颜色变化
 
+
         # 创建顶部状态框架
         self.frame_status = tk.Frame(root, bg="#2c3e50")
         self.frame_status.pack(pady=10, padx=20, fill='x')
@@ -131,6 +132,8 @@ class FaceRecognitionApp:
 
         self.button_start_camera = ttk.Button(self.frame_buttons, text="启动摄像头", command=self.open_camera_window)
         self.button_start_camera.pack(pady=5, fill='x')
+        self.button_help = ttk.Button(self.frame_buttons, text="帮助", command=self.show_help)
+        self.button_help.pack(pady=5, fill='x')
 
         # self.button_upload_image = ttk.Button(self.frame_buttons, text="批量上传人脸", command=self.upload_faces)
         # self.button_upload_image.pack(pady=5, fill='x')
@@ -737,6 +740,61 @@ class FaceRecognitionApp:
             except Exception as e:
                 messagebox.showerror("导出失败", f"导出日志失败: {e}")
                 logger.error(f"导出日志失败: {e}")
+
+    def show_help(self):
+        help_text = """
+        人脸识别系统使用说明：
+
+        1. **上传图片**：
+           - 点击“上传图片”按钮。
+           - 在弹出的文件选择对话框中，选择一张或多张图片（支持.jpg、.jpeg、.png格式）。
+           - 选择后，图片将被复制到上传文件夹，并在列表中显示。
+
+        2. **上传文件夹图片**：
+           - 点击“上传文件夹图片”按钮。
+           - 在弹出的文件夹选择对话框中，选择一个包含图片的文件夹。
+           - 文件夹中的所有支持格式的图片将被复制到上传文件夹，并在列表中显示。
+
+        3. **启动摄像头**：
+           - 点击“启动摄像头”按钮。
+           - 摄像头窗口将打开，显示实时视频流。
+           - 点击“拍照”按钮进行拍照，系统将自动进行人脸识别。
+           - 识别结果将以消息框形式显示，并记录在日志中。
+
+        4. **手动输入文件夹路径**：
+           - 在“手动输入文件夹路径”框中输入目标文件夹的路径。
+           - 点击“浏览”按钮可以通过对话框选择文件夹。
+           - 点击“上传”按钮，文件夹中的所有支持格式的图片将被复制到上传文件夹，并开始上传。
+
+        5. **导出使用日志**：
+           - 点击“导出使用日志”按钮。
+           - 在弹出的保存对话框中选择保存位置和文件名。
+           - 日志将以CSV文件格式导出，记录所有操作和识别结果。
+
+        6. **其他功能**：
+           - **实时人脸识别**：在摄像头窗口中实现实时人脸检测和识别。
+           - **日志管理**：系统会记录所有操作和结果，便于后续查看和分析。
+
+        **常见问题**：
+        - *无法打开摄像头*：请检查摄像头连接是否正常，或尝试重新启动应用程序。
+        - *识别结果不准确*：确保拍摄环境光线充足，摄像头清晰，并使用高质量的图片。
+        - *CSV文件乱码*：请确保使用支持UTF-8编码的程序打开，或尝试使用“utf-8-sig”编码导出日志。
+
+        **联系方式**：
+        如有任何问题或建议，请联系开发者：yushifu@shu.edu.cn
+        """
+        help_window = tk.Toplevel(self.root)
+        help_window.title("帮助")
+        help_window.geometry("700x600")
+        help_window.configure(bg="#2c3e50")
+
+        # 使用ScrolledText显示长文本
+        from tkinter.scrolledtext import ScrolledText
+        help_textbox = ScrolledText(help_window, wrap=tk.WORD, bg="#2c3e50", fg="#ecf0f1", font=("Helvetica", 12))
+        help_textbox.pack(fill='both', expand=True, padx=10, pady=10)
+        help_textbox.insert(tk.END, help_text)
+        help_textbox.config(state='disabled')  # 只读
+
 
 if __name__ == "__main__":
     root = tk.Tk()
