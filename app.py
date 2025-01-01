@@ -31,6 +31,55 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+class ToolTip(object):
+    def __init__(self, widget, text='widget info'):
+        self.widget = widget
+        self.text = text
+        self.tipwindow = None
+        self.id = None
+        self.x = self.y = 0
+        self.widget.bind("<Enter>", self.enter)
+        self.widget.bind("<Leave>", self.leave)
+
+    def enter(self, event=None):
+        self.schedule()
+
+    def leave(self, event=None):
+        self.unschedule()
+        self.hidetip()
+
+    def schedule(self):
+        self.unschedule()
+        self.id = self.widget.after(500, self.showtip)  # 延迟0.5秒显示提示
+
+    def unschedule(self):
+        id_ = self.id
+        self.id = None
+        if id_:
+            self.widget.after_cancel(id_)
+
+    def showtip(self, event=None):
+        if self.tipwindow or not self.text:
+            return
+        # 获取控件的位置
+        x, y, cx, cy = self.widget.bbox("insert") if self.widget.winfo_class() == 'Entry' else (0, 0, 0, 0)
+        x = x + self.widget.winfo_rootx() + 25
+        y = y + self.widget.winfo_rooty() + 20
+        self.tipwindow = tw = tk.Toplevel(self.widget)
+        tw.wm_overrideredirect(True)  # 去除窗口装饰
+        tw.wm_geometry("+%d+%d" % (x, y))
+        label = tk.Label(tw, text=self.text, justify=tk.LEFT,
+                         background="#ffffe0", relief=tk.SOLID, borderwidth=1,
+                         font=("Helvetica", "10", "normal"))
+        label.pack(ipadx=1)
+
+    def hidetip(self):
+        tw = self.tipwindow
+        self.tipwindow = None
+        if tw:
+            tw.destroy()
+
+# 定义 FaceRecognitionApp 类
 class FaceRecognitionApp:
     def __init__(self, root):
         self.root = root
@@ -94,6 +143,7 @@ class FaceRecognitionApp:
         self.style.map("TButton",
                        background=[('active', '#16a085')])  # 鼠标悬停时颜色变化
 
+
         # 创建顶部状态框架
         self.frame_status = tk.Frame(root, bg="#2c3e50")
         self.frame_status.pack(pady=10, padx=20, fill='x')
@@ -131,6 +181,8 @@ class FaceRecognitionApp:
 
         self.button_start_camera = ttk.Button(self.frame_buttons, text="启动摄像头", command=self.open_camera_window)
         self.button_start_camera.pack(pady=5, fill='x')
+        self.button_help = ttk.Button(self.frame_buttons, text="帮助", command=self.show_help)
+        self.button_help.pack(pady=5, fill='x')
 
         # self.button_upload_image = ttk.Button(self.frame_buttons, text="批量上传人脸", command=self.upload_faces)
         # self.button_upload_image.pack(pady=5, fill='x')
@@ -199,6 +251,58 @@ class FaceRecognitionApp:
         # 添加导出日志按钮
         self.button_export_logs = ttk.Button(self.frame_buttons, text="导出使用日志", command=self.export_logs)
         self.button_export_logs.pack(pady=5, fill='x')
+
+        # 加载语言资源
+        self.languages = self.load_languages()
+        self.current_language = 'zh'  # 默认语言为中文
+        # 添加语言选择下拉菜单
+        self.language_var = tk.StringVar(value='中文')
+        self.dropdown_languages = ttk.Combobox(self.frame_buttons, textvariable=self.language_var, state='readonly')
+        self.dropdown_languages['values'] = ['中文', 'English']
+        self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
+        self.dropdown_languages.pack(pady=5, fill='x')
+        ToolTip(self.dropdown_languages, "选择界面语言")
+        # 设置初始语言
+        self.set_language(self.current_language)
+
+    def load_languages(self):
+        languages = {}
+        try:
+            with open('languages.json', 'r', encoding='utf-8') as f:
+                languages = json.load(f)
+            logger.info("语言资源加载成功。")
+        except Exception as e:
+            logger.error(f"语言资源加载失败: {e}")
+        return languages
+
+    def set_language(self, lang_code):
+        lang = self.languages.get(lang_code, self.languages['zh'])
+        # 更新所有文本
+        self.network_status_label.config(text=lang["network_status"])
+        self.time_label.config(text=f"{lang['current_time']} --:--:--")
+        self.title_label.config(text=lang["title"])
+        self.button_open_images.config(text=lang["upload_images"])
+        self.button_open_folder.config(text=lang["upload_folder_images"])
+        self.button_start_camera.config(text=lang["start_camera"])
+        self.label_manual_path.config(text=lang["manual_path_label"])
+        self.button_browse_path.config(text=lang["browse"])
+        self.button_upload_manual_path.config(text=lang["upload"])
+        self.label_uploaded_files.config(text=lang["uploaded_files"])
+        self.button_export_logs.config(text=lang["export_logs"])
+        self.button_help.config(text=lang["help"])
+        # 如果添加了外部帮助按钮，请取消下面的注释
+        # self.button_open_external_help.config(text=lang["view_external_help"])
+        logger.info(f"界面语言已切换为: {lang_code}")
+
+    def change_language(self, event):
+        selected_language = self.language_var.get()
+        if selected_language == '中文':
+            self.current_language = 'zh'
+        elif selected_language == 'English':
+            self.current_language = 'en'
+        self.set_language(self.current_language)
+        logger.info(f"语言切换为: {self.current_language}")
+
 
     def add_log(self, operation, result, matched_person=None):
         """
@@ -737,6 +841,61 @@ class FaceRecognitionApp:
             except Exception as e:
                 messagebox.showerror("导出失败", f"导出日志失败: {e}")
                 logger.error(f"导出日志失败: {e}")
+
+    def show_help(self):
+        help_text = """
+        人脸识别系统使用说明：
+
+        1. **上传图片**：
+           - 点击“上传图片”按钮。
+           - 在弹出的文件选择对话框中，选择一张或多张图片（支持.jpg、.jpeg、.png格式）。
+           - 选择后，图片将被复制到上传文件夹，并在列表中显示。
+
+        2. **上传文件夹图片**：
+           - 点击“上传文件夹图片”按钮。
+           - 在弹出的文件夹选择对话框中，选择一个包含图片的文件夹。
+           - 文件夹中的所有支持格式的图片将被复制到上传文件夹，并在列表中显示。
+
+        3. **启动摄像头**：
+           - 点击“启动摄像头”按钮。
+           - 摄像头窗口将打开，显示实时视频流。
+           - 点击“拍照”按钮进行拍照，系统将自动进行人脸识别。
+           - 识别结果将以消息框形式显示，并记录在日志中。
+
+        4. **手动输入文件夹路径**：
+           - 在“手动输入文件夹路径”框中输入目标文件夹的路径。
+           - 点击“浏览”按钮可以通过对话框选择文件夹。
+           - 点击“上传”按钮，文件夹中的所有支持格式的图片将被复制到上传文件夹，并开始上传。
+
+        5. **导出使用日志**：
+           - 点击“导出使用日志”按钮。
+           - 在弹出的保存对话框中选择保存位置和文件名。
+           - 日志将以CSV文件格式导出，记录所有操作和识别结果。
+
+        6. **其他功能**：
+           - **实时人脸识别**：在摄像头窗口中实现实时人脸检测和识别。
+           - **日志管理**：系统会记录所有操作和结果，便于后续查看和分析。
+
+        **常见问题**：
+        - *无法打开摄像头*：请检查摄像头连接是否正常，或尝试重新启动应用程序。
+        - *识别结果不准确*：确保拍摄环境光线充足，摄像头清晰，并使用高质量的图片。
+        - *CSV文件乱码*：请确保使用支持UTF-8编码的程序打开，或尝试使用“utf-8-sig”编码导出日志。
+
+        **联系方式**：
+        如有任何问题或建议，请联系开发者：yushifu@shu.edu.cn
+        """
+        help_window = tk.Toplevel(self.root)
+        help_window.title("帮助")
+        help_window.geometry("700x600")
+        help_window.configure(bg="#2c3e50")
+
+        # 使用ScrolledText显示长文本
+        from tkinter.scrolledtext import ScrolledText
+        help_textbox = ScrolledText(help_window, wrap=tk.WORD, bg="#2c3e50", fg="#ecf0f1", font=("Helvetica", 12))
+        help_textbox.pack(fill='both', expand=True, padx=10, pady=10)
+        help_textbox.insert(tk.END, help_text)
+        help_textbox.config(state='disabled')  # 只读
+
 
 if __name__ == "__main__":
     root = tk.Tk()
