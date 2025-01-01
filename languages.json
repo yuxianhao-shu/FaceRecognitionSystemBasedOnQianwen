@@ -1,0 +1,32 @@
+{
+    "zh": {
+        "network_status": "网络状态: 检测中...",
+        "current_time": "当前时间:",
+        "title": "人脸识别系统",
+        "upload_images": "上传图片",
+        "upload_folder_images": "上传文件夹图片",
+        "start_camera": "启动摄像头",
+        "manual_path_label": "手动输入文件夹路径:",
+        "browse": "浏览",
+        "upload": "上传",
+        "uploaded_files": "已上传文件列表:",
+        "export_logs": "导出使用日志",
+        "help": "帮助",
+        "view_external_help": "查看详细文档"
+    },
+    "en": {
+        "network_status": "Network Status: Checking...",
+        "current_time": "Current Time:",
+        "title": "Face Recognition System",
+        "upload_images": "Upload Images",
+        "upload_folder_images": "Upload Folder Images",
+        "start_camera": "Start Camera",
+        "manual_path_label": "Manually Enter Folder Path:",
+        "browse": "Browse",
+        "upload": "Upload",
+        "uploaded_files": "Uploaded Files List:",
+        "export_logs": "Export Usage Logs",
+        "help": "Help",
+        "view_external_help": "View Detailed Documentation"
+    }
+}

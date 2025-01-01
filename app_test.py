@@ -31,6 +31,55 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+class ToolTip(object):
+    def __init__(self, widget, text='widget info'):
+        self.widget = widget
+        self.text = text
+        self.tipwindow = None
+        self.id = None
+        self.x = self.y = 0
+        self.widget.bind("<Enter>", self.enter)
+        self.widget.bind("<Leave>", self.leave)
+
+    def enter(self, event=None):
+        self.schedule()
+
+    def leave(self, event=None):
+        self.unschedule()
+        self.hidetip()
+
+    def schedule(self):
+        self.unschedule()
+        self.id = self.widget.after(500, self.showtip)  # 延迟0.5秒显示提示
+
+    def unschedule(self):
+        id_ = self.id
+        self.id = None
+        if id_:
+            self.widget.after_cancel(id_)
+
+    def showtip(self, event=None):
+        if self.tipwindow or not self.text:
+            return
+        # 获取控件的位置
+        x, y, cx, cy = self.widget.bbox("insert") if self.widget.winfo_class() == 'Entry' else (0, 0, 0, 0)
+        x = x + self.widget.winfo_rootx() + 25
+        y = y + self.widget.winfo_rooty() + 20
+        self.tipwindow = tw = tk.Toplevel(self.widget)
+        tw.wm_overrideredirect(True)  # 去除窗口装饰
+        tw.wm_geometry("+%d+%d" % (x, y))
+        label = tk.Label(tw, text=self.text, justify=tk.LEFT,
+                         background="#ffffe0", relief=tk.SOLID, borderwidth=1,
+                         font=("Helvetica", "10", "normal"))
+        label.pack(ipadx=1)
+
+    def hidetip(self):
+        tw = self.tipwindow
+        self.tipwindow = None
+        if tw:
+            tw.destroy()
+
+# 定义 FaceRecognitionApp 类
 class FaceRecognitionApp:
     def __init__(self, root):
         self.root = root
@@ -202,6 +251,58 @@ class FaceRecognitionApp:
         # 添加导出日志按钮
         self.button_export_logs = ttk.Button(self.frame_buttons, text="导出使用日志", command=self.export_logs)
         self.button_export_logs.pack(pady=5, fill='x')
+
+        # 加载语言资源
+        self.languages = self.load_languages()
+        self.current_language = 'zh'  # 默认语言为中文
+        # 添加语言选择下拉菜单
+        self.language_var = tk.StringVar(value='中文')
+        self.dropdown_languages = ttk.Combobox(self.frame_buttons, textvariable=self.language_var, state='readonly')
+        self.dropdown_languages['values'] = ['中文', 'English']
+        self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
+        self.dropdown_languages.pack(pady=5, fill='x')
+        ToolTip(self.dropdown_languages, "选择界面语言")
+        # 设置初始语言
+        self.set_language(self.current_language)
+
+    def load_languages(self):
+        languages = {}
+        try:
+            with open('languages.json', 'r', encoding='utf-8') as f:
+                languages = json.load(f)
+            logger.info("语言资源加载成功。")
+        except Exception as e:
+            logger.error(f"语言资源加载失败: {e}")
+        return languages
+
+    def set_language(self, lang_code):
+        lang = self.languages.get(lang_code, self.languages['zh'])
+        # 更新所有文本
+        self.network_status_label.config(text=lang["network_status"])
+        self.time_label.config(text=f"{lang['current_time']} --:--:--")
+        self.title_label.config(text=lang["title"])
+        self.button_open_images.config(text=lang["upload_images"])
+        self.button_open_folder.config(text=lang["upload_folder_images"])
+        self.button_start_camera.config(text=lang["start_camera"])
+        self.label_manual_path.config(text=lang["manual_path_label"])
+        self.button_browse_path.config(text=lang["browse"])
+        self.button_upload_manual_path.config(text=lang["upload"])
+        self.label_uploaded_files.config(text=lang["uploaded_files"])
+        self.button_export_logs.config(text=lang["export_logs"])
+        self.button_help.config(text=lang["help"])
+        # 如果添加了外部帮助按钮，请取消下面的注释
+        # self.button_open_external_help.config(text=lang["view_external_help"])
+        logger.info(f"界面语言已切换为: {lang_code}")
+
+    def change_language(self, event):
+        selected_language = self.language_var.get()
+        if selected_language == '中文':
+            self.current_language = 'zh'
+        elif selected_language == 'English':
+            self.current_language = 'en'
+        self.set_language(self.current_language)
+        logger.info(f"语言切换为: {self.current_language}")
+
 
     def add_log(self, operation, result, matched_person=None):
         """
