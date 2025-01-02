@@ -41,6 +41,9 @@ class ToolTip(object):
         self.widget.bind("<Enter>", self.enter)
         self.widget.bind("<Leave>", self.leave)
 
+    def set_text(self, new_text):
+        self.text = new_text
+
     def enter(self, event=None):
         self.schedule()
 
@@ -261,7 +264,10 @@ class FaceRecognitionApp:
         self.dropdown_languages['values'] = ['中文', 'English']
         self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
         self.dropdown_languages.pack(pady=5, fill='x')
-        ToolTip(self.dropdown_languages, "选择界面语言")
+
+        # 保存 ToolTip 实例的引用
+        self.language_tooltip = ToolTip(self.dropdown_languages, "选择界面语言")
+
         # 设置初始语言
         self.set_language(self.current_language)
 
@@ -279,7 +285,7 @@ class FaceRecognitionApp:
         lang = self.languages.get(lang_code, self.languages['zh'])
         # 更新所有文本
         self.network_status_label.config(text=lang["network_status"])
-        self.time_label.config(text=f"{lang['current_time']} --:--:--")
+        self.time_label.config(text=f"{lang['current_time']}: --:--:--")
         self.title_label.config(text=lang["title"])
         self.button_open_images.config(text=lang["upload_images"])
         self.button_open_folder.config(text=lang["upload_folder_images"])
@@ -290,9 +296,16 @@ class FaceRecognitionApp:
         self.label_uploaded_files.config(text=lang["uploaded_files"])
         self.button_export_logs.config(text=lang["export_logs"])
         self.button_help.config(text=lang["help"])
-        # 如果添加了外部帮助按钮，请取消下面的注释
-        # self.button_open_external_help.config(text=lang["view_external_help"])
+
+        # 更新工具提示
+        self.language_tooltip.text = lang["choose_language_tooltip"]
+
+        # 更新底部版权信息
+        self.footer_label.config(text=lang["thank_you"])
+
+        # 更新所有弹窗标题和内容（需要在相关方法中引用语言资源）
         logger.info(f"界面语言已切换为: {lang_code}")
+
 
     def change_language(self, event):
         selected_language = self.language_var.get()
@@ -373,18 +386,18 @@ class FaceRecognitionApp:
 
     def upload_faces(self):
         if not self.selected_image_paths:
-            messagebox.showerror("错误", "请先选择一张或多张图片！")
+            messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["no_images_selected_error"])
             logger.error("上传失败：未选择任何图片。")
             self.add_log("上传图片", "失败：未选择任何图片")
             return
 
         # 创建一个顶层弹窗来显示处理状态
         progress_window = tk.Toplevel(self.root)
-        progress_window.title("上传进度")
+        progress_window.title(self.languages[self.current_language]["upload_progress_title"])
         progress_window.geometry("400x200")
         progress_window.configure(bg="#2c3e50")
 
-        progress_label = tk.Label(progress_window, text="正在上传图片...",
+        progress_label = tk.Label(progress_window, text=self.languages[self.current_language]["uploading_images"],
                                   font=("Helvetica", 12),
                                   bg="#2c3e50",
                                   fg="#ecf0f1")
@@ -409,7 +422,7 @@ class FaceRecognitionApp:
                 try:
                     img = Image.open(enhanced_image_path)
                 except (IOError, SyntaxError) as e:
-                    messagebox.showerror("上传错误", f"无法打开图片 {image_path}: {e}")
+                    messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["open_image_error"].format(image=os.path.basename(image_path), error=str(e)))
                     logger.error(f"跳过损坏文件: {image_path}, 错误详情: {e}")
                     self.add_log("上传图片", f"失败：无法打开图片 {image_path}")
                     failed += 1
@@ -447,15 +460,16 @@ class FaceRecognitionApp:
                 progress_window.update_idletasks()
 
             except Exception as e:
-                messagebox.showerror("上传错误", f"上传 {image_path} 时发生错误: {str(e)}\n请检查文件格式或路径是否正确。")
+                messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["upload_image_error"].format(image=os.path.basename(image_path), error=str(e)))
                 logger.error(f"上传 {image_path} 时发生错误: {e}")
                 self.add_log("上传图片", f"失败：{e}")
                 failed += 1
 
         # 上传完成后关闭进度窗口并显示结果
         progress_window.destroy()
-        messagebox.showinfo("上传完成", f"批量上传完成！\n成功上传: {uploaded} 张图片\n失败: {failed} 张图片")
+        messagebox.showinfo(self.languages[self.current_language]["upload_complete"], self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" + self.languages[self.current_language]["upload_failed"].format(failed=failed))
         logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
+
 
     def upload_faces_from_path(self):
         folder_path = self.entry_manual_path.get().strip()
@@ -587,9 +601,9 @@ class FaceRecognitionApp:
         try:
             self.cap = cv2.VideoCapture(0)
             if not self.cap.isOpened():
-                raise Exception("无法打开摄像头，请检查摄像头连接。")
+                raise Exception(self.languages[self.current_language]["error"] + ": " + self.languages[self.current_language]["init_aliyun_client_error"])
             self.camera_window = tk.Toplevel(self.root)
-            self.camera_window.title("摄像头")
+            self.camera_window.title(self.languages[self.current_language]["camera_window_title"])
             self.camera_window.geometry("650x550")
             self.camera_window.configure(bg="#2c3e50")
 
@@ -604,7 +618,7 @@ class FaceRecognitionApp:
             self.camera_label.pack(pady=20, padx=20, fill='both', expand=True)
 
             # 创建“拍照”按钮
-            self.capture_button = ttk.Button(self.camera_window, text="拍照", command=self.capture_photo)
+            self.capture_button = ttk.Button(self.camera_window, text=self.languages[self.current_language]["capture_photo"], command=self.capture_photo)
             self.capture_button.pack(pady=10)
 
             # 启动视频流更新
@@ -614,11 +628,12 @@ class FaceRecognitionApp:
             logger.info("摄像头已启动。")
 
         except Exception as e:
-            messagebox.showerror("摄像头错误", str(e))
+            messagebox.showerror(self.languages[self.current_language]["error"], str(e))
             logger.error(f"启动摄像头失败：{e}")
             self.add_log("启动摄像头", f"失败：{e}")
             self.close_camera_window()
             return
+
 
     def update_camera_frame(self):
         ret, frame = self.cap.read()
@@ -843,49 +858,9 @@ class FaceRecognitionApp:
                 logger.error(f"导出日志失败: {e}")
 
     def show_help(self):
-        help_text = """
-        人脸识别系统使用说明：
-
-        1. **上传图片**：
-           - 点击“上传图片”按钮。
-           - 在弹出的文件选择对话框中，选择一张或多张图片（支持.jpg、.jpeg、.png格式）。
-           - 选择后，图片将被复制到上传文件夹，并在列表中显示。
-
-        2. **上传文件夹图片**：
-           - 点击“上传文件夹图片”按钮。
-           - 在弹出的文件夹选择对话框中，选择一个包含图片的文件夹。
-           - 文件夹中的所有支持格式的图片将被复制到上传文件夹，并在列表中显示。
-
-        3. **启动摄像头**：
-           - 点击“启动摄像头”按钮。
-           - 摄像头窗口将打开，显示实时视频流。
-           - 点击“拍照”按钮进行拍照，系统将自动进行人脸识别。
-           - 识别结果将以消息框形式显示，并记录在日志中。
-
-        4. **手动输入文件夹路径**：
-           - 在“手动输入文件夹路径”框中输入目标文件夹的路径。
-           - 点击“浏览”按钮可以通过对话框选择文件夹。
-           - 点击“上传”按钮，文件夹中的所有支持格式的图片将被复制到上传文件夹，并开始上传。
-
-        5. **导出使用日志**：
-           - 点击“导出使用日志”按钮。
-           - 在弹出的保存对话框中选择保存位置和文件名。
-           - 日志将以CSV文件格式导出，记录所有操作和识别结果。
-
-        6. **其他功能**：
-           - **实时人脸识别**：在摄像头窗口中实现实时人脸检测和识别。
-           - **日志管理**：系统会记录所有操作和结果，便于后续查看和分析。
-
-        **常见问题**：
-        - *无法打开摄像头*：请检查摄像头连接是否正常，或尝试重新启动应用程序。
-        - *识别结果不准确*：确保拍摄环境光线充足，摄像头清晰，并使用高质量的图片。
-        - *CSV文件乱码*：请确保使用支持UTF-8编码的程序打开，或尝试使用“utf-8-sig”编码导出日志。
-
-        **联系方式**：
-        如有任何问题或建议，请联系开发者：yushifu@shu.edu.cn
-        """
+        help_text = self.languages[self.current_language].get("help_text", "")
         help_window = tk.Toplevel(self.root)
-        help_window.title("帮助")
+        help_window.title(self.languages[self.current_language]["help_window_title"])
         help_window.geometry("700x600")
         help_window.configure(bg="#2c3e50")
 
@@ -895,6 +870,17 @@ class FaceRecognitionApp:
         help_textbox.pack(fill='both', expand=True, padx=10, pady=10)
         help_textbox.insert(tk.END, help_text)
         help_textbox.config(state='disabled')  # 只读
+
+    def load_languages(self):
+        languages = {}
+        try:
+            with open('languages.json', 'r', encoding='utf-8') as f:
+                languages = json.load(f)
+            logger.info("语言资源加载成功。")
+        except Exception as e:
+            logger.error(f"语言资源加载失败: {e}")
+        return languages
+
 
 
 if __name__ == "__main__":
