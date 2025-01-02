@@ -1,0 +1,36 @@
+2025-01-02 11:41:39,877 - INFO - 阿里云客户端已初始化。
+2025-01-02 11:41:40,229 - INFO - 网络状态: 已连接
+2025-01-02 11:41:40,238 - INFO - 语言资源加载成功。
+2025-01-02 11:41:40,241 - INFO - 界面语言已切换为: zh
+2025-01-02 11:41:45,564 - INFO - 网络状态: 已连接
+2025-01-02 11:41:50,927 - INFO - 网络状态: 已连接
+2025-01-02 11:41:56,289 - INFO - 网络状态: 已连接
+2025-01-02 11:42:01,631 - INFO - 网络状态: 已连接
+2025-01-02 11:42:06,913 - INFO - 网络状态: 已连接
+2025-01-02 11:42:12,255 - INFO - 网络状态: 已连接
+2025-01-02 11:42:17,657 - INFO - 网络状态: 已连接
+2025-01-02 11:42:22,990 - INFO - 网络状态: 已连接
+2025-01-02 11:42:28,417 - INFO - 网络状态: 已连接
+2025-01-02 11:42:31,888 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
+2025-01-02 11:42:31,889 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 11:42:31,890 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 11:42:31,892 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 11:42:31,892 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 11:42:31,892 - INFO - 日志记录：{'Timestamp': '2025-01-02 11:42:31', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 11:42:31,965 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-07-24 115634.png: pyimage1
+2025-01-02 11:42:31,976 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-11-10 220921.png: pyimage2
+2025-01-02 11:42:32,009 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-12-16 230159.png: pyimage3
+2025-01-02 11:42:33,705 - INFO - 网络状态: 已连接
+2025-01-02 11:42:33,760 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-07-24 115634.png: pyimage4
+2025-01-02 11:42:34,335 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-11-10 220921.png: pyimage5
+2025-01-02 11:42:34,877 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-12-16 230159.png: pyimage6
+2025-01-02 11:42:35,369 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-11-10 220921.png: pyimage7
+2025-01-02 11:42:35,897 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-07-24 115634.png: pyimage8
+2025-01-02 11:42:36,361 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-12-16 230159.png: pyimage9
+2025-01-02 11:42:39,018 - INFO - 网络状态: 已连接
+2025-01-02 11:42:44,322 - INFO - 网络状态: 已连接
+2025-01-02 11:42:49,628 - INFO - 网络状态: 已连接
+2025-01-02 11:42:55,000 - INFO - 网络状态: 已连接
+2025-01-02 11:43:00,300 - INFO - 网络状态: 已连接
+2025-01-02 11:43:00,683 - INFO - 日志已导出到 C:/Users/yushi/Desktop/s.csv
+2025-01-02 11:43:05,281 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii 已删除。
