@@ -897,6 +897,8 @@ class FaceRecognitionApp:
         help_textbox.config(state='disabled')  # 只读
 
 
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     app = FaceRecognitionApp(root)
