@@ -17,8 +17,8 @@
 - **Python版本**：确保已安装Python 3.6及以上版本。
 ### 克隆仓库
 ```bash
-git clone https://github.com/yourusername/face-recognition-system.git
-cd face-recognition-system
+git clone https://github.com/yuxianhao-shu/FaceRecognitionSystemBasedOnQianwen.git
+cd FaceRecognitionSystemBasedOnQianwen
 ```
 ### 创建虚拟环境（可选）
 ```bash
