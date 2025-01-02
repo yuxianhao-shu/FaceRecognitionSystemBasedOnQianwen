@@ -104,3 +104,84 @@
 2025-01-02 14:35:31,590 - INFO - 网络状态: 已连接
 2025-01-02 14:35:36,892 - INFO - 网络状态: 已连接
 2025-01-02 14:35:42,194 - INFO - 网络状态: 已连接
+2025-01-02 15:46:29,656 - INFO - 阿里云客户端已初始化。
+2025-01-02 15:46:29,685 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition__3xrwz66 已删除。
+2025-01-02 15:53:23,561 - INFO - 阿里云客户端已初始化。
+2025-01-02 15:53:23,578 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_fpdyii7y 已删除。
+2025-01-02 16:04:07,032 - INFO - 阿里云客户端已初始化。
+2025-01-02 16:04:07,068 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_aies2drq 已删除。
+2025-01-02 16:06:21,551 - INFO - 阿里云客户端已初始化。
+2025-01-02 16:06:21,576 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_dg98tz_f 已删除。
+2025-01-02 16:09:19,420 - INFO - 阿里云客户端已初始化。
+2025-01-02 16:09:20,135 - INFO - 网络状态: 已连接
+2025-01-02 16:09:20,139 - INFO - 语言资源加载成功。
+2025-01-02 16:09:20,146 - INFO - 界面语言已切换为: zh
+2025-01-02 16:09:25,489 - INFO - 网络状态: 已连接
+2025-01-02 16:09:30,839 - INFO - 网络状态: 已连接
+2025-01-02 16:09:36,233 - INFO - 网络状态: 已连接
+2025-01-02 16:09:41,598 - INFO - 网络状态: 已连接
+2025-01-02 16:09:42,085 - INFO - 界面语言已切换为: en
+2025-01-02 16:09:42,086 - INFO - 语言切换为: en
+2025-01-02 16:09:47,169 - INFO - 网络状态: 已连接
+2025-01-02 16:09:52,516 - INFO - 网络状态: 已连接
+2025-01-02 16:09:58,114 - INFO - 网络状态: 已连接
+2025-01-02 16:09:59,282 - INFO - 选择的文件夹: C:/Users/yushi/Pictures/Screenshots
+2025-01-02 16:09:59,282 - INFO - 找到 3 张图片
+2025-01-02 16:09:59,283 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 16:09:59,284 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:09:59,286 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 16:09:59,286 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 16:09:59,286 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:09:59', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:03,409 - INFO - 网络状态: 已连接
+2025-01-02 16:10:04,046 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
+2025-01-02 16:10:04,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 16:10:04,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:10:04,048 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 16:10:04,048 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 16:10:04,050 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:04', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:07,750 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
+2025-01-02 16:10:07,751 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 16:10:07,752 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:10:07,752 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 16:10:07,752 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 16:10:07,752 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:07', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:09,183 - INFO - 网络状态: 已连接
+2025-01-02 16:10:10,517 - ERROR - 上传文件夹失败：未输入文件夹路径。
+2025-01-02 16:10:10,518 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:10', 'Operation': '上传文件夹', 'Result': '失败：未输入文件夹路径', 'Matched_Person': '无'}
+2025-01-02 16:10:14,590 - INFO - 网络状态: 已连接
+2025-01-02 16:10:20,671 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:20', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-02 16:10:20,671 - INFO - 摄像头已启动。
+2025-01-02 16:10:20,996 - INFO - 网络状态: 已连接
+2025-01-02 16:10:23,506 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:23', 'Operation': '拍照', 'Result': '成功', 'Matched_Person': 'C:\\Users\\yushi\\AppData\\Local\\Temp\\face_recognition_uxn6vebc\\camera\\captured_face_20250102161022512156.jpg'}
+2025-01-02 16:10:24,674 - ERROR - 识别失败：'CommonRequest' object has no attribute 'add_file_param'
+2025-01-02 16:10:24,675 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:24', 'Operation': '人脸识别', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-02 16:10:25,492 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:25', 'Operation': '人脸匹配', 'Result': '失败', 'Matched_Person': '无'}
+2025-01-02 16:10:26,326 - INFO - 网络状态: 已连接
+2025-01-02 16:10:26,620 - INFO - 摄像头已释放。
+2025-01-02 16:10:26,620 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:26', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-02 16:10:28,515 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png',)
+2025-01-02 16:10:28,516 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:10:28,516 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-02 16:10:28,516 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:28', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:31,046 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
+2025-01-02 16:10:31,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 16:10:31,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:10:31,048 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 16:10:31,048 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 16:10:31,048 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:31', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:31,611 - INFO - 网络状态: 已连接
+2025-01-02 16:10:37,004 - INFO - 网络状态: 已连接
+2025-01-02 16:10:37,008 - INFO - 界面语言已切换为: en
+2025-01-02 16:10:37,010 - INFO - 语言切换为: en
+2025-01-02 16:10:37,974 - INFO - 界面语言已切换为: zh
+2025-01-02 16:10:37,974 - INFO - 语言切换为: zh
+2025-01-02 16:10:40,999 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
+2025-01-02 16:10:41,000 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
+2025-01-02 16:10:41,001 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
+2025-01-02 16:10:41,001 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
+2025-01-02 16:10:41,001 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-02 16:10:41,001 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:41', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-02 16:10:42,297 - INFO - 网络状态: 已连接
+2025-01-02 16:10:51,062 - INFO - 网络状态: 已连接
+2025-01-02 16:10:56,390 - INFO - 网络状态: 已连接
+2025-01-02 16:11:00,832 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc 已删除。
