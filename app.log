@@ -1,187 +1,1750 @@
-2025-01-02 11:41:39,877 - INFO - 阿里云客户端已初始化。
-2025-01-02 11:41:40,229 - INFO - 网络状态: 已连接
-2025-01-02 11:41:40,238 - INFO - 语言资源加载成功。
-2025-01-02 11:41:40,241 - INFO - 界面语言已切换为: zh
-2025-01-02 11:41:45,564 - INFO - 网络状态: 已连接
-2025-01-02 11:41:50,927 - INFO - 网络状态: 已连接
-2025-01-02 11:41:56,289 - INFO - 网络状态: 已连接
-2025-01-02 11:42:01,631 - INFO - 网络状态: 已连接
-2025-01-02 11:42:06,913 - INFO - 网络状态: 已连接
-2025-01-02 11:42:12,255 - INFO - 网络状态: 已连接
-2025-01-02 11:42:17,657 - INFO - 网络状态: 已连接
-2025-01-02 11:42:22,990 - INFO - 网络状态: 已连接
-2025-01-02 11:42:28,417 - INFO - 网络状态: 已连接
-2025-01-02 11:42:31,888 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
-2025-01-02 11:42:31,889 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 11:42:31,890 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 11:42:31,892 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 11:42:31,892 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 11:42:31,892 - INFO - 日志记录：{'Timestamp': '2025-01-02 11:42:31', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 11:42:31,965 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-07-24 115634.png: pyimage1
-2025-01-02 11:42:31,976 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-11-10 220921.png: pyimage2
-2025-01-02 11:42:32,009 - INFO - ImageTk.PhotoImage created for C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii\uploaded\屏幕截图 2024-12-16 230159.png: pyimage3
-2025-01-02 11:42:33,705 - INFO - 网络状态: 已连接
-2025-01-02 11:42:33,760 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-07-24 115634.png: pyimage4
-2025-01-02 11:42:34,335 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-11-10 220921.png: pyimage5
-2025-01-02 11:42:34,877 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-12-16 230159.png: pyimage6
-2025-01-02 11:42:35,369 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-11-10 220921.png: pyimage7
-2025-01-02 11:42:35,897 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-07-24 115634.png: pyimage8
-2025-01-02 11:42:36,361 - INFO - ImageTk.PhotoImage created for 屏幕截图 2024-12-16 230159.png: pyimage9
-2025-01-02 11:42:39,018 - INFO - 网络状态: 已连接
-2025-01-02 11:42:44,322 - INFO - 网络状态: 已连接
-2025-01-02 11:42:49,628 - INFO - 网络状态: 已连接
-2025-01-02 11:42:55,000 - INFO - 网络状态: 已连接
-2025-01-02 11:43:00,300 - INFO - 网络状态: 已连接
-2025-01-02 11:43:00,683 - INFO - 日志已导出到 C:/Users/yushi/Desktop/s.csv
-2025-01-02 11:43:05,281 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_it0h68ii 已删除。
-2025-01-02 13:45:41,636 - INFO - 阿里云客户端已初始化。
-2025-01-02 13:45:42,085 - INFO - 网络状态: 已连接
-2025-01-02 13:45:42,091 - INFO - 语言资源加载成功。
-2025-01-02 13:45:42,098 - INFO - 界面语言已切换为: zh
-2025-01-02 13:45:44,894 - INFO - 界面语言已切换为: en
-2025-01-02 13:45:44,894 - INFO - 语言切换为: en
-2025-01-02 13:45:47,747 - INFO - 网络状态: 已连接
-2025-01-02 13:45:53,576 - INFO - 日志记录：{'Timestamp': '2025-01-02 13:45:53', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 13:45:53,577 - INFO - 摄像头已启动。
-2025-01-02 13:45:54,025 - INFO - 网络状态: 已连接
-2025-01-02 13:45:56,997 - INFO - 摄像头已释放。
-2025-01-02 13:45:56,998 - INFO - 日志记录：{'Timestamp': '2025-01-02 13:45:56', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 13:45:59,680 - INFO - 网络状态: 已连接
-2025-01-02 13:46:02,757 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_zzthmwaj 已删除。
-2025-01-02 14:33:30,981 - INFO - 阿里云客户端已初始化。
-2025-01-02 14:33:31,368 - INFO - 网络状态: 已连接
-2025-01-02 14:33:31,370 - INFO - 语言资源加载成功。
-2025-01-02 14:33:31,385 - INFO - 界面语言已切换为: zh
-2025-01-02 14:33:33,681 - INFO - 界面语言已切换为: en
-2025-01-02 14:33:33,683 - INFO - 语言切换为: en
-2025-01-02 14:33:38,929 - INFO - 日志记录：{'Timestamp': '2025-01-02 14:33:38', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 14:33:38,930 - INFO - 摄像头已启动。
-2025-01-02 14:33:39,215 - INFO - 网络状态: 已连接
-2025-01-02 14:33:41,492 - INFO - 摄像头已释放。
-2025-01-02 14:33:41,493 - INFO - 日志记录：{'Timestamp': '2025-01-02 14:33:41', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 14:33:44,554 - INFO - 网络状态: 已连接
-2025-01-02 14:33:49,904 - INFO - 网络状态: 已连接
-2025-01-02 14:33:55,258 - INFO - 网络状态: 已连接
-2025-01-02 14:34:00,617 - INFO - 网络状态: 已连接
-2025-01-02 14:34:05,918 - INFO - 网络状态: 已连接
-2025-01-02 14:34:11,275 - INFO - 网络状态: 已连接
-2025-01-02 14:34:16,668 - INFO - 网络状态: 已连接
-2025-01-02 14:34:22,040 - INFO - 网络状态: 已连接
-2025-01-02 14:34:27,435 - INFO - 网络状态: 已连接
-2025-01-02 14:34:32,757 - INFO - 网络状态: 已连接
-2025-01-02 14:34:38,127 - INFO - 网络状态: 已连接
-2025-01-02 14:34:41,425 - INFO - 界面语言已切换为: zh
-2025-01-02 14:34:41,425 - INFO - 语言切换为: zh
-2025-01-02 14:34:42,398 - INFO - 界面语言已切换为: en
-2025-01-02 14:34:42,398 - INFO - 语言切换为: en
-2025-01-02 14:34:43,503 - INFO - 网络状态: 已连接
-2025-01-02 14:34:45,300 - INFO - 界面语言已切换为: zh
-2025-01-02 14:34:45,301 - INFO - 语言切换为: zh
-2025-01-02 14:34:47,092 - INFO - 界面语言已切换为: en
-2025-01-02 14:34:47,092 - INFO - 语言切换为: en
-2025-01-02 14:34:48,276 - INFO - 界面语言已切换为: zh
-2025-01-02 14:34:48,276 - INFO - 语言切换为: zh
-2025-01-02 14:34:48,840 - INFO - 网络状态: 已连接
-2025-01-02 14:34:50,024 - INFO - 界面语言已切换为: en
-2025-01-02 14:34:50,024 - INFO - 语言切换为: en
-2025-01-02 14:34:54,179 - INFO - 网络状态: 已连接
-2025-01-02 14:34:59,579 - INFO - 网络状态: 已连接
-2025-01-02 14:35:04,930 - INFO - 网络状态: 已连接
-2025-01-02 14:35:10,287 - INFO - 网络状态: 已连接
-2025-01-02 14:35:14,456 - INFO - 界面语言已切换为: zh
-2025-01-02 14:35:14,456 - INFO - 语言切换为: zh
-2025-01-02 14:35:15,660 - INFO - 网络状态: 已连接
-2025-01-02 14:35:16,411 - INFO - 界面语言已切换为: en
-2025-01-02 14:35:16,411 - INFO - 语言切换为: en
-2025-01-02 14:35:20,655 - INFO - 界面语言已切换为: zh
-2025-01-02 14:35:20,656 - INFO - 语言切换为: zh
-2025-01-02 14:35:20,968 - INFO - 网络状态: 已连接
-2025-01-02 14:35:22,186 - INFO - 界面语言已切换为: zh
-2025-01-02 14:35:22,187 - INFO - 语言切换为: zh
-2025-01-02 14:35:23,308 - INFO - 界面语言已切换为: en
-2025-01-02 14:35:23,308 - INFO - 语言切换为: en
-2025-01-02 14:35:26,275 - INFO - 网络状态: 已连接
-2025-01-02 14:35:31,590 - INFO - 网络状态: 已连接
-2025-01-02 14:35:36,892 - INFO - 网络状态: 已连接
-2025-01-02 14:35:42,194 - INFO - 网络状态: 已连接
-2025-01-02 15:46:29,656 - INFO - 阿里云客户端已初始化。
-2025-01-02 15:46:29,685 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition__3xrwz66 已删除。
-2025-01-02 15:53:23,561 - INFO - 阿里云客户端已初始化。
-2025-01-02 15:53:23,578 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_fpdyii7y 已删除。
-2025-01-02 16:04:07,032 - INFO - 阿里云客户端已初始化。
-2025-01-02 16:04:07,068 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_aies2drq 已删除。
-2025-01-02 16:06:21,551 - INFO - 阿里云客户端已初始化。
-2025-01-02 16:06:21,576 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_dg98tz_f 已删除。
-2025-01-02 16:09:19,420 - INFO - 阿里云客户端已初始化。
-2025-01-02 16:09:20,135 - INFO - 网络状态: 已连接
-2025-01-02 16:09:20,139 - INFO - 语言资源加载成功。
-2025-01-02 16:09:20,146 - INFO - 界面语言已切换为: zh
-2025-01-02 16:09:25,489 - INFO - 网络状态: 已连接
-2025-01-02 16:09:30,839 - INFO - 网络状态: 已连接
-2025-01-02 16:09:36,233 - INFO - 网络状态: 已连接
-2025-01-02 16:09:41,598 - INFO - 网络状态: 已连接
-2025-01-02 16:09:42,085 - INFO - 界面语言已切换为: en
-2025-01-02 16:09:42,086 - INFO - 语言切换为: en
-2025-01-02 16:09:47,169 - INFO - 网络状态: 已连接
-2025-01-02 16:09:52,516 - INFO - 网络状态: 已连接
-2025-01-02 16:09:58,114 - INFO - 网络状态: 已连接
-2025-01-02 16:09:59,282 - INFO - 选择的文件夹: C:/Users/yushi/Pictures/Screenshots
-2025-01-02 16:09:59,282 - INFO - 找到 3 张图片
-2025-01-02 16:09:59,283 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 16:09:59,284 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:09:59,286 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots\屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 16:09:59,286 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 16:09:59,286 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:09:59', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:03,409 - INFO - 网络状态: 已连接
-2025-01-02 16:10:04,046 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
-2025-01-02 16:10:04,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 16:10:04,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:10:04,048 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 16:10:04,048 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 16:10:04,050 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:04', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:07,750 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
-2025-01-02 16:10:07,751 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 16:10:07,752 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:10:07,752 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 16:10:07,752 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 16:10:07,752 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:07', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:09,183 - INFO - 网络状态: 已连接
-2025-01-02 16:10:10,517 - ERROR - 上传文件夹失败：未输入文件夹路径。
-2025-01-02 16:10:10,518 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:10', 'Operation': '上传文件夹', 'Result': '失败：未输入文件夹路径', 'Matched_Person': '无'}
-2025-01-02 16:10:14,590 - INFO - 网络状态: 已连接
-2025-01-02 16:10:20,671 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:20', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 16:10:20,671 - INFO - 摄像头已启动。
-2025-01-02 16:10:20,996 - INFO - 网络状态: 已连接
-2025-01-02 16:10:23,506 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:23', 'Operation': '拍照', 'Result': '成功', 'Matched_Person': 'C:\\Users\\yushi\\AppData\\Local\\Temp\\face_recognition_uxn6vebc\\camera\\captured_face_20250102161022512156.jpg'}
-2025-01-02 16:10:24,674 - ERROR - 识别失败：'CommonRequest' object has no attribute 'add_file_param'
-2025-01-02 16:10:24,675 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:24', 'Operation': '人脸识别', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
-2025-01-02 16:10:25,492 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:25', 'Operation': '人脸匹配', 'Result': '失败', 'Matched_Person': '无'}
-2025-01-02 16:10:26,326 - INFO - 网络状态: 已连接
-2025-01-02 16:10:26,620 - INFO - 摄像头已释放。
-2025-01-02 16:10:26,620 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:26', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
-2025-01-02 16:10:28,515 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png',)
-2025-01-02 16:10:28,516 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:10:28,516 - INFO - 已复制 1 张图片到上传文件夹。
-2025-01-02 16:10:28,516 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:28', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:31,046 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
-2025-01-02 16:10:31,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 16:10:31,047 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:10:31,048 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 16:10:31,048 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 16:10:31,048 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:31', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:31,611 - INFO - 网络状态: 已连接
-2025-01-02 16:10:37,004 - INFO - 网络状态: 已连接
-2025-01-02 16:10:37,008 - INFO - 界面语言已切换为: en
-2025-01-02 16:10:37,010 - INFO - 语言切换为: en
-2025-01-02 16:10:37,974 - INFO - 界面语言已切换为: zh
-2025-01-02 16:10:37,974 - INFO - 语言切换为: zh
-2025-01-02 16:10:40,999 - INFO - 选择的图片路径: ('C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png', 'C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png')
-2025-01-02 16:10:41,000 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-07-24 115634.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-07-24 115634.png
-2025-01-02 16:10:41,001 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-11-10 220921.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-11-10 220921.png
-2025-01-02 16:10:41,001 - INFO - 复制图片 C:/Users/yushi/Pictures/Screenshots/屏幕截图 2024-12-16 230159.png 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc\uploaded\屏幕截图 2024-12-16 230159.png
-2025-01-02 16:10:41,001 - INFO - 已复制 3 张图片到上传文件夹。
-2025-01-02 16:10:41,001 - INFO - 日志记录：{'Timestamp': '2025-01-02 16:10:41', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
-2025-01-02 16:10:42,297 - INFO - 网络状态: 已连接
-2025-01-02 16:10:51,062 - INFO - 网络状态: 已连接
-2025-01-02 16:10:56,390 - INFO - 网络状态: 已连接
-2025-01-02 16:11:00,832 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_uxn6vebc 已删除。
+2025-01-04 11:13:01,380 - INFO - 阿里云客户端已初始化。
+2025-01-04 11:13:01,765 - INFO - 网络状态: 已连接
+2025-01-04 11:13:01,766 - INFO - 语言资源加载成功。
+2025-01-04 11:13:01,770 - INFO - 界面语言已切换为: zh
+2025-01-04 11:13:07,120 - INFO - 网络状态: 已连接
+2025-01-04 11:13:08,040 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 11:13:08,041 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_vvrifgem\uploaded\test001.jpg
+2025-01-04 11:13:08,041 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 11:13:08,041 - INFO - 日志记录：{'Timestamp': '2025-01-04 11:13:08', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 11:13:12,480 - INFO - 网络状态: 已连接
+2025-01-04 11:13:17,898 - INFO - 网络状态: 已连接
+2025-01-04 11:13:21,122 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_vvrifgem 已删除。
+2025-01-04 14:37:24,275 - INFO - 阿里云客户端已初始化。
+2025-01-04 14:37:24,875 - INFO - 网络状态: 已连接
+2025-01-04 14:37:24,877 - INFO - 语言资源加载成功。
+2025-01-04 14:37:24,880 - INFO - 界面语言已切换为: zh
+2025-01-04 14:37:27,100 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 14:37:27,103 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_eqnrkto5\uploaded\微信图片_20241213221354.jpg
+2025-01-04 14:37:27,103 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 14:37:27,103 - INFO - 日志记录：{'Timestamp': '2025-01-04 14:37:27', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 14:37:29,131 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg',)
+2025-01-04 14:37:29,133 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_eqnrkto5\uploaded\微信图片_20241213221328.jpg
+2025-01-04 14:37:29,133 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 14:37:29,133 - INFO - 日志记录：{'Timestamp': '2025-01-04 14:37:29', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 14:37:30,279 - INFO - 网络状态: 已连接
+2025-01-04 14:37:30,649 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_eqnrkto5 已删除。
+2025-01-04 14:51:07,922 - INFO - 阿里云客户端已初始化。
+2025-01-04 14:51:09,328 - INFO - 网络状态: 已连接
+2025-01-04 14:51:09,329 - INFO - 语言资源加载成功。
+2025-01-04 14:51:09,333 - INFO - 界面语言已切换为: zh
+2025-01-04 14:51:11,881 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 14:51:11,883 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_akw4t1nr\uploaded\微信图片_20241213221354.jpg
+2025-01-04 14:51:11,883 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 14:51:11,883 - INFO - 日志记录：{'Timestamp': '2025-01-04 14:51:11', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 14:51:15,063 - INFO - 网络状态: 已连接
+2025-01-04 14:51:20,105 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_akw4t1nr 已删除。
+2025-01-04 14:51:34,778 - INFO - 阿里云客户端已初始化。
+2025-01-04 14:51:35,157 - INFO - 网络状态: 已连接
+2025-01-04 14:51:35,159 - INFO - 语言资源加载成功。
+2025-01-04 14:51:35,163 - INFO - 界面语言已切换为: zh
+2025-01-04 14:51:38,615 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 14:51:38,616 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_v3ojhie3\uploaded\test001.jpg
+2025-01-04 14:51:38,617 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_v3ojhie3\uploaded\微信图片_20241213221328.jpg
+2025-01-04 14:51:38,618 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_v3ojhie3\uploaded\微信图片_20241213221354.jpg
+2025-01-04 14:51:38,618 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 14:51:38,618 - INFO - 日志记录：{'Timestamp': '2025-01-04 14:51:38', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 14:51:40,493 - INFO - 网络状态: 已连接
+2025-01-04 14:51:43,033 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_v3ojhie3 已删除。
+2025-01-04 15:04:36,712 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:04:37,381 - INFO - 网络状态: 已连接
+2025-01-04 15:04:37,384 - INFO - 语言资源加载成功。
+2025-01-04 15:04:37,388 - INFO - 界面语言已切换为: zh
+2025-01-04 15:04:40,414 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:04:40,415 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:04:40,415 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:04:40,415 - INFO - 已复制 2 张图片到上传文件夹。
+2025-01-04 15:04:40,415 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:04:40', 'Operation': '上传图片', 'Result': '成功：复制了 2 张图片', 'Matched_Person': '无'}
+2025-01-04 15:04:42,810 - INFO - 网络状态: 已连接
+2025-01-04 15:04:48,223 - INFO - 网络状态: 已连接
+2025-01-04 15:04:53,616 - INFO - 网络状态: 已连接
+2025-01-04 15:04:57,290 - INFO - 手动输入的文件夹路径: D:/photos/sucai
+2025-01-04 15:04:58,974 - INFO - 网络状态: 已连接
+2025-01-04 15:04:59,118 - INFO - 上传文件夹路径: D:/photos/sucai, 找到 3 张图片
+2025-01-04 15:04:59,119 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\test001.jpg
+2025-01-04 15:04:59,119 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:04:59,120 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:04:59,120 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:04:59,122 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:04:59', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:04:59,188 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\compressed_test001.jpg
+2025-01-04 15:04:59,213 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 15:05:00,849 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:05:00,850 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:05:00', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:05:00,879 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\compressed_微信图片_20241213221328.jpg
+2025-01-04 15:05:00,908 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\enhanced_compressed_微信图片_20241213221328.jpg
+2025-01-04 15:05:01,394 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221328.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:05:01,394 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:05:01', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:05:01,426 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\compressed_微信图片_20241213221354.jpg
+2025-01-04 15:05:01,458 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 15:05:01,869 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h\uploaded\微信图片_20241213221354.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:05:01,869 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:05:01', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:05:02,746 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 3 张图片
+2025-01-04 15:05:04,578 - INFO - 网络状态: 已连接
+2025-01-04 15:05:05,898 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_7etdmv9h 已删除。
+2025-01-04 15:08:41,460 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:08:41,941 - INFO - 网络状态: 已连接
+2025-01-04 15:08:41,946 - INFO - 语言资源加载成功。
+2025-01-04 15:08:41,950 - INFO - 界面语言已切换为: zh
+2025-01-04 15:08:43,849 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg',)
+2025-01-04 15:08:43,850 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:08:43,850 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:08:43,850 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:08:43', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:08:46,646 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 15:08:46,647 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\test001.jpg
+2025-01-04 15:08:46,648 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:08:46,648 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:08:46', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:08:47,305 - INFO - 网络状态: 已连接
+2025-01-04 15:08:48,490 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 15:08:48,491 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:08:48,491 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:08:48,491 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:08:48', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:08:50,229 - INFO - 界面语言已切换为: en
+2025-01-04 15:08:50,229 - INFO - 语言切换为: en
+2025-01-04 15:08:52,768 - INFO - 网络状态: 已连接
+2025-01-04 15:08:54,043 - INFO - 界面语言已切换为: zh
+2025-01-04 15:08:54,043 - INFO - 语言切换为: zh
+2025-01-04 15:08:58,006 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:08:58,007 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\test001.jpg
+2025-01-04 15:08:58,007 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:08:58,009 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:08:58,009 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:08:58,009 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:08:58', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:08:58,512 - INFO - 网络状态: 已连接
+2025-01-04 15:09:00,006 - INFO - 选择的文件夹: D:/photos/sucai
+2025-01-04 15:09:00,006 - INFO - 找到 3 张图片
+2025-01-04 15:09:00,007 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\test001.jpg
+2025-01-04 15:09:00,007 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:09:00,008 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:09:00,008 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:09:00,008 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:00', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:09:04,079 - INFO - 网络状态: 已连接
+2025-01-04 15:09:06,803 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:06', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-04 15:09:06,804 - INFO - 摄像头已启动。
+2025-01-04 15:09:08,924 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:08', 'Operation': '拍照', 'Result': '成功', 'Matched_Person': 'C:\\Users\\yushi\\AppData\\Local\\Temp\\face_recognition_s7ehkwe8\\camera\\captured_face_20250104150907860372.jpg'}
+2025-01-04 15:09:09,514 - INFO - 网络状态: 已连接
+2025-01-04 15:09:11,189 - ERROR - 识别失败：'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:09:11,189 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:11', 'Operation': '人脸识别', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:09:11,944 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:11', 'Operation': '人脸匹配', 'Result': '失败', 'Matched_Person': '无'}
+2025-01-04 15:09:12,831 - INFO - 摄像头已释放。
+2025-01-04 15:09:12,832 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:12', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-04 15:09:15,991 - INFO - 网络状态: 已连接
+2025-01-04 15:09:15,999 - ERROR - 上传文件夹失败：未输入文件夹路径。
+2025-01-04 15:09:15,999 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:15', 'Operation': '上传文件夹', 'Result': '失败：未输入文件夹路径', 'Matched_Person': '无'}
+2025-01-04 15:09:19,122 - ERROR - 上传文件夹失败：未输入文件夹路径。
+2025-01-04 15:09:19,122 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:19', 'Operation': '上传文件夹', 'Result': '失败：未输入文件夹路径', 'Matched_Person': '无'}
+2025-01-04 15:09:21,323 - INFO - 网络状态: 已连接
+2025-01-04 15:09:22,271 - INFO - 手动输入的文件夹路径: D:/photos/sucai
+2025-01-04 15:09:23,543 - INFO - 上传文件夹路径: D:/photos/sucai, 找到 3 张图片
+2025-01-04 15:09:23,545 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\test001.jpg
+2025-01-04 15:09:23,546 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:09:23,546 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:09:23,547 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:09:23,547 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:23', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:09:23,577 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\compressed_test001.jpg
+2025-01-04 15:09:23,605 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 15:09:24,682 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:09:24,682 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:24', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:09:24,714 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\compressed_微信图片_20241213221328.jpg
+2025-01-04 15:09:24,744 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\enhanced_compressed_微信图片_20241213221328.jpg
+2025-01-04 15:09:25,209 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221328.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:09:25,209 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:25', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:09:25,241 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\compressed_微信图片_20241213221354.jpg
+2025-01-04 15:09:25,271 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 15:09:25,745 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8\uploaded\微信图片_20241213221354.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:09:25,745 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:09:25', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:09:26,726 - INFO - 网络状态: 已连接
+2025-01-04 15:09:26,737 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 3 张图片
+2025-01-04 15:09:28,921 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_s7ehkwe8 已删除。
+2025-01-04 15:13:03,960 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:13:04,389 - INFO - 网络状态: 已连接
+2025-01-04 15:13:04,390 - INFO - 语言资源加载成功。
+2025-01-04 15:13:04,394 - INFO - 界面语言已切换为: zh
+2025-01-04 15:13:06,178 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 15:13:06,180 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_adcbzxqc\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:13:06,180 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:13:06,180 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:13:06', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:13:08,333 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg',)
+2025-01-04 15:13:08,334 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_adcbzxqc\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:13:08,335 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:13:08,335 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:13:08', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:13:09,599 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 15:13:09,600 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_adcbzxqc\uploaded\test001.jpg
+2025-01-04 15:13:09,600 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:13:09,600 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:13:09', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:13:10,145 - INFO - 网络状态: 已连接
+2025-01-04 15:13:14,699 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_adcbzxqc 已删除。
+2025-01-04 15:18:48,905 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:18:49,268 - INFO - 网络状态: 已连接
+2025-01-04 15:18:49,269 - INFO - 语言资源加载成功。
+2025-01-04 15:18:49,273 - INFO - 界面语言已切换为: zh
+2025-01-04 15:18:53,037 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 15:18:53,037 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_acraukul\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:18:53,037 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 15:18:53,037 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:18:53', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 15:18:54,964 - INFO - 网络状态: 已连接
+2025-01-04 15:19:00,353 - INFO - 网络状态: 已连接
+2025-01-04 15:19:02,601 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:19:02,603 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_acraukul\uploaded\test001.jpg
+2025-01-04 15:19:02,603 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_acraukul\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:19:02,603 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_acraukul\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:19:02,603 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:19:02,605 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:19:02', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:19:05,715 - INFO - 网络状态: 已连接
+2025-01-04 15:19:11,428 - INFO - 网络状态: 已连接
+2025-01-04 15:19:14,739 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_acraukul 已删除。
+2025-01-04 15:26:30,274 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:26:30,980 - INFO - 网络状态: 已连接
+2025-01-04 15:26:30,981 - INFO - 语言资源加载成功。
+2025-01-04 15:26:30,985 - INFO - 界面语言已切换为: zh
+2025-01-04 15:26:33,835 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:26:33,836 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\test001.jpg
+2025-01-04 15:26:33,836 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:26:33,836 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:26:33,836 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:26:33,839 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:26:33', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:26:36,773 - INFO - 网络状态: 已连接
+2025-01-04 15:26:41,788 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:26:41,788 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\test001.jpg
+2025-01-04 15:26:41,788 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:26:41,791 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:26:41,791 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:26:41,791 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:26:41', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:26:42,462 - INFO - 网络状态: 已连接
+2025-01-04 15:26:47,924 - INFO - 网络状态: 已连接
+2025-01-04 15:26:53,305 - INFO - 网络状态: 已连接
+2025-01-04 15:26:58,987 - INFO - 网络状态: 已连接
+2025-01-04 15:27:04,386 - INFO - 网络状态: 已连接
+2025-01-04 15:27:09,816 - INFO - 网络状态: 已连接
+2025-01-04 15:27:15,115 - INFO - 网络状态: 已连接
+2025-01-04 15:27:20,503 - INFO - 网络状态: 已连接
+2025-01-04 15:27:25,867 - INFO - 网络状态: 已连接
+2025-01-04 15:27:31,326 - INFO - 网络状态: 已连接
+2025-01-04 15:27:36,762 - INFO - 网络状态: 已连接
+2025-01-04 15:27:42,456 - INFO - 网络状态: 已连接
+2025-01-04 15:27:48,184 - INFO - 网络状态: 已连接
+2025-01-04 15:27:53,926 - INFO - 网络状态: 已连接
+2025-01-04 15:27:59,304 - INFO - 网络状态: 已连接
+2025-01-04 15:28:04,677 - INFO - 网络状态: 已连接
+2025-01-04 15:28:10,060 - INFO - 网络状态: 已连接
+2025-01-04 15:28:15,529 - INFO - 网络状态: 已连接
+2025-01-04 15:28:21,160 - INFO - 网络状态: 已连接
+2025-01-04 15:28:26,501 - INFO - 网络状态: 已连接
+2025-01-04 15:28:32,177 - INFO - 网络状态: 已连接
+2025-01-04 15:28:37,922 - INFO - 网络状态: 已连接
+2025-01-04 15:28:43,296 - INFO - 网络状态: 已连接
+2025-01-04 15:28:48,895 - INFO - 网络状态: 已连接
+2025-01-04 15:28:54,273 - INFO - 网络状态: 已连接
+2025-01-04 15:28:59,616 - INFO - 网络状态: 已连接
+2025-01-04 15:29:04,994 - INFO - 网络状态: 已连接
+2025-01-04 15:29:10,644 - INFO - 网络状态: 已连接
+2025-01-04 15:29:15,988 - INFO - 网络状态: 已连接
+2025-01-04 15:29:21,429 - INFO - 网络状态: 已连接
+2025-01-04 15:29:26,839 - INFO - 网络状态: 已连接
+2025-01-04 15:29:32,224 - INFO - 网络状态: 已连接
+2025-01-04 15:29:38,183 - INFO - 网络状态: 已连接
+2025-01-04 15:29:43,630 - INFO - 网络状态: 已连接
+2025-01-04 15:29:49,208 - INFO - 网络状态: 已连接
+2025-01-04 15:29:54,851 - INFO - 网络状态: 已连接
+2025-01-04 15:30:00,167 - INFO - 网络状态: 已连接
+2025-01-04 15:30:06,208 - INFO - 网络状态: 已连接
+2025-01-04 15:30:11,622 - INFO - 网络状态: 已连接
+2025-01-04 15:30:17,016 - INFO - 网络状态: 已连接
+2025-01-04 15:30:22,481 - INFO - 网络状态: 已连接
+2025-01-04 15:30:28,349 - INFO - 网络状态: 已连接
+2025-01-04 15:30:33,737 - INFO - 网络状态: 已连接
+2025-01-04 15:30:39,235 - INFO - 网络状态: 已连接
+2025-01-04 15:30:44,622 - INFO - 网络状态: 已连接
+2025-01-04 15:30:49,988 - INFO - 网络状态: 已连接
+2025-01-04 15:30:55,403 - INFO - 网络状态: 已连接
+2025-01-04 15:31:00,941 - INFO - 网络状态: 已连接
+2025-01-04 15:31:06,929 - INFO - 网络状态: 已连接
+2025-01-04 15:31:13,446 - INFO - 网络状态: 已连接
+2025-01-04 15:31:19,034 - INFO - 网络状态: 已连接
+2025-01-04 15:31:24,558 - INFO - 网络状态: 已连接
+2025-01-04 15:31:30,730 - INFO - 网络状态: 已连接
+2025-01-04 15:31:36,409 - INFO - 网络状态: 已连接
+2025-01-04 15:31:41,856 - INFO - 网络状态: 已连接
+2025-01-04 15:31:47,642 - INFO - 网络状态: 已连接
+2025-01-04 15:31:53,028 - INFO - 网络状态: 已连接
+2025-01-04 15:31:58,437 - INFO - 网络状态: 已连接
+2025-01-04 15:32:04,417 - INFO - 网络状态: 已连接
+2025-01-04 15:32:10,165 - INFO - 网络状态: 已连接
+2025-01-04 15:32:15,513 - INFO - 网络状态: 已连接
+2025-01-04 15:32:20,931 - INFO - 网络状态: 已连接
+2025-01-04 15:32:26,382 - INFO - 网络状态: 已连接
+2025-01-04 15:32:31,746 - INFO - 网络状态: 已连接
+2025-01-04 15:32:37,180 - INFO - 网络状态: 已连接
+2025-01-04 15:32:42,830 - INFO - 网络状态: 已连接
+2025-01-04 15:32:48,223 - INFO - 网络状态: 已连接
+2025-01-04 15:32:53,631 - INFO - 网络状态: 已连接
+2025-01-04 15:32:59,217 - INFO - 网络状态: 已连接
+2025-01-04 15:33:04,895 - INFO - 网络状态: 已连接
+2025-01-04 15:33:10,304 - INFO - 网络状态: 已连接
+2025-01-04 15:33:16,202 - INFO - 网络状态: 已连接
+2025-01-04 15:33:22,096 - INFO - 网络状态: 已连接
+2025-01-04 15:33:27,604 - INFO - 网络状态: 已连接
+2025-01-04 15:33:33,010 - INFO - 网络状态: 已连接
+2025-01-04 15:33:38,469 - INFO - 网络状态: 已连接
+2025-01-04 15:33:43,833 - INFO - 网络状态: 已连接
+2025-01-04 15:33:49,305 - INFO - 网络状态: 已连接
+2025-01-04 15:33:54,680 - INFO - 网络状态: 已连接
+2025-01-04 15:34:00,589 - INFO - 网络状态: 已连接
+2025-01-04 15:34:06,459 - INFO - 网络状态: 已连接
+2025-01-04 15:34:12,035 - INFO - 网络状态: 已连接
+2025-01-04 15:34:17,385 - INFO - 网络状态: 已连接
+2025-01-04 15:34:22,764 - INFO - 网络状态: 已连接
+2025-01-04 15:34:28,098 - INFO - 网络状态: 已连接
+2025-01-04 15:34:33,610 - INFO - 网络状态: 已连接
+2025-01-04 15:34:38,944 - INFO - 网络状态: 已连接
+2025-01-04 15:34:44,337 - INFO - 网络状态: 已连接
+2025-01-04 15:34:49,716 - INFO - 网络状态: 已连接
+2025-01-04 15:34:55,274 - INFO - 网络状态: 已连接
+2025-01-04 15:35:00,832 - INFO - 网络状态: 已连接
+2025-01-04 15:35:06,194 - INFO - 网络状态: 已连接
+2025-01-04 15:35:12,647 - INFO - 网络状态: 已连接
+2025-01-04 15:35:18,335 - INFO - 网络状态: 已连接
+2025-01-04 15:35:24,024 - INFO - 网络状态: 已连接
+2025-01-04 15:35:29,383 - INFO - 网络状态: 已连接
+2025-01-04 15:35:35,033 - INFO - 网络状态: 已连接
+2025-01-04 15:35:40,380 - INFO - 网络状态: 已连接
+2025-01-04 15:35:49,158 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_u2fyovvk 已删除。
+2025-01-04 15:36:06,212 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:36:06,969 - INFO - 网络状态: 已连接
+2025-01-04 15:36:06,972 - INFO - 语言资源加载成功。
+2025-01-04 15:36:06,972 - INFO - 界面语言已切换为: zh
+2025-01-04 15:36:09,912 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg', 'D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:36:09,914 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_utf2bgiq\uploaded\test001.jpg
+2025-01-04 15:36:09,914 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_utf2bgiq\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:36:09,914 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_utf2bgiq\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:36:09,914 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:36:09,914 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:36:09', 'Operation': '上传图片', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:36:12,620 - INFO - 网络状态: 已连接
+2025-01-04 15:36:13,237 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_utf2bgiq 已删除。
+2025-01-04 15:46:40,504 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:46:40,960 - INFO - 网络状态: 已连接
+2025-01-04 15:46:40,963 - INFO - 语言资源加载成功。
+2025-01-04 15:46:40,964 - INFO - 界面语言已切换为: zh
+2025-01-04 15:46:43,943 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:46:43,943 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:46:43,943 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:46:43,943 - INFO - 已复制 2 张图片到上传文件夹。
+2025-01-04 15:46:43,943 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:46:43', 'Operation': '上传图片', 'Result': '成功：复制了 2 张图片', 'Matched_Person': '无'}
+2025-01-04 15:46:46,635 - INFO - 网络状态: 已连接
+2025-01-04 15:46:51,787 - INFO - 选择的文件夹: D:/photos/sucai
+2025-01-04 15:46:51,787 - INFO - 找到 3 张图片
+2025-01-04 15:46:51,787 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_\uploaded\test001.jpg
+2025-01-04 15:46:51,790 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:46:51,790 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:46:51,790 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 15:46:51,790 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:46:51', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 15:46:52,403 - INFO - 网络状态: 已连接
+2025-01-04 15:46:57,787 - INFO - 网络状态: 已连接
+2025-01-04 15:46:59,094 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_sj9nbrn_ 已删除。
+2025-01-04 15:54:22,009 - INFO - 阿里云客户端已初始化。
+2025-01-04 15:54:22,702 - INFO - 网络状态: 已连接
+2025-01-04 15:54:22,703 - INFO - 语言资源加载成功。
+2025-01-04 15:54:22,706 - INFO - 界面语言已切换为: zh
+2025-01-04 15:54:28,127 - INFO - 网络状态: 已连接
+2025-01-04 15:54:28,569 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221328.jpg', 'D:/photos/sucai/微信图片_20241213221354.jpg')
+2025-01-04 15:54:28,569 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\微信图片_20241213221328.jpg
+2025-01-04 15:54:28,571 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\微信图片_20241213221354.jpg
+2025-01-04 15:54:28,571 - INFO - 已复制 2 张图片到上传文件夹。
+2025-01-04 15:54:28,571 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:54:28', 'Operation': '上传图片', 'Result': '成功：复制了 2 张图片', 'Matched_Person': '无'}
+2025-01-04 15:54:28,571 - INFO - 开始执行 upload_faces 方法
+2025-01-04 15:54:28,614 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\compressed_微信图片_20241213221328.jpg
+2025-01-04 15:54:28,645 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\enhanced_compressed_微信图片_20241213221328.jpg
+2025-01-04 15:54:28,645 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\enhanced_compressed_微信图片_20241213221328.jpg
+2025-01-04 15:54:28,651 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\微信图片_20241213221328.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:54:28,651 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:54:28', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:54:28,684 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\compressed_微信图片_20241213221354.jpg
+2025-01-04 15:54:28,712 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 15:54:28,712 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 15:54:28,720 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz\uploaded\微信图片_20241213221354.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 15:54:28,720 - INFO - 日志记录：{'Timestamp': '2025-01-04 15:54:28', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 15:54:29,897 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 2 张图片
+2025-01-04 15:54:33,784 - INFO - 网络状态: 已连接
+2025-01-04 15:54:39,167 - INFO - 网络状态: 已连接
+2025-01-04 15:54:44,823 - INFO - 网络状态: 已连接
+2025-01-04 15:54:50,291 - INFO - 网络状态: 已连接
+2025-01-04 15:54:56,039 - INFO - 网络状态: 已连接
+2025-01-04 15:55:01,413 - INFO - 网络状态: 已连接
+2025-01-04 15:55:06,865 - INFO - 网络状态: 已连接
+2025-01-04 15:55:12,310 - INFO - 网络状态: 已连接
+2025-01-04 15:55:17,715 - INFO - 网络状态: 已连接
+2025-01-04 15:55:23,372 - INFO - 网络状态: 已连接
+2025-01-04 15:55:29,528 - INFO - 网络状态: 已连接
+2025-01-04 15:55:34,932 - INFO - 网络状态: 已连接
+2025-01-04 15:55:40,419 - INFO - 网络状态: 已连接
+2025-01-04 15:55:45,991 - INFO - 网络状态: 已连接
+2025-01-04 15:55:51,582 - INFO - 网络状态: 已连接
+2025-01-04 15:55:56,960 - INFO - 网络状态: 已连接
+2025-01-04 15:56:02,586 - INFO - 网络状态: 已连接
+2025-01-04 15:56:08,661 - INFO - 网络状态: 已连接
+2025-01-04 15:56:14,336 - INFO - 网络状态: 已连接
+2025-01-04 15:56:19,683 - INFO - 网络状态: 已连接
+2025-01-04 15:56:26,329 - INFO - 网络状态: 已连接
+2025-01-04 15:56:31,748 - INFO - 网络状态: 已连接
+2025-01-04 15:56:37,443 - INFO - 网络状态: 已连接
+2025-01-04 15:56:43,133 - INFO - 网络状态: 已连接
+2025-01-04 15:56:48,498 - INFO - 网络状态: 已连接
+2025-01-04 15:56:53,848 - INFO - 网络状态: 已连接
+2025-01-04 15:56:59,219 - INFO - 网络状态: 已连接
+2025-01-04 15:57:04,538 - INFO - 网络状态: 已连接
+2025-01-04 15:57:09,880 - INFO - 网络状态: 已连接
+2025-01-04 15:57:15,210 - INFO - 网络状态: 已连接
+2025-01-04 15:57:20,829 - INFO - 网络状态: 已连接
+2025-01-04 15:57:26,291 - INFO - 网络状态: 已连接
+2025-01-04 15:57:31,632 - INFO - 网络状态: 已连接
+2025-01-04 15:57:37,165 - INFO - 网络状态: 已连接
+2025-01-04 15:57:42,770 - INFO - 网络状态: 已连接
+2025-01-04 15:57:48,593 - INFO - 网络状态: 已连接
+2025-01-04 15:57:54,014 - INFO - 网络状态: 已连接
+2025-01-04 15:57:59,606 - INFO - 网络状态: 已连接
+2025-01-04 15:58:05,754 - INFO - 网络状态: 已连接
+2025-01-04 15:58:11,114 - INFO - 网络状态: 已连接
+2025-01-04 15:58:16,447 - INFO - 网络状态: 已连接
+2025-01-04 15:58:21,846 - INFO - 网络状态: 已连接
+2025-01-04 15:58:27,890 - INFO - 网络状态: 已连接
+2025-01-04 15:58:33,791 - INFO - 网络状态: 已连接
+2025-01-04 15:58:39,336 - INFO - 网络状态: 已连接
+2025-01-04 15:58:44,744 - INFO - 网络状态: 已连接
+2025-01-04 15:58:50,154 - INFO - 网络状态: 已连接
+2025-01-04 15:58:55,803 - INFO - 网络状态: 已连接
+2025-01-04 15:59:01,182 - INFO - 网络状态: 已连接
+2025-01-04 15:59:06,536 - INFO - 网络状态: 已连接
+2025-01-04 15:59:11,903 - INFO - 网络状态: 已连接
+2025-01-04 15:59:17,596 - INFO - 网络状态: 已连接
+2025-01-04 15:59:23,328 - INFO - 网络状态: 已连接
+2025-01-04 15:59:28,864 - INFO - 网络状态: 已连接
+2025-01-04 15:59:34,572 - INFO - 网络状态: 已连接
+2025-01-04 15:59:39,932 - INFO - 网络状态: 已连接
+2025-01-04 15:59:45,319 - INFO - 网络状态: 已连接
+2025-01-04 15:59:50,778 - INFO - 网络状态: 已连接
+2025-01-04 15:59:56,422 - INFO - 网络状态: 已连接
+2025-01-04 16:00:01,833 - INFO - 网络状态: 已连接
+2025-01-04 16:00:07,890 - INFO - 网络状态: 已连接
+2025-01-04 16:00:13,242 - INFO - 网络状态: 已连接
+2025-01-04 16:00:18,644 - INFO - 网络状态: 已连接
+2025-01-04 16:00:24,013 - INFO - 网络状态: 已连接
+2025-01-04 16:00:29,395 - INFO - 网络状态: 已连接
+2025-01-04 16:00:34,743 - INFO - 网络状态: 已连接
+2025-01-04 16:00:40,186 - INFO - 网络状态: 已连接
+2025-01-04 16:00:45,862 - INFO - 网络状态: 已连接
+2025-01-04 16:00:51,382 - INFO - 网络状态: 已连接
+2025-01-04 16:00:56,813 - INFO - 网络状态: 已连接
+2025-01-04 16:01:02,429 - INFO - 网络状态: 已连接
+2025-01-04 16:01:07,801 - INFO - 网络状态: 已连接
+2025-01-04 16:01:13,518 - INFO - 网络状态: 已连接
+2025-01-04 16:01:18,916 - INFO - 网络状态: 已连接
+2025-01-04 16:01:24,641 - INFO - 网络状态: 已连接
+2025-01-04 16:01:29,986 - INFO - 网络状态: 已连接
+2025-01-04 16:01:35,402 - INFO - 网络状态: 已连接
+2025-01-04 16:01:41,857 - INFO - 网络状态: 已连接
+2025-01-04 16:01:47,507 - INFO - 网络状态: 已连接
+2025-01-04 16:01:52,948 - INFO - 网络状态: 已连接
+2025-01-04 16:01:58,566 - INFO - 网络状态: 已连接
+2025-01-04 16:02:04,461 - INFO - 网络状态: 已连接
+2025-01-04 16:02:09,905 - INFO - 网络状态: 已连接
+2025-01-04 16:02:15,562 - INFO - 网络状态: 已连接
+2025-01-04 16:02:20,909 - INFO - 网络状态: 已连接
+2025-01-04 16:02:26,846 - INFO - 网络状态: 已连接
+2025-01-04 16:02:32,290 - INFO - 网络状态: 已连接
+2025-01-04 16:02:38,054 - INFO - 网络状态: 已连接
+2025-01-04 16:02:43,439 - INFO - 网络状态: 已连接
+2025-01-04 16:02:49,106 - INFO - 网络状态: 已连接
+2025-01-04 16:02:54,738 - INFO - 网络状态: 已连接
+2025-01-04 16:03:00,065 - INFO - 网络状态: 已连接
+2025-01-04 16:03:05,481 - INFO - 网络状态: 已连接
+2025-01-04 16:03:11,456 - INFO - 网络状态: 已连接
+2025-01-04 16:03:17,193 - INFO - 网络状态: 已连接
+2025-01-04 16:03:22,670 - INFO - 网络状态: 已连接
+2025-01-04 16:03:28,330 - INFO - 网络状态: 已连接
+2025-01-04 16:03:33,334 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_hnmg3nfz 已删除。
+2025-01-04 16:03:43,254 - INFO - 阿里云客户端已初始化。
+2025-01-04 16:03:43,609 - INFO - 网络状态: 已连接
+2025-01-04 16:03:43,611 - INFO - 语言资源加载成功。
+2025-01-04 16:03:43,615 - INFO - 界面语言已切换为: zh
+2025-01-04 16:03:47,146 - INFO - 选择的文件夹: D:/photos/sucai
+2025-01-04 16:03:47,146 - INFO - 找到 3 张图片
+2025-01-04 16:03:47,147 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg
+2025-01-04 16:03:47,148 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\微信图片_20241213221328.jpg
+2025-01-04 16:03:47,149 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\微信图片_20241213221354.jpg
+2025-01-04 16:03:47,149 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 16:03:47,149 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:03:47', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 16:03:49,033 - INFO - 网络状态: 已连接
+2025-01-04 16:03:50,990 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 16:03:50,991 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg
+2025-01-04 16:03:50,991 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:03:50,991 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:03:50', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:03:50,991 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:03:51,034 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\compressed_test001.jpg
+2025-01-04 16:03:51,063 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:03:51,063 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:03:51,070 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:03:51,072 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:03:51', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:03:52,243 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:03:54,403 - INFO - 网络状态: 已连接
+2025-01-04 16:03:55,130 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 16:03:55,132 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg
+2025-01-04 16:03:55,132 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:03:55,132 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:03:55', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:03:55,132 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:03:55,163 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\compressed_test001.jpg
+2025-01-04 16:03:55,189 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:03:55,190 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:03:55,195 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:03:55,195 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:03:55', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:03:57,995 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:03:59,763 - INFO - 网络状态: 已连接
+2025-01-04 16:04:02,911 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 16:04:02,911 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg
+2025-01-04 16:04:02,913 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:04:02,913 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:04:02', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:04:02,913 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:04:02,944 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\compressed_test001.jpg
+2025-01-04 16:04:02,969 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:04:02,970 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:04:02,971 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:04:02,971 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:04:02', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:04:03,783 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:04:05,578 - INFO - 网络状态: 已连接
+2025-01-04 16:04:11,097 - INFO - 网络状态: 已连接
+2025-01-04 16:04:16,494 - INFO - 网络状态: 已连接
+2025-01-04 16:04:22,200 - INFO - 网络状态: 已连接
+2025-01-04 16:04:27,556 - INFO - 网络状态: 已连接
+2025-01-04 16:04:33,443 - INFO - 网络状态: 已连接
+2025-01-04 16:04:38,803 - INFO - 网络状态: 已连接
+2025-01-04 16:04:44,417 - INFO - 网络状态: 已连接
+2025-01-04 16:04:49,764 - INFO - 网络状态: 已连接
+2025-01-04 16:04:55,369 - INFO - 网络状态: 已连接
+2025-01-04 16:05:00,740 - INFO - 网络状态: 已连接
+2025-01-04 16:05:06,431 - INFO - 网络状态: 已连接
+2025-01-04 16:05:11,802 - INFO - 网络状态: 已连接
+2025-01-04 16:05:17,432 - INFO - 网络状态: 已连接
+2025-01-04 16:05:23,025 - INFO - 网络状态: 已连接
+2025-01-04 16:05:28,432 - INFO - 网络状态: 已连接
+2025-01-04 16:05:34,582 - INFO - 网络状态: 已连接
+2025-01-04 16:05:40,408 - INFO - 网络状态: 已连接
+2025-01-04 16:05:45,798 - INFO - 网络状态: 已连接
+2025-01-04 16:05:51,426 - INFO - 网络状态: 已连接
+2025-01-04 16:05:56,885 - INFO - 网络状态: 已连接
+2025-01-04 16:06:02,315 - INFO - 网络状态: 已连接
+2025-01-04 16:06:07,705 - INFO - 网络状态: 已连接
+2025-01-04 16:06:13,166 - INFO - 网络状态: 已连接
+2025-01-04 16:06:18,746 - INFO - 网络状态: 已连接
+2025-01-04 16:06:24,144 - INFO - 网络状态: 已连接
+2025-01-04 16:06:29,755 - INFO - 网络状态: 已连接
+2025-01-04 16:06:35,407 - INFO - 网络状态: 已连接
+2025-01-04 16:06:40,824 - INFO - 网络状态: 已连接
+2025-01-04 16:06:46,225 - INFO - 网络状态: 已连接
+2025-01-04 16:06:51,909 - INFO - 网络状态: 已连接
+2025-01-04 16:06:57,554 - INFO - 网络状态: 已连接
+2025-01-04 16:07:03,025 - INFO - 网络状态: 已连接
+2025-01-04 16:07:08,386 - INFO - 网络状态: 已连接
+2025-01-04 16:07:14,220 - INFO - 网络状态: 已连接
+2025-01-04 16:07:19,814 - INFO - 网络状态: 已连接
+2025-01-04 16:07:25,918 - INFO - 网络状态: 已连接
+2025-01-04 16:07:31,308 - INFO - 网络状态: 已连接
+2025-01-04 16:07:36,851 - INFO - 网络状态: 已连接
+2025-01-04 16:07:42,566 - INFO - 网络状态: 已连接
+2025-01-04 16:07:47,872 - INFO - 网络状态: 已连接
+2025-01-04 16:07:53,279 - INFO - 网络状态: 已连接
+2025-01-04 16:07:58,892 - INFO - 网络状态: 已连接
+2025-01-04 16:08:04,513 - INFO - 网络状态: 已连接
+2025-01-04 16:08:10,144 - INFO - 网络状态: 已连接
+2025-01-04 16:08:15,932 - INFO - 网络状态: 已连接
+2025-01-04 16:08:21,334 - INFO - 网络状态: 已连接
+2025-01-04 16:08:26,696 - INFO - 网络状态: 已连接
+2025-01-04 16:08:32,353 - INFO - 网络状态: 已连接
+2025-01-04 16:08:37,849 - INFO - 网络状态: 已连接
+2025-01-04 16:08:43,548 - INFO - 网络状态: 已连接
+2025-01-04 16:08:48,961 - INFO - 网络状态: 已连接
+2025-01-04 16:08:54,327 - INFO - 网络状态: 已连接
+2025-01-04 16:08:59,881 - INFO - 网络状态: 已连接
+2025-01-04 16:09:05,314 - INFO - 网络状态: 已连接
+2025-01-04 16:09:10,693 - INFO - 网络状态: 已连接
+2025-01-04 16:09:16,436 - INFO - 网络状态: 已连接
+2025-01-04 16:09:21,976 - INFO - 网络状态: 已连接
+2025-01-04 16:09:27,405 - INFO - 网络状态: 已连接
+2025-01-04 16:09:32,810 - INFO - 网络状态: 已连接
+2025-01-04 16:09:38,440 - INFO - 网络状态: 已连接
+2025-01-04 16:09:43,814 - INFO - 网络状态: 已连接
+2025-01-04 16:09:49,256 - INFO - 网络状态: 已连接
+2025-01-04 16:09:54,619 - INFO - 网络状态: 已连接
+2025-01-04 16:10:00,228 - INFO - 网络状态: 已连接
+2025-01-04 16:10:05,880 - INFO - 网络状态: 已连接
+2025-01-04 16:10:11,691 - INFO - 网络状态: 已连接
+2025-01-04 16:10:17,390 - INFO - 网络状态: 已连接
+2025-01-04 16:10:22,835 - INFO - 网络状态: 已连接
+2025-01-04 16:10:28,183 - INFO - 网络状态: 已连接
+2025-01-04 16:10:33,554 - INFO - 网络状态: 已连接
+2025-01-04 16:10:38,918 - INFO - 网络状态: 已连接
+2025-01-04 16:10:44,345 - INFO - 网络状态: 已连接
+2025-01-04 16:10:49,749 - INFO - 网络状态: 已连接
+2025-01-04 16:10:55,139 - INFO - 网络状态: 已连接
+2025-01-04 16:11:00,587 - INFO - 网络状态: 已连接
+2025-01-04 16:11:06,038 - INFO - 网络状态: 已连接
+2025-01-04 16:11:11,378 - INFO - 网络状态: 已连接
+2025-01-04 16:11:16,800 - INFO - 网络状态: 已连接
+2025-01-04 16:11:22,470 - INFO - 网络状态: 已连接
+2025-01-04 16:11:27,876 - INFO - 网络状态: 已连接
+2025-01-04 16:11:33,243 - INFO - 网络状态: 已连接
+2025-01-04 16:11:38,628 - INFO - 网络状态: 已连接
+2025-01-04 16:11:43,942 - INFO - 网络状态: 已连接
+2025-01-04 16:11:49,663 - INFO - 网络状态: 已连接
+2025-01-04 16:11:55,316 - INFO - 网络状态: 已连接
+2025-01-04 16:12:00,664 - INFO - 网络状态: 已连接
+2025-01-04 16:12:05,319 - ERROR - 无法删除临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_brnoz6hx: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'C:\\Users\\yushi\\AppData\\Local\\Temp\\face_recognition_brnoz6hx\\uploaded\\enhanced_compressed_test001.jpg'
+2025-01-04 16:19:35,068 - INFO - 阿里云客户端已初始化。
+2025-01-04 16:19:35,718 - INFO - 网络状态: 已连接
+2025-01-04 16:19:35,723 - INFO - 语言资源加载成功。
+2025-01-04 16:19:35,723 - INFO - 界面语言已切换为: zh
+2025-01-04 16:19:38,320 - INFO - 选择的图片路径: ('D:/photos/sucai/微信图片_20241213221354.jpg',)
+2025-01-04 16:19:38,321 - INFO - 复制图片 D:/photos/sucai/微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\微信图片_20241213221354.jpg
+2025-01-04 16:19:38,321 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:19:38,321 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:19:38', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:19:38,323 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:19:38,365 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\compressed_微信图片_20241213221354.jpg
+2025-01-04 16:19:38,394 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 16:19:38,394 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\enhanced_compressed_微信图片_20241213221354.jpg
+2025-01-04 16:19:38,403 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\微信图片_20241213221354.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:19:38,403 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:19:38', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:19:41,652 - INFO - 网络状态: 已连接
+2025-01-04 16:19:41,661 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:19:41,701 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:19:41,743 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:19:41,781 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:19:41,820 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:19:43,826 - INFO - 缩放比例: 1.0
+2025-01-04 16:19:43,826 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:43,826 - INFO - 新图像大小: 1706x1279
+2025-01-04 16:19:43,838 - INFO - 图像缩放完成。
+2025-01-04 16:19:43,853 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:43,855 - INFO - 保持图像引用完成。
+2025-01-04 16:19:47,014 - INFO - 网络状态: 已连接
+2025-01-04 16:19:52,909 - INFO - 网络状态: 已连接
+2025-01-04 16:19:58,466 - INFO - 网络状态: 已连接
+2025-01-04 16:19:58,887 - INFO - 缩放比例: 0.93
+2025-01-04 16:19:58,887 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:58,887 - INFO - 新图像大小: 1586x1189
+2025-01-04 16:19:58,923 - INFO - 图像缩放完成。
+2025-01-04 16:19:58,933 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:58,933 - INFO - 保持图像引用完成。
+2025-01-04 16:19:58,936 - INFO - 缩放比例: 0.71
+2025-01-04 16:19:58,936 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:58,936 - INFO - 新图像大小: 1211x908
+2025-01-04 16:19:58,965 - INFO - 图像缩放完成。
+2025-01-04 16:19:58,971 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:58,973 - INFO - 保持图像引用完成。
+2025-01-04 16:19:58,973 - INFO - 缩放比例: 0.5
+2025-01-04 16:19:58,973 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:58,973 - INFO - 新图像大小: 853x639
+2025-01-04 16:19:58,994 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,001 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,003 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,478 - INFO - 缩放比例: 0.57
+2025-01-04 16:19:59,478 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,478 - INFO - 新图像大小: 972x729
+2025-01-04 16:19:59,501 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,505 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,505 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,519 - INFO - 缩放比例: 0.64
+2025-01-04 16:19:59,519 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,519 - INFO - 新图像大小: 1091x818
+2025-01-04 16:19:59,543 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,549 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,549 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,589 - INFO - 缩放比例: 0.71
+2025-01-04 16:19:59,591 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,591 - INFO - 新图像大小: 1211x908
+2025-01-04 16:19:59,618 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,625 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,625 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,625 - INFO - 缩放比例: 0.79
+2025-01-04 16:19:59,625 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,625 - INFO - 新图像大小: 1347x1010
+2025-01-04 16:19:59,657 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,665 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,665 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,669 - INFO - 缩放比例: 1.0
+2025-01-04 16:19:59,671 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,671 - INFO - 新图像大小: 1706x1279
+2025-01-04 16:19:59,677 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,693 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,693 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,693 - INFO - 缩放比例: 1.07
+2025-01-04 16:19:59,693 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,693 - INFO - 新图像大小: 1825x1368
+2025-01-04 16:19:59,741 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,754 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,758 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,758 - INFO - 缩放比例: 1.14
+2025-01-04 16:19:59,758 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,758 - INFO - 新图像大小: 1944x1458
+2025-01-04 16:19:59,809 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,825 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,825 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,830 - INFO - 缩放比例: 1.29
+2025-01-04 16:19:59,830 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,830 - INFO - 新图像大小: 2200x1649
+2025-01-04 16:19:59,886 - INFO - 图像缩放完成。
+2025-01-04 16:19:59,907 - INFO - Canvas图像更新完成。
+2025-01-04 16:19:59,907 - INFO - 保持图像引用完成。
+2025-01-04 16:19:59,911 - INFO - 缩放比例: 1.43
+2025-01-04 16:19:59,913 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:19:59,913 - INFO - 新图像大小: 2439x1828
+2025-01-04 16:19:59,981 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,005 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,009 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,013 - INFO - 缩放比例: 1.5
+2025-01-04 16:20:00,013 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,013 - INFO - 新图像大小: 2559x1918
+2025-01-04 16:20:00,088 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,113 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,119 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,231 - INFO - 缩放比例: 1.43
+2025-01-04 16:20:00,231 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,231 - INFO - 新图像大小: 2439x1828
+2025-01-04 16:20:00,301 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,327 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,327 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,333 - INFO - 缩放比例: 1.07
+2025-01-04 16:20:00,333 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,333 - INFO - 新图像大小: 1825x1368
+2025-01-04 16:20:00,377 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,391 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,393 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,395 - INFO - 缩放比例: 0.86
+2025-01-04 16:20:00,395 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,395 - INFO - 新图像大小: 1467x1099
+2025-01-04 16:20:00,429 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,437 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,441 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,443 - INFO - 缩放比例: 0.64
+2025-01-04 16:20:00,443 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,443 - INFO - 新图像大小: 1091x818
+2025-01-04 16:20:00,471 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,473 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,477 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,487 - INFO - 缩放比例: 0.57
+2025-01-04 16:20:00,487 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,487 - INFO - 新图像大小: 972x729
+2025-01-04 16:20:00,511 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,513 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,513 - INFO - 保持图像引用完成。
+2025-01-04 16:20:00,541 - INFO - 缩放比例: 0.5
+2025-01-04 16:20:00,543 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:00,543 - INFO - 新图像大小: 853x639
+2025-01-04 16:20:00,565 - INFO - 图像缩放完成。
+2025-01-04 16:20:00,569 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:00,569 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,047 - INFO - 缩放比例: 0.57
+2025-01-04 16:20:01,047 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,047 - INFO - 新图像大小: 972x729
+2025-01-04 16:20:01,071 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,075 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,077 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,094 - INFO - 缩放比例: 0.64
+2025-01-04 16:20:01,094 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,094 - INFO - 新图像大小: 1091x818
+2025-01-04 16:20:01,118 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,125 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,125 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,129 - INFO - 缩放比例: 0.71
+2025-01-04 16:20:01,129 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,129 - INFO - 新图像大小: 1211x908
+2025-01-04 16:20:01,155 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,163 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,163 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,188 - INFO - 缩放比例: 0.79
+2025-01-04 16:20:01,188 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,191 - INFO - 新图像大小: 1347x1010
+2025-01-04 16:20:01,223 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,233 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,233 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,234 - INFO - 缩放比例: 0.93
+2025-01-04 16:20:01,234 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,234 - INFO - 新图像大小: 1586x1189
+2025-01-04 16:20:01,271 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,281 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,282 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,283 - INFO - 缩放比例: 1.0
+2025-01-04 16:20:01,283 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,283 - INFO - 新图像大小: 1706x1279
+2025-01-04 16:20:01,293 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,307 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,307 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,307 - INFO - 缩放比例: 1.07
+2025-01-04 16:20:01,307 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,307 - INFO - 新图像大小: 1825x1368
+2025-01-04 16:20:01,355 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,369 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,371 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,373 - INFO - 缩放比例: 1.21
+2025-01-04 16:20:01,373 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,373 - INFO - 新图像大小: 2064x1547
+2025-01-04 16:20:01,427 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,443 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,447 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,447 - INFO - 缩放比例: 1.36
+2025-01-04 16:20:01,451 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,451 - INFO - 新图像大小: 2320x1739
+2025-01-04 16:20:01,515 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,537 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,537 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,541 - INFO - 缩放比例: 1.5
+2025-01-04 16:20:01,541 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,541 - INFO - 新图像大小: 2559x1918
+2025-01-04 16:20:01,618 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,643 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,647 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,761 - INFO - 缩放比例: 1.57
+2025-01-04 16:20:01,761 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,761 - INFO - 新图像大小: 2678x2008
+2025-01-04 16:20:01,845 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,873 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,873 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,879 - INFO - 缩放比例: 0.93
+2025-01-04 16:20:01,879 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,881 - INFO - 新图像大小: 1586x1189
+2025-01-04 16:20:01,917 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,923 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,931 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,933 - INFO - 缩放比例: 0.71
+2025-01-04 16:20:01,933 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,933 - INFO - 新图像大小: 1211x908
+2025-01-04 16:20:01,961 - INFO - 图像缩放完成。
+2025-01-04 16:20:01,964 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:01,968 - INFO - 保持图像引用完成。
+2025-01-04 16:20:01,970 - INFO - 缩放比例: 0.64
+2025-01-04 16:20:01,970 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:01,970 - INFO - 新图像大小: 1091x818
+2025-01-04 16:20:01,997 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,001 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,003 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,003 - INFO - 缩放比例: 0.57
+2025-01-04 16:20:02,003 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,003 - INFO - 新图像大小: 972x729
+2025-01-04 16:20:02,026 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,031 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,031 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,034 - INFO - 缩放比例: 0.5
+2025-01-04 16:20:02,034 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,034 - INFO - 新图像大小: 853x639
+2025-01-04 16:20:02,056 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,056 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,056 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,435 - INFO - 缩放比例: 0.57
+2025-01-04 16:20:02,435 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,435 - INFO - 新图像大小: 972x729
+2025-01-04 16:20:02,461 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,467 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,468 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,468 - INFO - 缩放比例: 1.14
+2025-01-04 16:20:02,468 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,468 - INFO - 新图像大小: 1944x1458
+2025-01-04 16:20:02,519 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,535 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,536 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,539 - INFO - 缩放比例: 1.43
+2025-01-04 16:20:02,539 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,539 - INFO - 新图像大小: 2439x1828
+2025-01-04 16:20:02,606 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,633 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,637 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,639 - INFO - 缩放比例: 1.64
+2025-01-04 16:20:02,639 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,639 - INFO - 新图像大小: 2797x2097
+2025-01-04 16:20:02,727 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,760 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,764 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,765 - INFO - 缩放比例: 1.86
+2025-01-04 16:20:02,765 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,765 - INFO - 新图像大小: 3173x2378
+2025-01-04 16:20:02,872 - INFO - 图像缩放完成。
+2025-01-04 16:20:02,911 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:02,917 - INFO - 保持图像引用完成。
+2025-01-04 16:20:02,917 - INFO - 缩放比例: 2.0
+2025-01-04 16:20:02,917 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:02,917 - INFO - 新图像大小: 3412x2558
+2025-01-04 16:20:03,043 - INFO - 图像缩放完成。
+2025-01-04 16:20:03,091 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:03,095 - INFO - 保持图像引用完成。
+2025-01-04 16:20:03,453 - INFO - 缩放比例: 1.79
+2025-01-04 16:20:03,453 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:03,455 - INFO - 新图像大小: 3053x2289
+2025-01-04 16:20:03,553 - INFO - 图像缩放完成。
+2025-01-04 16:20:03,593 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:03,599 - INFO - 保持图像引用完成。
+2025-01-04 16:20:04,108 - INFO - 网络状态: 已连接
+2025-01-04 16:20:04,109 - INFO - 缩放比例: 0.5
+2025-01-04 16:20:04,109 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:04,109 - INFO - 新图像大小: 853x639
+2025-01-04 16:20:04,133 - INFO - 图像缩放完成。
+2025-01-04 16:20:04,136 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:04,140 - INFO - 保持图像引用完成。
+2025-01-04 16:20:04,734 - INFO - 缩放比例: 0.64
+2025-01-04 16:20:04,734 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:04,734 - INFO - 新图像大小: 1091x818
+2025-01-04 16:20:04,761 - INFO - 图像缩放完成。
+2025-01-04 16:20:04,765 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:04,765 - INFO - 保持图像引用完成。
+2025-01-04 16:20:04,770 - INFO - 缩放比例: 1.29
+2025-01-04 16:20:04,770 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:04,771 - INFO - 新图像大小: 2200x1649
+2025-01-04 16:20:04,828 - INFO - 图像缩放完成。
+2025-01-04 16:20:04,847 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:04,851 - INFO - 保持图像引用完成。
+2025-01-04 16:20:04,853 - INFO - 缩放比例: 1.86
+2025-01-04 16:20:04,853 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:04,853 - INFO - 新图像大小: 3173x2378
+2025-01-04 16:20:04,958 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,001 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,003 - INFO - 保持图像引用完成。
+2025-01-04 16:20:05,007 - INFO - 缩放比例: 2.0
+2025-01-04 16:20:05,007 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:05,007 - INFO - 新图像大小: 3412x2558
+2025-01-04 16:20:05,126 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,175 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,177 - INFO - 保持图像引用完成。
+2025-01-04 16:20:05,183 - INFO - 缩放比例: 1.64
+2025-01-04 16:20:05,183 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:05,183 - INFO - 新图像大小: 2797x2097
+2025-01-04 16:20:05,271 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,303 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,310 - INFO - 保持图像引用完成。
+2025-01-04 16:20:05,313 - INFO - 缩放比例: 1.5
+2025-01-04 16:20:05,313 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:05,314 - INFO - 新图像大小: 2559x1918
+2025-01-04 16:20:05,389 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,418 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,423 - INFO - 保持图像引用完成。
+2025-01-04 16:20:05,423 - INFO - 缩放比例: 0.57
+2025-01-04 16:20:05,423 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:05,423 - INFO - 新图像大小: 972x729
+2025-01-04 16:20:05,451 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,453 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,457 - INFO - 保持图像引用完成。
+2025-01-04 16:20:05,459 - INFO - 缩放比例: 0.5
+2025-01-04 16:20:05,459 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:05,459 - INFO - 新图像大小: 853x639
+2025-01-04 16:20:05,483 - INFO - 图像缩放完成。
+2025-01-04 16:20:05,486 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:05,486 - INFO - 保持图像引用完成。
+2025-01-04 16:20:09,691 - INFO - 网络状态: 已连接
+2025-01-04 16:20:15,161 - INFO - 网络状态: 已连接
+2025-01-04 16:20:20,826 - INFO - 网络状态: 已连接
+2025-01-04 16:20:25,693 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 16:20:25,693 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\test001.jpg
+2025-01-04 16:20:25,693 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:20:25,693 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:20:25', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:20:25,693 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:20:25,725 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\compressed_test001.jpg
+2025-01-04 16:20:25,753 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:20:25,753 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:20:25,757 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:20:25,757 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:20:25', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:20:26,210 - INFO - 网络状态: 已连接
+2025-01-04 16:20:27,806 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:20:27,837 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:20:27,879 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:20:27,915 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:20:27,957 - INFO - 显示图片: 微信图片_20241213221354.jpg
+2025-01-04 16:20:27,963 - INFO - 缩放比例: 1.0
+2025-01-04 16:20:27,965 - INFO - 原始图像大小: 1706x1279
+2025-01-04 16:20:27,965 - INFO - 新图像大小: 1706x1279
+2025-01-04 16:20:27,973 - INFO - 图像缩放完成。
+2025-01-04 16:20:27,985 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:27,989 - INFO - 保持图像引用完成。
+2025-01-04 16:20:28,821 - INFO - 显示图片: test001.jpg
+2025-01-04 16:20:31,838 - INFO - 网络状态: 已连接
+2025-01-04 16:20:37,260 - INFO - 网络状态: 已连接
+2025-01-04 16:20:38,751 - INFO - 缩放比例: 1.07
+2025-01-04 16:20:38,751 - INFO - 原始图像大小: 1279x1705
+2025-01-04 16:20:38,751 - INFO - 新图像大小: 1368x1824
+2025-01-04 16:20:38,794 - INFO - 图像缩放完成。
+2025-01-04 16:20:38,807 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:38,807 - INFO - 保持图像引用完成。
+2025-01-04 16:20:38,813 - INFO - 缩放比例: 1.5
+2025-01-04 16:20:38,813 - INFO - 原始图像大小: 1279x1705
+2025-01-04 16:20:38,813 - INFO - 新图像大小: 1918x2557
+2025-01-04 16:20:38,888 - INFO - 图像缩放完成。
+2025-01-04 16:20:38,915 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:38,915 - INFO - 保持图像引用完成。
+2025-01-04 16:20:38,925 - INFO - 缩放比例: 2.0
+2025-01-04 16:20:38,925 - INFO - 原始图像大小: 1279x1705
+2025-01-04 16:20:38,925 - INFO - 新图像大小: 2558x3410
+2025-01-04 16:20:39,044 - INFO - 图像缩放完成。
+2025-01-04 16:20:39,093 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:39,097 - INFO - 保持图像引用完成。
+2025-01-04 16:20:39,103 - INFO - 缩放比例: 0.5
+2025-01-04 16:20:39,103 - INFO - 原始图像大小: 1279x1705
+2025-01-04 16:20:39,103 - INFO - 新图像大小: 639x852
+2025-01-04 16:20:39,124 - INFO - 图像缩放完成。
+2025-01-04 16:20:39,128 - INFO - Canvas图像更新完成。
+2025-01-04 16:20:39,134 - INFO - 保持图像引用完成。
+2025-01-04 16:20:40,182 - INFO - 阿里云客户端已初始化。
+2025-01-04 16:20:40,793 - INFO - 网络状态: 已连接
+2025-01-04 16:20:40,795 - INFO - 语言资源加载成功。
+2025-01-04 16:20:40,795 - INFO - 界面语言已切换为: zh
+2025-01-04 16:20:42,361 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_mnzu85kt 已删除。
+2025-01-04 16:20:42,364 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_27a6n66c 已删除。
+2025-01-04 16:29:12,813 - INFO - 阿里云客户端已初始化。
+2025-01-04 16:29:13,175 - INFO - 网络状态: 已连接
+2025-01-04 16:29:13,176 - INFO - 语言资源加载成功。
+2025-01-04 16:29:13,180 - INFO - 界面语言已切换为: zh
+2025-01-04 16:29:16,303 - INFO - 选择的图片路径: ('D:/photos/sucai/test001.jpg',)
+2025-01-04 16:29:16,304 - INFO - 复制图片 D:/photos/sucai/test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\test001.jpg
+2025-01-04 16:29:16,304 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:29:16,304 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:29:16', 'Operation': '上传图片', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:29:16,304 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:29:16,344 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\compressed_test001.jpg
+2025-01-04 16:29:16,372 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:29:16,373 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\enhanced_compressed_test001.jpg
+2025-01-04 16:29:16,379 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\test001.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:29:16,379 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:29:16', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:29:18,503 - INFO - 网络状态: 已连接
+2025-01-04 16:29:18,530 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:29:18,571 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:18,611 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:18,648 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:18,685 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:19,498 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,498 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,537 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,537 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,568 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,568 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,595 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,595 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,616 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,616 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,861 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,861 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,874 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,875 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,887 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,887 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,899 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,899 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,915 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,915 - INFO - 保持图像引用完成。
+2025-01-04 16:29:19,947 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:19,947 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,199 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,201 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,216 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,216 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,231 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,232 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,247 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,247 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,270 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,270 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,733 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,734 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,758 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,758 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,774 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,774 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,789 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,790 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,805 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,806 - INFO - 保持图像引用完成。
+2025-01-04 16:29:20,845 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:20,845 - INFO - 保持图像引用完成。
+2025-01-04 16:29:21,872 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:21,872 - INFO - 保持图像引用完成。
+2025-01-04 16:29:22,255 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:22,255 - INFO - 保持图像引用完成。
+2025-01-04 16:29:22,438 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:22,438 - INFO - 保持图像引用完成。
+2025-01-04 16:29:22,616 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:22,616 - INFO - 保持图像引用完成。
+2025-01-04 16:29:22,807 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:22,807 - INFO - 保持图像引用完成。
+2025-01-04 16:29:23,961 - INFO - 网络状态: 已连接
+2025-01-04 16:29:23,966 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:23,967 - INFO - 保持图像引用完成。
+2025-01-04 16:29:24,070 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:24,070 - INFO - 保持图像引用完成。
+2025-01-04 16:29:24,255 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:24,255 - INFO - 保持图像引用完成。
+2025-01-04 16:29:24,438 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:24,438 - INFO - 保持图像引用完成。
+2025-01-04 16:29:24,592 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:24,592 - INFO - 保持图像引用完成。
+2025-01-04 16:29:24,782 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:24,782 - INFO - 保持图像引用完成。
+2025-01-04 16:29:26,336 - INFO - 缩放比例: 1.0
+2025-01-04 16:29:26,336 - INFO - 当前图像大小: 101x136
+2025-01-04 16:29:26,337 - INFO - 新图像大小: 1279x1705
+2025-01-04 16:29:26,347 - INFO - 图像缩放完成。
+2025-01-04 16:29:26,360 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:26,364 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,254 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,255 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,296 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,297 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,326 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,326 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,547 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,548 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,567 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,568 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,587 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,587 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,601 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,602 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,612 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,612 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,622 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,622 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,852 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,852 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,875 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,875 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,890 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,890 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,896 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,896 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,910 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,910 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,926 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,926 - INFO - 保持图像引用完成。
+2025-01-04 16:29:27,950 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:27,950 - INFO - 保持图像引用完成。
+2025-01-04 16:29:28,829 - INFO - 缩放比例: 1.07
+2025-01-04 16:29:28,829 - INFO - 当前图像大小: 234x312
+2025-01-04 16:29:28,829 - INFO - 新图像大小: 1368x1824
+2025-01-04 16:29:28,872 - INFO - 图像缩放完成。
+2025-01-04 16:29:28,887 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:28,888 - INFO - 保持图像引用完成。
+2025-01-04 16:29:28,891 - INFO - 缩放比例: 1.29
+2025-01-04 16:29:28,891 - INFO - 当前图像大小: 1368x1824
+2025-01-04 16:29:28,891 - INFO - 新图像大小: 1649x2199
+2025-01-04 16:29:28,950 - INFO - 图像缩放完成。
+2025-01-04 16:29:28,972 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:28,974 - INFO - 保持图像引用完成。
+2025-01-04 16:29:29,306 - INFO - 网络状态: 已连接
+2025-01-04 16:29:29,316 - INFO - 缩放比例: 1.14
+2025-01-04 16:29:29,316 - INFO - 当前图像大小: 1649x2199
+2025-01-04 16:29:29,316 - INFO - 新图像大小: 1458x1943
+2025-01-04 16:29:29,367 - INFO - 图像缩放完成。
+2025-01-04 16:29:29,383 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:29,386 - INFO - 保持图像引用完成。
+2025-01-04 16:29:29,388 - INFO - 缩放比例: 0.5
+2025-01-04 16:29:29,388 - INFO - 当前图像大小: 1458x1943
+2025-01-04 16:29:29,389 - INFO - 新图像大小: 639x852
+2025-01-04 16:29:29,412 - INFO - 图像缩放完成。
+2025-01-04 16:29:29,415 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:29,418 - INFO - 保持图像引用完成。
+2025-01-04 16:29:29,828 - INFO - 缩放比例: 1.21
+2025-01-04 16:29:29,828 - INFO - 当前图像大小: 639x852
+2025-01-04 16:29:29,828 - INFO - 新图像大小: 1547x2063
+2025-01-04 16:29:29,884 - INFO - 图像缩放完成。
+2025-01-04 16:29:29,902 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:29,902 - INFO - 保持图像引用完成。
+2025-01-04 16:29:29,904 - INFO - 缩放比例: 2.0
+2025-01-04 16:29:29,904 - INFO - 当前图像大小: 1547x2063
+2025-01-04 16:29:29,904 - INFO - 新图像大小: 2558x3410
+2025-01-04 16:29:30,026 - INFO - 图像缩放完成。
+2025-01-04 16:29:30,074 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:30,077 - INFO - 保持图像引用完成。
+2025-01-04 16:29:30,244 - INFO - 缩放比例: 1.86
+2025-01-04 16:29:30,245 - INFO - 当前图像大小: 2558x3410
+2025-01-04 16:29:30,245 - INFO - 新图像大小: 2378x3171
+2025-01-04 16:29:30,353 - INFO - 图像缩放完成。
+2025-01-04 16:29:30,399 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:30,405 - INFO - 保持图像引用完成。
+2025-01-04 16:29:30,407 - INFO - 缩放比例: 0.5
+2025-01-04 16:29:30,407 - INFO - 当前图像大小: 2378x3171
+2025-01-04 16:29:30,408 - INFO - 新图像大小: 639x852
+2025-01-04 16:29:30,433 - INFO - 图像缩放完成。
+2025-01-04 16:29:30,436 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:30,440 - INFO - 保持图像引用完成。
+2025-01-04 16:29:32,038 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:32,039 - INFO - 保持图像引用完成。
+2025-01-04 16:29:32,248 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:32,248 - INFO - 保持图像引用完成。
+2025-01-04 16:29:32,465 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:32,465 - INFO - 保持图像引用完成。
+2025-01-04 16:29:32,787 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:32,788 - INFO - 保持图像引用完成。
+2025-01-04 16:29:32,974 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:32,974 - INFO - 保持图像引用完成。
+2025-01-04 16:29:33,156 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:33,156 - INFO - 保持图像引用完成。
+2025-01-04 16:29:33,329 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:33,329 - INFO - 保持图像引用完成。
+2025-01-04 16:29:33,519 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:33,519 - INFO - 保持图像引用完成。
+2025-01-04 16:29:33,684 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:33,684 - INFO - 保持图像引用完成。
+2025-01-04 16:29:33,995 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:33,995 - INFO - 保持图像引用完成。
+2025-01-04 16:29:34,669 - INFO - 网络状态: 已连接
+2025-01-04 16:29:36,522 - INFO - 选择的文件夹: D:/photos/sucai
+2025-01-04 16:29:36,522 - INFO - 找到 3 张图片
+2025-01-04 16:29:36,522 - INFO - 复制图片 D:/photos/sucai\test001.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\test001.jpg
+2025-01-04 16:29:36,522 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221328.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\微信图片_20241213221328.jpg
+2025-01-04 16:29:36,526 - INFO - 复制图片 D:/photos/sucai\微信图片_20241213221354.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\微信图片_20241213221354.jpg
+2025-01-04 16:29:36,526 - INFO - 已复制 3 张图片到上传文件夹。
+2025-01-04 16:29:36,526 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:29:36', 'Operation': '上传文件夹', 'Result': '成功：复制了 3 张图片', 'Matched_Person': '无'}
+2025-01-04 16:29:36,564 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:36,585 - INFO - 缩放比例: 1.0
+2025-01-04 16:29:36,585 - INFO - 当前图像大小: 1279x1705
+2025-01-04 16:29:36,585 - INFO - 新图像大小: 1279x1705
+2025-01-04 16:29:36,594 - INFO - 图像缩放完成。
+2025-01-04 16:29:36,594 - INFO - Canvas图像更新完成。
+2025-01-04 16:29:36,599 - INFO - 保持图像引用完成。
+2025-01-04 16:29:36,612 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:40,552 - INFO - 网络状态: 已连接
+2025-01-04 16:29:45,349 - INFO - 选择的文件夹: D:/photos/威海烟台/22
+2025-01-04 16:29:45,349 - INFO - 找到 1 张图片
+2025-01-04 16:29:45,354 - INFO - 复制图片 D:/photos/威海烟台/22\ZOO_9375.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9375.jpg
+2025-01-04 16:29:45,354 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:29:45,354 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:29:45', 'Operation': '上传文件夹', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:29:45,391 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:45,426 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:45,945 - INFO - 网络状态: 已连接
+2025-01-04 16:29:51,677 - INFO - 网络状态: 已连接
+2025-01-04 16:29:54,757 - INFO - 选择的文件夹: D:/photos/威海烟台
+2025-01-04 16:29:54,758 - INFO - 找到 25 张图片
+2025-01-04 16:29:54,760 - INFO - 复制图片 D:/photos/威海烟台\ZOO_92622221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_92622221111.jpg
+2025-01-04 16:29:54,762 - INFO - 复制图片 D:/photos/威海烟台\ZOO_92852221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_92852221111.jpg
+2025-01-04 16:29:54,766 - INFO - 复制图片 D:/photos/威海烟台\ZOO_93102221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_93102221111.jpg
+2025-01-04 16:29:54,774 - INFO - 复制图片 D:/photos/威海烟台\ZOO_93102221111_1.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_93102221111_1.jpg
+2025-01-04 16:29:54,774 - INFO - 复制图片 D:/photos/威海烟台\ZOO_931822222211112221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_931822222211112221111.jpg
+2025-01-04 16:29:54,778 - INFO - 复制图片 D:/photos/威海烟台\ZOO_93222221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_93222221111.jpg
+2025-01-04 16:29:54,780 - INFO - 复制图片 D:/photos/威海烟台\ZOO_93252221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_93252221111.jpg
+2025-01-04 16:29:54,782 - INFO - 复制图片 D:/photos/威海烟台\ZOO_93582221111.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_93582221111.jpg
+2025-01-04 16:29:54,789 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9367.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9367.jpg
+2025-01-04 16:29:54,792 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9370.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9370.jpg
+2025-01-04 16:29:54,795 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9371.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9371.jpg
+2025-01-04 16:29:54,799 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9372.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9372.jpg
+2025-01-04 16:29:54,803 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9373.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9373.jpg
+2025-01-04 16:29:54,809 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9374.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9374.jpg
+2025-01-04 16:29:54,812 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9375.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9375.jpg
+2025-01-04 16:29:54,816 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9394.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9394.jpg
+2025-01-04 16:29:54,824 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9399.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9399.jpg
+2025-01-04 16:29:54,829 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9407.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9407.jpg
+2025-01-04 16:29:54,832 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9408.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9408.jpg
+2025-01-04 16:29:54,841 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9411.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9411.jpg
+2025-01-04 16:29:54,844 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9412.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9412.jpg
+2025-01-04 16:29:54,849 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9428.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9428.jpg
+2025-01-04 16:29:54,853 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9430.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9430.jpg
+2025-01-04 16:29:54,857 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9476.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9476.jpg
+2025-01-04 16:29:54,862 - INFO - 复制图片 D:/photos/威海烟台\ZOO_9492.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9492.jpg
+2025-01-04 16:29:54,862 - INFO - 已复制 25 张图片到上传文件夹。
+2025-01-04 16:29:54,862 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:29:54', 'Operation': '上传文件夹', 'Result': '成功：复制了 25 张图片', 'Matched_Person': '无'}
+2025-01-04 16:29:54,899 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:54,939 - INFO - 显示图片: test001.jpg
+2025-01-04 16:29:57,471 - INFO - 网络状态: 已连接
+2025-01-04 16:30:00,151 - INFO - 手动输入的文件夹路径: D:/photos/威海烟台/22
+2025-01-04 16:30:01,941 - INFO - 上传文件夹路径: D:/photos/威海烟台/22, 找到 1 张图片
+2025-01-04 16:30:01,947 - INFO - 复制图片 D:/photos/威海烟台/22\ZOO_9375.jpg 到 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9375.jpg
+2025-01-04 16:30:01,947 - INFO - 已复制 1 张图片到上传文件夹。
+2025-01-04 16:30:01,947 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:30:01', 'Operation': '上传文件夹', 'Result': '成功：复制了 1 张图片', 'Matched_Person': '无'}
+2025-01-04 16:30:01,947 - INFO - 开始执行 upload_faces 方法
+2025-01-04 16:30:02,085 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\compressed_ZOO_9375.jpg
+2025-01-04 16:30:02,109 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\enhanced_compressed_ZOO_9375.jpg
+2025-01-04 16:30:02,110 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\enhanced_compressed_ZOO_9375.jpg
+2025-01-04 16:30:02,115 - ERROR - 上传 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu\uploaded\ZOO_9375.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:30:02,115 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:30:02', 'Operation': '上传图片', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:30:02,866 - INFO - 网络状态: 已连接
+2025-01-04 16:30:05,834 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-04 16:30:05,869 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:05,913 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:05,950 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:05,988 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:06,675 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:08,235 - INFO - 网络状态: 已连接
+2025-01-04 16:30:13,668 - INFO - 网络状态: 已连接
+2025-01-04 16:30:13,672 - INFO - 缩放比例: 1.5
+2025-01-04 16:30:13,672 - INFO - 当前图像大小: 5590x3732
+2025-01-04 16:30:13,672 - INFO - 新图像大小: 8385x5598
+2025-01-04 16:30:14,449 - INFO - 图像缩放完成。
+2025-01-04 16:30:14,746 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:14,759 - INFO - 保持图像引用完成。
+2025-01-04 16:30:14,763 - INFO - 缩放比例: 2.0
+2025-01-04 16:30:14,764 - INFO - 当前图像大小: 8385x5598
+2025-01-04 16:30:14,764 - INFO - 新图像大小: 11180x7464
+2025-01-04 16:30:16,059 - INFO - 图像缩放完成。
+2025-01-04 16:30:16,551 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:16,588 - INFO - 保持图像引用完成。
+2025-01-04 16:30:16,598 - INFO - 缩放比例: 1.64
+2025-01-04 16:30:16,599 - INFO - 当前图像大小: 11180x7464
+2025-01-04 16:30:16,599 - INFO - 新图像大小: 9167x6120
+2025-01-04 16:30:17,568 - INFO - 图像缩放完成。
+2025-01-04 16:30:17,913 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:17,982 - INFO - 保持图像引用完成。
+2025-01-04 16:30:17,987 - INFO - 缩放比例: 0.57
+2025-01-04 16:30:17,987 - INFO - 当前图像大小: 9167x6120
+2025-01-04 16:30:17,987 - INFO - 新图像大小: 3186x2127
+2025-01-04 16:30:18,225 - INFO - 图像缩放完成。
+2025-01-04 16:30:18,262 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:18,302 - INFO - 保持图像引用完成。
+2025-01-04 16:30:18,311 - INFO - 缩放比例: 0.5
+2025-01-04 16:30:18,311 - INFO - 当前图像大小: 3186x2127
+2025-01-04 16:30:18,311 - INFO - 新图像大小: 2795x1866
+2025-01-04 16:30:18,512 - INFO - 图像缩放完成。
+2025-01-04 16:30:18,539 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:18,546 - INFO - 保持图像引用完成。
+2025-01-04 16:30:19,053 - INFO - 网络状态: 已连接
+2025-01-04 16:30:21,842 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:21,842 - INFO - 保持图像引用完成。
+2025-01-04 16:30:21,934 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:21,934 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,215 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,215 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,276 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,276 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,326 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,326 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,553 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,553 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,584 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,584 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,612 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,614 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,632 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,636 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,912 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,912 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,926 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,926 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,939 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,939 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,952 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,952 - INFO - 保持图像引用完成。
+2025-01-04 16:30:22,963 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:22,963 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,214 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,214 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,244 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,244 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,249 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,249 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,262 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,262 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,269 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,269 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,286 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,286 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,302 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,302 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,841 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,841 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,862 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,862 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,892 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,892 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,915 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,919 - INFO - 保持图像引用完成。
+2025-01-04 16:30:23,975 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:23,975 - INFO - 保持图像引用完成。
+2025-01-04 16:30:24,465 - INFO - 网络状态: 已连接
+2025-01-04 16:30:25,420 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,421 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,439 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,439 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,459 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,459 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,484 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,484 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,524 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,524 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,812 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,812 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,824 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,824 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,842 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,842 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,854 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,854 - INFO - 保持图像引用完成。
+2025-01-04 16:30:25,879 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:25,879 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,169 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,169 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,189 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,189 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,204 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,204 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,229 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,229 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,244 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,244 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,482 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,482 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,494 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,494 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,509 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,509 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,527 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,527 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,566 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,566 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,816 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,816 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,839 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,839 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,849 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,849 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,866 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,866 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,885 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,885 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,906 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,909 - INFO - 保持图像引用完成。
+2025-01-04 16:30:26,950 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:26,951 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,792 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,792 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,808 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,809 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,830 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,830 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,852 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,856 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,884 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,884 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,921 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,922 - INFO - 保持图像引用完成。
+2025-01-04 16:30:27,962 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:27,962 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,081 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,081 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,112 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,112 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,139 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,139 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,159 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,159 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,423 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,423 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,435 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,435 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,449 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,449 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,460 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,460 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,464 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,464 - INFO - 保持图像引用完成。
+2025-01-04 16:30:29,474 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:29,474 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,129 - INFO - 网络状态: 已连接
+2025-01-04 16:30:30,134 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,134 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,168 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,168 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,207 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,207 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,229 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,229 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,254 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,254 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,283 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,283 - INFO - 保持图像引用完成。
+2025-01-04 16:30:30,309 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:30,310 - INFO - 保持图像引用完成。
+2025-01-04 16:30:35,681 - INFO - 网络状态: 已连接
+2025-01-04 16:30:41,004 - INFO - 网络状态: 已连接
+2025-01-04 16:30:41,589 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:41,593 - INFO - 缩放比例: 1.0
+2025-01-04 16:30:41,593 - INFO - 当前图像大小: 1279x1705
+2025-01-04 16:30:41,593 - INFO - 新图像大小: 1279x1705
+2025-01-04 16:30:41,602 - INFO - 图像缩放完成。
+2025-01-04 16:30:41,616 - INFO - Canvas图像更新完成。
+2025-01-04 16:30:41,617 - INFO - 保持图像引用完成。
+2025-01-04 16:30:42,439 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:42,742 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:43,587 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:47,431 - INFO - 网络状态: 已连接
+2025-01-04 16:30:47,800 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:49,819 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:49,895 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:50,808 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:51,969 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:52,432 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:52,822 - INFO - 网络状态: 已连接
+2025-01-04 16:30:53,344 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:53,679 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:54,312 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:56,719 - INFO - 显示图片: test001.jpg
+2025-01-04 16:30:57,792 - INFO - 显示图片: ZOO_9375.jpg
+2025-01-04 16:30:58,436 - INFO - 网络状态: 已连接
+2025-01-04 16:30:58,491 - INFO - 显示图片: test001.jpg
+2025-01-04 16:31:04,002 - INFO - 网络状态: 已连接
+2025-01-04 16:31:05,770 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:05,770 - INFO - 保持图像引用完成。
+2025-01-04 16:31:05,809 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:05,809 - INFO - 保持图像引用完成。
+2025-01-04 16:31:05,844 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:05,844 - INFO - 保持图像引用完成。
+2025-01-04 16:31:05,869 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:05,869 - INFO - 保持图像引用完成。
+2025-01-04 16:31:05,890 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:05,890 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,119 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,121 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,137 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,137 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,151 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,151 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,161 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,161 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,169 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,169 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,176 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,176 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,192 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,194 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,432 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,435 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,444 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,448 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,462 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,462 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,477 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,477 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,482 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,482 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,502 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,502 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,516 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,516 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,796 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,796 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,827 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,829 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,841 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,841 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,859 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,859 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,874 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,874 - INFO - 保持图像引用完成。
+2025-01-04 16:31:06,900 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:06,902 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,132 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,132 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,159 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,159 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,172 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,172 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,186 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,186 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,204 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,204 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,339 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,339 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,371 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,371 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,388 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,388 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,403 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,403 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,419 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,419 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,436 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,436 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,469 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,469 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,517 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,518 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,741 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,741 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,756 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,756 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,764 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,764 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,780 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,780 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,797 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,797 - INFO - 保持图像引用完成。
+2025-01-04 16:31:07,822 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:07,823 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,123 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,123 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,156 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,156 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,172 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,174 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,190 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,190 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,206 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,206 - INFO - 保持图像引用完成。
+2025-01-04 16:31:08,264 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:08,264 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,327 - INFO - 网络状态: 已连接
+2025-01-04 16:31:09,336 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,336 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,342 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,342 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,375 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,377 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,642 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,642 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,660 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,660 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,679 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,679 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,692 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,692 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,706 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,707 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,726 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,726 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,747 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,748 - INFO - 保持图像引用完成。
+2025-01-04 16:31:09,789 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:09,789 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,044 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,044 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,083 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,083 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,129 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,129 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,187 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,187 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,254 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,254 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,359 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,359 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,459 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,459 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,539 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,539 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,634 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,634 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,748 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,748 - INFO - 保持图像引用完成。
+2025-01-04 16:31:10,949 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:10,949 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,034 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,034 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,295 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,295 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,352 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,352 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,398 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,399 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,595 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,595 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,624 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,625 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,650 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,650 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,922 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,922 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,939 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,940 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,952 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,952 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,966 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,966 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,976 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,976 - INFO - 保持图像引用完成。
+2025-01-04 16:31:11,982 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:11,982 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,243 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,243 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,256 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,259 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,272 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,273 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,279 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,279 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,286 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,286 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,294 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,294 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,300 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,302 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,316 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,316 - INFO - 保持图像引用完成。
+2025-01-04 16:31:12,659 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:12,659 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,006 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,006 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,043 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,043 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,065 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,065 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,085 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,085 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,102 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,102 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,126 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,126 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,179 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,179 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,722 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,722 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,743 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,743 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,762 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,762 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,779 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,779 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,794 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,794 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,812 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,812 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,839 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,839 - INFO - 保持图像引用完成。
+2025-01-04 16:31:13,883 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:13,883 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,185 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,185 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,209 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,209 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,238 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,238 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,269 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,269 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,311 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,313 - INFO - 保持图像引用完成。
+2025-01-04 16:31:14,358 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:14,359 - INFO - 保持图像引用完成。
+2025-01-04 16:31:15,036 - INFO - 网络状态: 已连接
+2025-01-04 16:31:15,076 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:15,076 - INFO - 保持图像引用完成。
+2025-01-04 16:31:15,109 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:15,112 - INFO - 保持图像引用完成。
+2025-01-04 16:31:15,139 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:15,139 - INFO - 保持图像引用完成。
+2025-01-04 16:31:15,162 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:15,162 - INFO - 保持图像引用完成。
+2025-01-04 16:31:15,190 - INFO - Canvas图像更新完成。
+2025-01-04 16:31:15,190 - INFO - 保持图像引用完成。
+2025-01-04 16:31:20,396 - INFO - 网络状态: 已连接
+2025-01-04 16:31:23,329 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:31:23', 'Operation': '启动摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-04 16:31:23,329 - INFO - 摄像头已启动。
+2025-01-04 16:31:26,039 - INFO - 网络状态: 已连接
+2025-01-04 16:31:29,145 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:31:29', 'Operation': '拍照', 'Result': '成功', 'Matched_Person': 'C:\\Users\\yushi\\AppData\\Local\\Temp\\face_recognition_mcfx1hnu\\camera\\captured_face_20250104163128206653.jpg'}
+2025-01-04 16:31:29,848 - ERROR - 识别失败：'CommonRequest' object has no attribute 'add_file_param'
+2025-01-04 16:31:29,849 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:31:29', 'Operation': '人脸识别', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-04 16:31:30,841 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:31:30', 'Operation': '人脸匹配', 'Result': '失败', 'Matched_Person': '无'}
+2025-01-04 16:31:31,706 - INFO - 网络状态: 已连接
+2025-01-04 16:31:32,046 - INFO - 摄像头已释放。
+2025-01-04 16:31:32,046 - INFO - 日志记录：{'Timestamp': '2025-01-04 16:31:32', 'Operation': '关闭摄像头', 'Result': '成功', 'Matched_Person': '无'}
+2025-01-04 16:31:37,125 - INFO - 网络状态: 已连接
+2025-01-04 16:31:37,944 - INFO - 界面语言已切换为: en
+2025-01-04 16:31:37,944 - INFO - 语言切换为: en
+2025-01-04 16:31:42,531 - INFO - 网络状态: 已连接
+2025-01-04 16:31:47,890 - INFO - 网络状态: 已连接
+2025-01-04 16:31:52,879 - INFO - 界面语言已切换为: zh
+2025-01-04 16:31:52,879 - INFO - 语言切换为: zh
+2025-01-04 16:31:53,538 - INFO - 网络状态: 已连接
+2025-01-04 16:31:55,145 - INFO - 界面语言已切换为: en
+2025-01-04 16:31:55,146 - INFO - 语言切换为: en
+2025-01-04 16:31:57,823 - INFO - 界面语言已切换为: zh
+2025-01-04 16:31:57,823 - INFO - 语言切换为: zh
+2025-01-04 16:31:58,920 - INFO - 网络状态: 已连接
+2025-01-04 16:32:00,407 - INFO - 阿里云客户端已初始化。
+2025-01-04 16:32:01,056 - INFO - 网络状态: 已连接
+2025-01-04 16:32:01,057 - INFO - 语言资源加载成功。
+2025-01-04 16:32:01,060 - INFO - 界面语言已切换为: zh
+2025-01-04 16:32:02,381 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_m5vmajbr 已删除。
+2025-01-04 16:32:02,394 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_mcfx1hnu 已删除。

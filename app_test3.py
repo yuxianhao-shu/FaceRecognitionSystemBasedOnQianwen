@@ -216,16 +216,34 @@ class FaceRecognitionApp:
                                              fg="#ecf0f1")
         self.label_uploaded_files.pack(pady=5)
 
-        # 创建一个带滚动条的Listbox
+                # 创建一个带滚动条的Treeview
+        # 创建一个带滚动条的Treeview
         self.scrollbar = tk.Scrollbar(self.frame_file_list, orient=tk.VERTICAL)
-        self.listbox_files = tk.Listbox(self.frame_file_list, width=40, height=30, font=("Helvetica", 12),
-                                        yscrollcommand=self.scrollbar.set)
-        self.scrollbar.config(command=self.listbox_files.yview)
+        self.tree_files = ttk.Treeview(
+            self.frame_file_list,
+            columns=("Filename", "Status"),
+            show='headings',  # 只显示定义的列
+            yscrollcommand=self.scrollbar.set
+        )
+        self.scrollbar.config(command=self.tree_files.yview)
         self.scrollbar.pack(side='right', fill='y')
-        self.listbox_files.pack(side='left', fill='both', expand=True)
+        self.tree_files.pack(side='left', fill='both', expand=True)
 
-        # 绑定Listbox的选择事件
-        self.listbox_files.bind('<<ListboxSelect>>', self.display_selected_image)
+        # 定义列标题
+        self.tree_files.heading("Filename", text="文件名")
+        self.tree_files.heading("Status", text="状态")
+        self.tree_files.column("Filename", width=250, anchor='w')  # 调整文件名列宽度和对齐方式
+        self.tree_files.column("Status", width=100, anchor='center')  # 调整状态列宽度和对齐方式
+
+        # 定义上传成功和失败的标签
+        self.tree_files.tag_configure("success", foreground="green")
+        self.tree_files.tag_configure("failure", foreground="red")
+
+        # 绑定Treeview的选择事件
+        self.tree_files.bind('<<TreeviewSelect>>', self.display_selected_image)
+
+        
+
 
         # 创建右侧的图像显示框架
         self.frame_image = tk.Frame(root, bg="#2c3e50", bd=2, relief="groove")
@@ -285,6 +303,9 @@ class FaceRecognitionApp:
         self.scale.set(100)  # 初始缩放比例为100%
         self.scale.pack(side='left', padx=10)
         ToolTip(self.scale, "拖动滑块调整图像缩放比例")
+        self.scale.config(state='disabled')  # 初始禁用
+
+
 
         # 添加底部版权信息
         self.footer_label = tk.Label(root, text="face-recognition-system based on Qianwen",
@@ -318,37 +339,59 @@ class FaceRecognitionApp:
 
         # 设置初始语言
         self.set_language(self.current_language)
-        # 创建Scale控件，用于调整缩放比例
-        self.scale = tk.Scale(self.frame_image_controls, from_=50, to=200, orient=tk.HORIZONTAL, label="缩放比例 (%)", command=self.scale_image)
-        self.scale.set(100)  # 默认缩放为100%
-        self.scale.pack()
+
     def scale_image(self, value):
         """根据Scale控件的值来缩放图像"""
         scale_factor = int(value) / 100  # 从百分比转化为缩放比例
-        new_width = int(self.display_image.width * scale_factor)
-        new_height = int(self.display_image.height * scale_factor)
+        logger.info(f"缩放比例: {scale_factor}")
+        if not self.display_image:
+            logger.warning("没有图像可缩放。")
+            messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
+            return
+        logger.info(f"当前图像大小: {self.display_image.width}x{self.display_image.height}")
+        new_width = int(self.original_image.width * scale_factor)
+        new_height = int(self.original_image.height * scale_factor)
+        logger.info(f"新图像大小: {new_width}x{new_height}")
 
         # 缩放图像
-        self.display_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-        self.photo_image = ImageTk.PhotoImage(self.display_image)
+        try:
+            self.display_image = self.original_image.resize((new_width, new_height), Image.LANCZOS)
+            self.photo_image = ImageTk.PhotoImage(self.display_image)
+            logger.info("图像缩放完成。")
 
-        # 更新Canvas上的图像
-        self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-        self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))  # 更新Canvas的滚动区域
+            # 更新Canvas上的图像
+            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
+            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))  # 更新Canvas的滚动区域
+            logger.info("Canvas图像更新完成。")
+
+            # 确保图像位于Canvas的中心
+            self.canvas_image.update_idletasks()
+            canvas_width = self.canvas_image.winfo_width()
+            canvas_height = self.canvas_image.winfo_height()
+            self.canvas_image.coords(self.image_on_canvas, canvas_width // 2, canvas_height // 2)
+
+            # 保持对图像的引用
+            self.canvas_image.image = self.photo_image
+            logger.info("保持图像引用完成。")
+        except Exception as e:
+            logger.error(f"缩放图像时发生错误: {e}")
+            messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
+
+
+
+
     def show_context_menu(self, event):
-        # 创建右键菜单
-        context_menu = Menu(self.root, tearoff=0)
-        context_menu.add_command(label="Option 1", command=self.option1_action)
-        context_menu.add_command(label="Option 2", command=self.option2_action)
-        context_menu.add_separator()
-        context_menu.add_command(label="Exit", command=self.root.quit)
+        """显示右键菜单"""
+        self.context_menu.post(event.x_root, event.y_root)
 
     def option1_action(self):
         print("Option 1 selected")
 
     def option2_action(self):
         print("Option 2 selected")
+
     def load_languages(self):
+        """加载语言资源"""
         languages = {}
         try:
             with open('languages.json', 'r', encoding='utf-8') as f:
@@ -420,6 +463,7 @@ class FaceRecognitionApp:
         return languages
 
     def set_language(self, lang_code):
+        """设置界面语言"""
         lang = self.languages.get(lang_code, self.languages['zh'])
         # 更新所有文本
         self.network_status_label.config(text=lang["network_status"])
@@ -434,27 +478,14 @@ class FaceRecognitionApp:
         self.button_upload_manual_path.config(text=lang["upload"])
         self.label_uploaded_files.config(text=lang["uploaded_files"])
         self.button_export_logs.config(text=lang["export_logs"])
-          # 绑定右键点击事件
-        self.canvas_image.bind("<Button-3>", self.show_context_menu)
-
-        # 更新底部版权信息
         self.footer_label.config(text=lang["thank_you"])
 
         # 更新其他弹窗中的文本将在相关方法中处理
 
         logger.info(f"界面语言已切换为: {lang_code}")
-    def show_context_menu(self, event):
-            # 创建右键菜单
-            context_menu = Menu(self.root, tearoff=0)
-            context_menu.add_command(label="Option 1", command=self.option1_action)
-            context_menu.add_command(label="Option 2", command=self.option2_action)
-            context_menu.add_separator()
-            context_menu.add_command(label="Exit", command=self.root.quit)
-
-            # 显示右键菜单，位置在鼠标点击的坐标
-            context_menu.post(event.x_root, event.y_root)
 
     def change_language(self, event):
+        """切换界面语言"""
         selected_language = self.language_var.get()
         if selected_language == '中文':
             self.current_language = 'zh'
@@ -491,6 +522,7 @@ class FaceRecognitionApp:
             logger.error(f"无法删除临时文件夹 {self.temp_dir}: {e}")
 
     def browse_folder(self):
+        """浏览文件夹并选择路径"""
         folder_path = filedialog.askdirectory(title="选择包含图片的文件夹")
         if folder_path:
             self.entry_manual_path.delete(0, tk.END)
@@ -498,11 +530,13 @@ class FaceRecognitionApp:
             logger.info(f"手动输入的文件夹路径: {folder_path}")
 
     def get_headers(self):
+        """获取请求头"""
         return {
             "Content-Type": "multipart/form-data"
         }
 
     def compress_image(self, image_path, max_size=(800, 800)):
+        """压缩图片"""
         img = Image.open(image_path)
         img.thumbnail(max_size)
         compressed_image_path = os.path.join(self.uploaded_dir, "compressed_" + os.path.basename(image_path))
@@ -511,6 +545,7 @@ class FaceRecognitionApp:
         return compressed_image_path
 
     def enhance_image(self, image_path):
+        """增强图片"""
         img = Image.open(image_path)
 
         # 亮度增强（如果图像过暗）
@@ -530,94 +565,168 @@ class FaceRecognitionApp:
         logger.info(f"增强图片保存为: {enhanced_image_path}")
         return enhanced_image_path
 
+
     def upload_faces(self):
+        """上传选定的图片进行人脸识别"""
+        logger.info("开始执行 upload_faces 方法")  # 确认方法被调用
+
         if not self.selected_image_paths:
-            messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["no_images_selected_error"])
+            self.root.after(0, lambda: messagebox.showerror(
+                self.languages[self.current_language]["error"],
+                self.languages[self.current_language]["no_images_selected_error"]
+            ))
             logger.error("上传失败：未选择任何图片。")
             self.add_log("上传图片", "失败：未选择任何图片")
             return
 
-        # 创建一个顶层弹窗来显示处理状态
-        progress_window = tk.Toplevel(self.root)
-        progress_window.title(self.languages[self.current_language]["upload_progress_title"])
-        progress_window.geometry("400x200")
-        progress_window.configure(bg="#2c3e50")
+        try:
+            # 创建一个顶层弹窗来显示处理状态
+            progress_window = tk.Toplevel(self.root)
+            progress_window.title(self.languages[self.current_language]["upload_progress_title"])
+            progress_window.geometry("400x200")
+            progress_window.configure(bg="#2c3e50")
 
-        progress_label = tk.Label(progress_window, text=self.languages[self.current_language]["uploading_images"],
-                                  font=("Helvetica", 12),
-                                  bg="#2c3e50",
-                                  fg="#ecf0f1")
-        progress_label.pack(pady=20)
+            progress_label = tk.Label(progress_window, text=self.languages[self.current_language]["uploading_images"],
+                                    font=("Helvetica", 12),
+                                    bg="#2c3e50",
+                                    fg="#ecf0f1")
+            progress_label.pack(pady=20)
 
-        progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
-        progress_bar.pack(pady=20)
+            progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
+            progress_bar.pack(pady=20)
 
-        # 设置进度条最大值为图片数量
-        progress_bar["maximum"] = len(self.selected_image_paths)
+            # 设置进度条最大值为图片数量
+            progress_bar["maximum"] = len(self.selected_image_paths)
 
-        uploaded = 0
-        failed = 0
+            uploaded = 0
+            failed = 0
 
-        for i, image_path in enumerate(self.selected_image_paths, start=1):
-            try:
-                # 压缩并增强图片
-                compressed_image_path = self.compress_image(image_path)  # 压缩图片
-                enhanced_image_path = self.enhance_image(compressed_image_path)  # 增强图片
-
-                # 打开图片并处理
+            for i, image_path in enumerate(self.selected_image_paths, start=1):
                 try:
-                    img = Image.open(enhanced_image_path)
-                except (IOError, SyntaxError) as e:
-                    messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["open_image_error"].format(image=os.path.basename(image_path), error=str(e)))
-                    logger.error(f"跳过损坏文件: {image_path}, 错误详情: {e}")
-                    self.add_log("上传图片", f"失败：无法打开图片 {image_path}")
-                    failed += 1
-                    continue  # 跳过损坏的文件
+                    # 压缩并增强图片
+                    compressed_image_path = self.compress_image(image_path)  # 压缩图片
+                    enhanced_image_path = self.enhance_image(compressed_image_path)  # 增强图片
 
-                # 使用 SDK 构建请求
-                request = CommonRequest()
-                request.set_accept_format('json')
-                request.set_domain(self.url)
-                request.set_method('POST')
-                request.set_version('2019-12-30')
-                request.set_action_name('AddFace')
-                request.add_query_param('FaceLibId', self.face_lib_id)
-                request.add_file_param('file', enhanced_image_path)
+                    logger.info(f"开始上传图片: {enhanced_image_path}")
+                    print(f"开始上传图片: {enhanced_image_path}")  # 临时打印
 
-                # 发送请求
-                response = self.client.do_action_with_exception(request)
-                result = json.loads(response)
+                    # 打开图片并处理
+                    try:
+                        img = Image.open(enhanced_image_path)
+                    except (IOError, SyntaxError) as e:
+                        logger.error(f"无法打开图片 {image_path}: {e}")
+                        self.add_log("上传图片", f"失败：无法打开图片 {image_path}")
+                        # 仍然添加到 Treeview 以显示上传失败
+                        filename = os.path.basename(image_path)
+                        item_id = self.tree_files.insert(
+                            "",
+                            "end",
+                            values=(filename, "失败"),
+                            tags=("failure",)
+                        )
+                        self.filename_to_path[item_id] = image_path
+                        failed += 1
+                        continue  # 跳过损坏的文件
 
-                if 'FaceRecords' in result:
-                    logger.info(f"图片 {image_path} 上传成功！")
-                    uploaded += 1
-                    self.add_log("上传图片", "成功", os.path.basename(image_path))
-                    # 添加到文件列表
+                    # 使用 SDK 构建请求
+                    request = CommonRequest()
+                    request.set_accept_format('json')
+                    request.set_domain(self.url)
+                    request.set_method('POST')
+                    request.set_version('2019-12-30')
+                    request.set_action_name('AddFace')
+                    request.add_query_param('FaceLibId', self.face_lib_id)
+                    request.add_file_param('file', enhanced_image_path)
+
+                    # 发送请求
+                    response = self.client.do_action_with_exception(request)
+                    result = json.loads(response)
+
+                    logger.debug(f"上传响应: {result}")
+                    print(f"上传响应: {result}")  # 临时打印
+
+                    # 判断上传是否成功
+                    if 'FaceRecords' in result and len(result['FaceRecords']) > 0:
+                        status = "成功"
+                        tag = "success"
+                        uploaded += 1
+                    else:
+                        status = "失败"
+                        tag = "failure"
+                        failed += 1
+
+                    # 添加到文件列表并设置颜色
                     filename = os.path.basename(image_path)
-                    self.listbox_files.insert(tk.END, filename)
-                    self.filename_to_path[filename] = image_path
-                else:
-                    logger.warning(f"图片 {image_path} 上传失败。错误代码：{json.dumps(result)}")
+                    item_id = self.tree_files.insert(
+                        "",
+                        "end",
+                        values=(filename, status),
+                        tags=(tag,)
+                    )
+                    self.filename_to_path[item_id] = image_path  # 使用 item_id 作为键
+                    logger.info(f"添加到列表: {filename} - {status}, 路径: {image_path}")
+                    print(f"添加到列表: {filename} - {status}, 路径: {image_path}")  # 临时打印
+
+                    if status == "成功":
+                        self.add_log("上传图片", "成功", filename)
+                    else:
+                        self.add_log("上传图片", f"失败：{json.dumps(result)}")
+
+                    # 更新进度条
+                    progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(self.selected_image_paths)})")
+                    progress_bar["value"] = i
+                    progress_window.update_idletasks()
+
+                except Exception as e:
+                    logger.error(f"上传 {image_path} 时发生错误: {e}")
+                    self.add_log("上传图片", f"失败：{e}")
+                    # 添加到 Treeview 即使出现异常
+                    filename = os.path.basename(image_path)
+                    item_id = self.tree_files.insert(
+                        "",
+                        "end",
+                        values=(filename, "失败"),
+                        tags=("failure",)
+                    )
+                    self.filename_to_path[item_id] = image_path
                     failed += 1
-                    self.add_log("上传图片", f"失败：{json.dumps(result)}")
+                    messagebox.showerror(
+                        self.languages[self.current_language]["error"],
+                        self.languages[self.current_language]["upload_image_error"].format(
+                            image=filename, error=str(e)
+                        )
+                    )
 
-                # 更新进度条
-                progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(self.selected_image_paths)})")
-                progress_bar["value"] = i
-                progress_window.update_idletasks()
+            # 上传完成后关闭进度窗口并显示结果
+            progress_window.destroy()
+            messagebox.showinfo(
+                self.languages[self.current_language]["upload_complete"],
+                self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" + 
+                self.languages[self.current_language]["upload_failed"].format(failed=failed)
+            )
+            logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
+            print(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")  # 临时打印
 
-            except Exception as e:
-                messagebox.showerror(self.languages[self.current_language]["error"], self.languages[self.current_language]["upload_image_error"].format(image=os.path.basename(image_path), error=str(e)))
-                logger.error(f"上传 {image_path} 时发生错误: {e}")
-                self.add_log("上传图片", f"失败：{e}")
-                failed += 1
+            # 自动显示第一张图片
+            if self.selected_image_paths:
+                # 获取所有项
+                all_items = self.tree_files.get_children()
+                if all_items:
+                    first_item = all_items[0]
+                    self.tree_files.selection_set(first_item)
+                    self.tree_files.focus(first_item)
+                    self.tree_files.event_generate("<<TreeviewSelect>>")
 
-        # 上传完成后关闭进度窗口并显示结果
-        progress_window.destroy()
-        messagebox.showinfo(self.languages[self.current_language]["upload_complete"], self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" + self.languages[self.current_language]["upload_failed"].format(failed=failed))
-        logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
+        except Exception as e:
+            logger.error(f"upload_faces 方法执行时发生未捕获的异常: {e}")
+            messagebox.showerror("错误", f"上传过程中发生错误: {e}")
+
+
+
+
 
     def upload_faces_from_path(self):
+        """从手动输入的文件夹路径上传图片"""
         folder_path = self.entry_manual_path.get().strip()
         if not folder_path:
             messagebox.showerror("错误", "请输入文件夹路径！")
@@ -675,7 +784,21 @@ class FaceRecognitionApp:
         # 触发批量上传
         self.upload_faces()
 
+        # 自动显示第一张图片
+        if self.selected_image_paths:
+            # 获取所有项
+            all_items = self.tree_files.get_children()
+            if all_items:
+                first_item = all_items[0]
+                self.tree_files.selection_set(first_item)
+                self.tree_files.focus(first_item)
+                self.tree_files.event_generate("<<TreeviewSelect>>")
+
+
+
+
     def match_face(self, image_path):
+        """进行人脸匹配"""
         with open(image_path, "rb") as image_file:
             files = {
                 'file': ('image.jpg', image_file, 'image/jpeg')
@@ -715,13 +838,14 @@ class FaceRecognitionApp:
                 return False, None
 
     def display_selected_image(self, event):
-        # 获取选中的文件名
-        selection = self.listbox_files.curselection()
-        if not selection:
+        """显示选中的图片"""
+        # 获取选中的行
+        selected_items = self.tree_files.selection()
+        if not selected_items:
             return
-        index = selection[0]
-        filename = self.listbox_files.get(index)
-        image_path = self.filename_to_path.get(filename)
+        item = selected_items[0]
+        filename = self.tree_files.item(item, "values")[0]
+        image_path = self.filename_to_path.get(item)  # 使用 item_id 获取路径
 
         if image_path and os.path.exists(image_path):
             try:
@@ -730,10 +854,19 @@ class FaceRecognitionApp:
                 self.display_image = self.original_image.copy()
                 self.photo_image = ImageTk.PhotoImage(self.display_image)
 
-                # 在Canvas上显示图像
+                # 在Canvas上显示图像，锚点改为'center'
                 if self.image_on_canvas:
                     self.canvas_image.delete(self.image_on_canvas)
-                self.image_on_canvas = self.canvas_image.create_image(0, 0, anchor='nw', image=self.photo_image)
+                # 确保 Canvas 的尺寸已更新
+                self.canvas_image.update_idletasks()
+                canvas_width = self.canvas_image.winfo_width()
+                canvas_height = self.canvas_image.winfo_height()
+                self.image_on_canvas = self.canvas_image.create_image(
+                    canvas_width // 2,
+                    canvas_height // 2,
+                    anchor='center',
+                    image=self.photo_image
+                )
 
                 # 调整Canvas大小以适应图像
                 self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
@@ -743,10 +876,24 @@ class FaceRecognitionApp:
 
                 logger.info(f"显示图片: {filename}")
 
+                # 启用缩放滑块并重置其值
+                self.scale.config(state='normal')
+                self.scale.set(100)  # 重置为100%
+                self.display_image = self.original_image.copy()  # 确保 display_image 是 original_image 的副本
+
             except (IOError, SyntaxError) as e:
                 messagebox.showerror("错误", f"无法打开图片 {filename}: {e}")
                 logger.error(f"无法打开图片 {filename}: {e}")
                 print(f"错误详情: {e}")
+                self.scale.config(state='disabled')  # 禁用缩放滑块
+
+
+
+
+
+
+
+
 
     def zoom_image(self, event):
         """使用鼠标滚轮进行缩放"""
@@ -760,32 +907,54 @@ class FaceRecognitionApp:
 
     def zoom_image_manual(self, scale_factor):
         """通过按钮或鼠标滚轮进行缩放"""
-        if self.display_image:
-            new_width = int(self.display_image.width * scale_factor)
-            new_height = int(self.display_image.height * scale_factor)
+        if not self.display_image:
+            return
+        new_width = int(self.display_image.width * scale_factor)
+        new_height = int(self.display_image.height * scale_factor)
 
-            # 限制缩放比例
-            if new_width < 50 or new_height < 50:
-                messagebox.showwarning("缩放限制", "无法缩放到更小的尺寸。")
-                return
-            if new_width > 5000 or new_height > 5000:
-                messagebox.showwarning("缩放限制", "无法缩放到更大的尺寸。")
-                return
+        # 限制缩放比例
+        if new_width < 50 or new_height < 50:
+            messagebox.showwarning("缩放限制", "无法缩放到更小的尺寸。")
+            return
+        if new_width > 5000 or new_height > 5000:
+            messagebox.showwarning("缩放限制", "无法缩放到更大的尺寸。")
+            return
 
+        try:
+            # 基于当前显示的图像进行缩放
             self.display_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
             self.photo_image = ImageTk.PhotoImage(self.display_image)
             self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
+
+            # 确保 Canvas 的尺寸已更新
+            self.canvas_image.update_idletasks()
+            canvas_width = self.canvas_image.winfo_width()
+            canvas_height = self.canvas_image.winfo_height()
+
+            # 将图像重新定位到 Canvas 的中心
+            self.canvas_image.coords(self.image_on_canvas, canvas_width // 2, canvas_height // 2)
+
+            # 更新 Canvas 的滚动区域
             self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
+
+            # 保持对图像的引用
+            self.canvas_image.image = self.photo_image
+            logger.info("Canvas图像更新完成。")
+            logger.info("保持图像引用完成。")
+        except Exception as e:
+            logger.error(f"缩放图像时发生错误: {e}")
+            messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
+
 
     def rotate_image(self, angle):
         """旋转图像"""
-        if self.display_image:
-            self.display_image = self.display_image.rotate(angle, expand=True)
-            self.photo_image = ImageTk.PhotoImage(self.display_image)
-            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
+        if not self.display_image:
+            return
+        self.display_image = self.display_image.rotate(angle, expand=True)
+        self.photo_image = ImageTk.PhotoImage(self.display_image)
+        self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
+        self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
+        self.canvas_image.image = self.photo_image  # 保持引用
 
     def on_button_press(self, event):
         """记录鼠标点击位置"""
@@ -794,47 +963,52 @@ class FaceRecognitionApp:
 
     def on_move_press(self, event):
         """计算鼠标移动距离并移动图像"""
-        dx = event.x - self.drag_data["x"]
-        dy = event.y - self.drag_data["y"]
-        self.canvas_image.move(self.image_on_canvas, dx, dy)
-        self.drag_data["x"] = event.x
-        self.drag_data["y"] = event.y
+        if self.image_on_canvas is not None:
+            dx = event.x - self.drag_data["x"]
+            dy = event.y - self.drag_data["y"]
+            self.canvas_image.move(self.image_on_canvas, dx, dy)
+            self.drag_data["x"] = event.x
+            self.drag_data["y"] = event.y
+        else:
+            logger.warning("没有图像在Canvas上，无法移动。")
 
     def fullscreen_view(self):
         """全屏查看图像"""
-        if self.display_image:
-            top = tk.Toplevel(self.root)
-            top.attributes("-fullscreen", True)
-            top.configure(bg='black')
+        if not self.display_image:
+            return
+        top = tk.Toplevel(self.root)
+        top.attributes("-fullscreen", True)
+        top.configure(bg='black')
 
-            # 创建Canvas
-            fullscreen_canvas = tk.Canvas(top, bg='black')
-            fullscreen_canvas.pack(fill=tk.BOTH, expand=True)
+        # 创建Canvas
+        fullscreen_canvas = tk.Canvas(top, bg='black')
+        fullscreen_canvas.pack(fill=tk.BOTH, expand=True)
 
-            # 调整图像尺寸以适应全屏
-            screen_width = top.winfo_screenwidth()
-            screen_height = top.winfo_screenheight()
-            img_ratio = self.display_image.width / self.display_image.height
-            screen_ratio = screen_width / screen_height
+        # 调整图像尺寸以适应全屏
+        screen_width = top.winfo_screenwidth()
+        screen_height = top.winfo_screenheight()
+        img_ratio = self.display_image.width / self.display_image.height
+        screen_ratio = screen_width / screen_height
 
-            if img_ratio > screen_ratio:
-                new_width = screen_width
-                new_height = int(screen_width / img_ratio)
-            else:
-                new_height = screen_height
-                new_width = int(screen_height * img_ratio)
+        if img_ratio > screen_ratio:
+            new_width = screen_width
+            new_height = int(screen_width / img_ratio)
+        else:
+            new_height = screen_height
+            new_width = int(screen_height * img_ratio)
 
-            resized_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-            photo_image_fullscreen = ImageTk.PhotoImage(resized_image)
+        resized_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
+        photo_image_fullscreen = ImageTk.PhotoImage(resized_image)
 
-            # 在全屏Canvas上显示图像
-            fullscreen_canvas.create_image(screen_width//2, screen_height//2, anchor='center', image=photo_image_fullscreen)
-            fullscreen_canvas.image = photo_image_fullscreen  # 保持引用
+        # 在全屏Canvas上显示图像
+        fullscreen_canvas.create_image(screen_width//2, screen_height//2, anchor='center', image=photo_image_fullscreen)
+        fullscreen_canvas.image = photo_image_fullscreen  # 保持引用
 
-            # 绑定Esc键退出全屏
-            top.bind("<Escape>", lambda e: top.destroy())
+        # 绑定Esc键退出全屏
+        top.bind("<Escape>", lambda e: top.destroy())
 
     def open_camera_window(self):
+        """打开摄像头窗口"""
         try:
             self.cap = cv2.VideoCapture(0)
             if not self.cap.isOpened():
@@ -873,6 +1047,7 @@ class FaceRecognitionApp:
             return
 
     def update_camera_frame(self):
+        """更新摄像头画面"""
         ret, frame = self.cap.read()
         if ret:
             # 转换颜色为RGB
@@ -889,6 +1064,7 @@ class FaceRecognitionApp:
         self.camera_window.after(30, self.update_camera_frame)
 
     def capture_photo(self):
+        """捕捉当前帧并进行人脸识别"""
         if hasattr(self, 'current_frame') and self.current_frame:
             # 生成唯一的文件名
             timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
@@ -911,6 +1087,7 @@ class FaceRecognitionApp:
                 self.close_camera_window()
 
     def close_camera_window(self):
+        """关闭摄像头窗口并释放资源"""
         if hasattr(self, 'cap') and self.cap.isOpened():
             self.cap.release()
             logger.info("摄像头已释放。")
@@ -922,6 +1099,7 @@ class FaceRecognitionApp:
         cv2.destroyAllWindows()
 
     def open_images(self):
+        """上传图片"""
         file_paths = filedialog.askopenfilenames(
             title="选择图片",
             filetypes=[("Image Files", "*.jpg;*.jpeg;*.png")]
@@ -951,13 +1129,23 @@ class FaceRecognitionApp:
             logger.info(f"已复制 {len(self.selected_image_paths)} 张图片到上传文件夹。")
             self.add_log("上传图片", f"成功：复制了 {len(self.selected_image_paths)} 张图片")
 
+            # 调用 upload_faces 处理并显示图片
+            self.upload_faces()
+
             # 自动显示第一张图片
             if self.selected_image_paths:
-                self.listbox_files.selection_clear(0, tk.END)
-                self.listbox_files.selection_set(0)
-                self.listbox_files.event_generate("<<ListboxSelect>>")
+                # 获取所有项
+                all_items = self.tree_files.get_children()
+                if all_items:
+                    first_item = all_items[0]
+                    self.tree_files.selection_set(first_item)
+                    self.tree_files.focus(first_item)
+                    self.tree_files.event_generate("<<TreeviewSelect>>")
+
+
 
     def open_folder(self):
+        """上传文件夹中的图片"""
         folder_path = filedialog.askdirectory(title="选择包含图片的文件夹")
         if folder_path:
             # 遍历文件夹中的所有图片文件
@@ -1001,9 +1189,14 @@ class FaceRecognitionApp:
 
             # 自动显示第一张图片
             if self.selected_image_paths:
-                self.listbox_files.selection_clear(0, tk.END)
-                self.listbox_files.selection_set(0)
-                self.listbox_files.event_generate("<<ListboxSelect>>")
+                # 获取所有项
+                all_items = self.tree_files.get_children()
+                if all_items:
+                    first_item = all_items[0]
+                    self.tree_files.selection_set(first_item)
+                    self.tree_files.focus(first_item)
+                    self.tree_files.event_generate("<<TreeviewSelect>>")
+
 
     def check_network(self):
         """定期检查网络连接状态"""
@@ -1029,6 +1222,7 @@ class FaceRecognitionApp:
         self.root.after(1000, self.update_time)
 
     def export_logs(self):
+        """导出日志为CSV文件"""
         if not self.logs:
             messagebox.showinfo("导出日志", "当前没有任何日志记录。")
             logger.info("导出日志失败：当前没有任何日志记录。")
@@ -1056,6 +1250,7 @@ class FaceRecognitionApp:
                 logger.error(f"导出日志失败: {e}")
 
     def show_help(self):
+        """显示帮助文档"""
         help_text = self.languages[self.current_language].get("help_text", "")
         help_window = tk.Toplevel(self.root)
         help_window.title(self.languages[self.current_language]["help_window_title"])
@@ -1070,416 +1265,13 @@ class FaceRecognitionApp:
         help_textbox.config(state='disabled')  # 只读
 
     # 以下是集成的图像交互功能方法
-    def zoom_image(self, event):
-        """使用鼠标滚轮进行缩放"""
-        if event.num == 4 or event.delta > 0:
-            scale = 1.1
-        elif event.num == 5 or event.delta < 0:
-            scale = 0.9
-        else:
-            scale = 1.0
-        self.zoom_image_manual(scale)
-
-    def zoom_image_manual(self, scale_factor):
-        """通过按钮或鼠标滚轮进行缩放"""
-        if self.display_image:
-            new_width = int(self.display_image.width * scale_factor)
-            new_height = int(self.display_image.height * scale_factor)
-
-            # 限制缩放比例
-            if new_width < 50 or new_height < 50:
-                messagebox.showwarning("缩放限制", "无法缩放到更小的尺寸。")
-                return
-            if new_width > 5000 or new_height > 5000:
-                messagebox.showwarning("缩放限制", "无法缩放到更大的尺寸。")
-                return
-
-            self.display_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-            self.photo_image = ImageTk.PhotoImage(self.display_image)
-            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
-
-    def rotate_image(self, angle):
-        """旋转图像"""
-        if self.display_image:
-            self.display_image = self.display_image.rotate(angle, expand=True)
-            self.photo_image = ImageTk.PhotoImage(self.display_image)
-            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
-
-    def on_button_press(self, event):
-        """记录鼠标点击位置"""
-        self.drag_data["x"] = event.x
-        self.drag_data["y"] = event.y
-
-    def on_move_press(self, event):
-        """计算鼠标移动距离并移动图像"""
-        dx = event.x - self.drag_data["x"]
-        dy = event.y - self.drag_data["y"]
-        self.canvas_image.move(self.image_on_canvas, dx, dy)
-        self.drag_data["x"] = event.x
-        self.drag_data["y"] = event.y
-
-    def fullscreen_view(self):
-        """全屏查看图像"""
-        if self.display_image:
-            top = tk.Toplevel(self.root)
-            top.attributes("-fullscreen", True)
-            top.configure(bg='black')
-
-            # 创建Canvas
-            fullscreen_canvas = tk.Canvas(top, bg='black')
-            fullscreen_canvas.pack(fill=tk.BOTH, expand=True)
-
-            # 调整图像尺寸以适应全屏
-            screen_width = top.winfo_screenwidth()
-            screen_height = top.winfo_screenheight()
-            img_ratio = self.display_image.width / self.display_image.height
-            screen_ratio = screen_width / screen_height
-
-            if img_ratio > screen_ratio:
-                new_width = screen_width
-                new_height = int(screen_width / img_ratio)
-            else:
-                new_height = screen_height
-                new_width = int(screen_height * img_ratio)
-
-            resized_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-            photo_image_fullscreen = ImageTk.PhotoImage(resized_image)
-
-            # 在全屏Canvas上显示图像
-            fullscreen_canvas.create_image(screen_width//2, screen_height//2, anchor='center', image=photo_image_fullscreen)
-            fullscreen_canvas.image = photo_image_fullscreen  # 保持引用
-
-            # 绑定Esc键退出全屏
-            top.bind("<Escape>", lambda e: top.destroy())
-
-    def open_camera_window(self):
-        try:
-            self.cap = cv2.VideoCapture(0)
-            if not self.cap.isOpened():
-                raise Exception(self.languages[self.current_language]["error"] + ": 摄像头无法打开。")
-            self.camera_window = tk.Toplevel(self.root)
-            self.camera_window.title(self.languages[self.current_language]["camera_window_title"])
-            self.camera_window.geometry("650x550")
-            self.camera_window.configure(bg="#2c3e50")
-
-            # 禁用主窗口
-            self.root.attributes("-disabled", True)
-
-            # 处理窗口关闭事件
-            self.camera_window.protocol("WM_DELETE_WINDOW", self.close_camera_window)
-
-            # 创建摄像头画面显示标签
-            self.camera_label = tk.Label(self.camera_window, bg="#34495e")
-            self.camera_label.pack(pady=20, padx=20, fill='both', expand=True)
-
-            # 创建“拍照”按钮
-            self.capture_button = ttk.Button(self.camera_window, text=self.languages[self.current_language]["capture_photo"], command=self.capture_photo)
-            self.capture_button.pack(pady=10)
-            ToolTip(self.capture_button, "点击拍照并进行人脸识别")
-
-            # 启动视频流更新
-            self.update_camera_frame()
-
-            self.add_log("启动摄像头", "成功")
-            logger.info("摄像头已启动。")
-
-        except Exception as e:
-            messagebox.showerror(self.languages[self.current_language]["error"], str(e))
-            logger.error(f"启动摄像头失败：{e}")
-            self.add_log("启动摄像头", f"失败：{e}")
-            self.close_camera_window()
-            return
-
-    def update_camera_frame(self):
-        ret, frame = self.cap.read()
-        if ret:
-            # 转换颜色为RGB
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            img = Image.fromarray(frame)
-            img = img.resize((600, 400), Image.LANCZOS)
-            self.current_frame = img  # 保存当前帧用于拍照
-
-            img_tk = ImageTk.PhotoImage(img)
-            self.camera_label.imgtk = img_tk  # 保持引用
-            self.camera_label.config(image=img_tk)
-
-        # 每30毫秒更新一次画面
-        self.camera_window.after(30, self.update_camera_frame)
-
-    def capture_photo(self):
-        if hasattr(self, 'current_frame') and self.current_frame:
-            # 生成唯一的文件名
-            timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
-            captured_image_path = os.path.join(self.camera_dir, f"captured_face_{timestamp}.jpg")
-            self.current_frame.save(captured_image_path)
-            messagebox.showinfo("拍照成功", f"图片已保存为 {captured_image_path}")
-            self.add_log("拍照", "成功", captured_image_path)  # 添加日志记录
-
-            # 进行人脸匹配
-            match_result, matched_person = self.match_face(captured_image_path)
-            if match_result:
-                messagebox.showinfo("结果", f"此人在人脸库中！匹配人员: {matched_person}")
-                self.add_log("人脸匹配", "成功", matched_person)
-            else:
-                messagebox.showinfo("结果", "此人不在库中！")
-                self.add_log("人脸匹配", "失败")
-
-            # 提示用户是否继续
-            if not messagebox.askyesno("继续", "是否继续上传新图片或继续拍照？"):
-                self.close_camera_window()
-
-    def close_camera_window(self):
-        if hasattr(self, 'cap') and self.cap.isOpened():
-            self.cap.release()
-            logger.info("摄像头已释放。")
-            self.add_log("关闭摄像头", "成功")
-        if hasattr(self, 'camera_window') and self.camera_window.winfo_exists():
-            self.camera_window.destroy()
-        # 重新启用主窗口
-        self.root.attributes("-disabled", False)
-        cv2.destroyAllWindows()
-
-    def open_images(self):
-        file_paths = filedialog.askopenfilenames(
-            title="选择图片",
-            filetypes=[("Image Files", "*.jpg;*.jpeg;*.png")]
-        )
-        if file_paths:
-            logger.info(f"选择的图片路径: {file_paths}")
-
-            # 将图片复制到上传文件夹
-            copied_image_paths = []
-            for image_path in file_paths:
-                try:
-                    dest_path = os.path.join(self.uploaded_dir, os.path.basename(image_path))
-                    shutil.copy2(image_path, dest_path)
-                    copied_image_paths.append(dest_path)
-                    logger.info(f"复制图片 {image_path} 到 {dest_path}")
-                except Exception as e:
-                    logger.error(f"复制图片 {image_path} 时发生错误: {e}")
-                    print(f"复制图片 {image_path} 时发生错误: {e}")
-
-            if not copied_image_paths:
-                messagebox.showerror("错误", "没有图片被复制到上传文件夹！")
-                logger.error("上传失败：没有图片被复制到上传文件夹。")
-                self.add_log("上传图片", "失败：没有图片被复制到上传文件夹")
-                return
-
-            self.selected_image_paths = copied_image_paths
-            logger.info(f"已复制 {len(self.selected_image_paths)} 张图片到上传文件夹。")
-            self.add_log("上传图片", f"成功：复制了 {len(self.selected_image_paths)} 张图片")
-
-            # 自动显示第一张图片
-            if self.selected_image_paths:
-                self.listbox_files.selection_clear(0, tk.END)
-                self.listbox_files.selection_set(0)
-                self.listbox_files.event_generate("<<ListboxSelect>>")
-
-    def open_folder(self):
-        folder_path = filedialog.askdirectory(title="选择包含图片的文件夹")
-        if folder_path:
-            # 遍历文件夹中的所有图片文件
-            image_extensions = (".jpg", ".jpeg", ".png")
-            image_paths = [
-                os.path.join(folder_path, filename) for filename in os.listdir(folder_path)
-                if filename.lower().endswith(image_extensions)
-            ]
-
-            # 如果文件夹没有图片，弹出提示
-            if not image_paths:
-                messagebox.showwarning("无图片", "该文件夹中没有支持的图片文件（.jpg, .jpeg, .png）！")
-                logger.warning(f"上传文件夹警告：文件夹 {folder_path} 中没有支持的图片文件。")
-                self.add_log("上传文件夹", f"失败：文件夹 {folder_path} 中没有支持的图片文件")
-                return
-
-            logger.info(f"选择的文件夹: {folder_path}")
-            logger.info(f"找到 {len(image_paths)} 张图片")
-
-            # 将图片复制到上传文件夹
-            copied_image_paths = []
-            for image_path in image_paths:
-                try:
-                    dest_path = os.path.join(self.uploaded_dir, os.path.basename(image_path))
-                    shutil.copy2(image_path, dest_path)
-                    copied_image_paths.append(dest_path)
-                    logger.info(f"复制图片 {image_path} 到 {dest_path}")
-                except Exception as e:
-                    logger.error(f"复制图片 {image_path} 时发生错误: {e}")
-                    print(f"复制图片 {image_path} 时发生错误: {e}")
-
-            if not copied_image_paths:
-                messagebox.showerror("错误", "没有图片被复制到上传文件夹！")
-                logger.error(f"上传文件夹失败：没有图片被复制到上传文件夹 {self.uploaded_dir}")
-                self.add_log("上传文件夹", "失败：没有图片被复制到上传文件夹")
-                return
-
-            self.selected_image_paths = copied_image_paths
-            logger.info(f"已复制 {len(self.selected_image_paths)} 张图片到上传文件夹。")
-            self.add_log("上传文件夹", f"成功：复制了 {len(self.selected_image_paths)} 张图片")
-
-            # 自动显示第一张图片
-            if self.selected_image_paths:
-                self.listbox_files.selection_clear(0, tk.END)
-                self.listbox_files.selection_set(0)
-                self.listbox_files.event_generate("<<ListboxSelect>>")
-
-    def check_network(self):
-        """定期检查网络连接状态"""
-        try:
-            response = requests.get("https://www.google.com", timeout=5)
-            if response.status_code == 200:
-                self.network_status_label.config(text="网络状态: 已连接", fg="green")
-                logger.info("网络状态: 已连接")
-            else:
-                self.network_status_label.config(text="网络状态: 未连接", fg="red")
-                logger.warning("网络状态: 未连接")
-        except requests.RequestException:
-            self.network_status_label.config(text="网络状态: 未连接", fg="red")
-            logger.warning("网络状态: 未连接")
-        # 每5秒检查一次
-        self.root.after(5000, self.check_network)
-
-    def update_time(self):
-        """定期更新时间显示"""
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        self.time_label.config(text=f"当前时间: {current_time}")
-        # 每秒更新一次
-        self.root.after(1000, self.update_time)
-
-    def export_logs(self):
-        if not self.logs:
-            messagebox.showinfo("导出日志", "当前没有任何日志记录。")
-            logger.info("导出日志失败：当前没有任何日志记录。")
-            return
-
-        export_path = filedialog.asksaveasfilename(
-            defaultextension=".csv",
-            filetypes=[("CSV files", "*.csv"), ("All files", "*.*")]
-        )
-
-        if export_path:
-            try:
-                with open(export_path, mode='w', newline='', encoding='utf-8-sig') as csv_file:
-                    fieldnames = ["Timestamp", "Operation", "Result", "Matched_Person"]
-                    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-
-                    writer.writeheader()
-                    for log in self.logs:
-                        writer.writerow(log)
-
-                messagebox.showinfo("导出成功", f"日志已成功导出到 {export_path}")
-                logger.info(f"日志已导出到 {export_path}")
-            except Exception as e:
-                messagebox.showerror("导出失败", f"导出日志失败: {e}")
-                logger.error(f"导出日志失败: {e}")
-
-    def show_help(self):
-        help_text = self.languages[self.current_language].get("help_text", "")
-        help_window = tk.Toplevel(self.root)
-        help_window.title(self.languages[self.current_language]["help_window_title"])
-        help_window.geometry("700x600")
-        help_window.configure(bg="#2c3e50")
-
-        # 使用ScrolledText显示长文本
-        from tkinter.scrolledtext import ScrolledText
-        help_textbox = ScrolledText(help_window, wrap=tk.WORD, bg="#2c3e50", fg="#ecf0f1", font=("Helvetica", 12))
-        help_textbox.pack(fill='both', expand=True, padx=10, pady=10)
-        help_textbox.insert(tk.END, help_text)
-        help_textbox.config(state='disabled')  # 只读
-
-    # 以下是集成的图像交互功能方法
-    def zoom_image(self, event):
-        """使用鼠标滚轮进行缩放"""
-        if event.num == 4 or event.delta > 0:
-            scale = 1.1
-        elif event.num == 5 or event.delta < 0:
-            scale = 0.9
-        else:
-            scale = 1.0
-        self.zoom_image_manual(scale)
-
-    def zoom_image_manual(self, scale_factor):
-        """通过按钮或鼠标滚轮进行缩放"""
-        if self.display_image:
-            new_width = int(self.display_image.width * scale_factor)
-            new_height = int(self.display_image.height * scale_factor)
-
-            # 限制缩放比例
-            if new_width < 50 or new_height < 50:
-                messagebox.showwarning("缩放限制", "无法缩放到更小的尺寸。")
-                return
-            if new_width > 5000 or new_height > 5000:
-                messagebox.showwarning("缩放限制", "无法缩放到更大的尺寸。")
-                return
-
-            self.display_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-            self.photo_image = ImageTk.PhotoImage(self.display_image)
-            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
-
-    def rotate_image(self, angle):
-        """旋转图像"""
-        if self.display_image:
-            self.display_image = self.display_image.rotate(angle, expand=True)
-            self.photo_image = ImageTk.PhotoImage(self.display_image)
-            self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
-            self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
-            self.canvas_image.image = self.photo_image  # 保持引用
-
-    def on_button_press(self, event):
-        """记录鼠标点击位置"""
-        self.drag_data["x"] = event.x
-        self.drag_data["y"] = event.y
-
-    def on_move_press(self, event):
-        """计算鼠标移动距离并移动图像"""
-        dx = event.x - self.drag_data["x"]
-        dy = event.y - self.drag_data["y"]
-        self.canvas_image.move(self.image_on_canvas, dx, dy)
-        self.drag_data["x"] = event.x
-        self.drag_data["y"] = event.y
-
-    def fullscreen_view(self):
-        """全屏查看图像"""
-        if self.display_image:
-            top = tk.Toplevel(self.root)
-            top.attributes("-fullscreen", True)
-            top.configure(bg='black')
-
-            # 创建Canvas
-            fullscreen_canvas = tk.Canvas(top, bg='black')
-            fullscreen_canvas.pack(fill=tk.BOTH, expand=True)
-
-            # 调整图像尺寸以适应全屏
-            screen_width = top.winfo_screenwidth()
-            screen_height = top.winfo_screenheight()
-            img_ratio = self.display_image.width / self.display_image.height
-            screen_ratio = screen_width / screen_height
-
-            if img_ratio > screen_ratio:
-                new_width = screen_width
-                new_height = int(screen_width / img_ratio)
-            else:
-                new_height = screen_height
-                new_width = int(screen_height * img_ratio)
-
-            resized_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
-            photo_image_fullscreen = ImageTk.PhotoImage(resized_image)
-
-            # 在全屏Canvas上显示图像
-            fullscreen_canvas.create_image(screen_width//2, screen_height//2, anchor='center', image=photo_image_fullscreen)
-            fullscreen_canvas.image = photo_image_fullscreen  # 保持引用
-
-            # 绑定Esc键退出全屏
-            top.bind("<Escape>", lambda e: top.destroy())
+    # (这些方法已经在类的其他部分定义过，无需再次定义)
 
 # 以下是主程序启动部分
 if __name__ == "__main__":
+    root = tk.Tk()
+    app = FaceRecognitionApp(root)
+    root.mainloop()
     root = tk.Tk()
     app = FaceRecognitionApp(root)
     root.mainloop()
