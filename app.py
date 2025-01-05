@@ -42,6 +42,7 @@ class ToolTip(object):
         self.widget.bind("<Leave>", self.leave)
 
     def set_text(self, new_text):
+        """动态更新提示文本"""
         self.text = new_text
 
     def enter(self, event=None):
@@ -116,6 +117,11 @@ class FaceRecognitionApp:
         # 人脸库ID，替换为你自己的库ID
         self.face_lib_id = os.getenv('face_lib_id', 'default')  # 从环境变量中读取 FaceLibId
 
+        # 加载语言资源
+        self.languages = self.load_languages()
+        self.current_language = 'zh'  # 默认语言为中文
+        lang = self.languages.get(self.current_language, self.languages['zh'])
+
         # 创建阿里云客户端
         try:
             self.client = AcsClient(self.access_key_id, self.access_key_secret, 'cn-shanghai')
@@ -138,34 +144,34 @@ class FaceRecognitionApp:
         self.style = ttk.Style()
         self.style.theme_use('clam')  # 使用 'clam' 主题，适合自定义样式
         self.style.configure("TButton",
-                             font=("Helvetica", 12, "bold"),
-                             padding=10,
-                             relief="flat",
-                             background="#1abc9c",  # 青绿色
-                             foreground="white")
+                            font=("Helvetica", 12, "bold"),
+                            padding=10,
+                            relief="flat",
+                            background="#1abc9c",  # 青绿色
+                            foreground="white")
         self.style.map("TButton",
-                       background=[('active', '#16a085')])  # 鼠标悬停时颜色变化
+                    background=[('active', '#16a085')])  # 鼠标悬停时颜色变化
 
         # 创建顶部状态框架
         self.frame_status = tk.Frame(root, bg="#2c3e50")
         self.frame_status.pack(pady=10, padx=20, fill='x')
 
         # 网络连接状态标签
-        self.network_status_label = tk.Label(self.frame_status, text="网络状态: 检测中...",
-                                             font=("Helvetica", 12),
-                                             bg="#2c3e50",
-                                             fg="yellow")
+        self.network_status_label = tk.Label(self.frame_status, text=lang["network_status"],
+                                            font=("Helvetica", 12),
+                                            bg="#2c3e50",
+                                            fg="yellow")
         self.network_status_label.pack(side='left', padx=10)
 
         # 当地时间标签
-        self.time_label = tk.Label(self.frame_status, text="当前时间: --:--:--",
-                                   font=("Helvetica", 12),
-                                   bg="#2c3e50",
-                                   fg="yellow")
+        self.time_label = tk.Label(self.frame_status, text=f"{lang['current_time']}: --:--:--",
+                                font=("Helvetica", 12),
+                                bg="#2c3e50",
+                                fg="yellow")
         self.time_label.pack(side='right', padx=10)
 
         # 创建顶部标题
-        self.title_label = tk.Label(root, text="人脸识别系统",
+        self.title_label = tk.Label(root, text=lang["title"],
                                     font=("Helvetica", 18, "bold"),
                                     bg="#2c3e50",
                                     fg="#ecf0f1")
@@ -175,48 +181,47 @@ class FaceRecognitionApp:
         self.frame_buttons = tk.Frame(root, bg="#2c3e50")
         self.frame_buttons.pack(pady=10, padx=20, fill='x')
 
-        self.button_open_images = ttk.Button(self.frame_buttons, text="上传图片", command=self.open_images)
+        self.button_open_images = ttk.Button(self.frame_buttons, text=lang["upload_images"], command=self.open_images)
         self.button_open_images.pack(pady=5, fill='x')
 
-        self.button_open_folder = ttk.Button(self.frame_buttons, text="上传文件夹图片", command=self.open_folder)
+        self.button_open_folder = ttk.Button(self.frame_buttons, text=lang["upload_folder_images"], command=self.open_folder)
         self.button_open_folder.pack(pady=5, fill='x')
 
-        self.button_start_camera = ttk.Button(self.frame_buttons, text="启动摄像头", command=self.open_camera_window)
+        self.button_start_camera = ttk.Button(self.frame_buttons, text=lang["start_camera"], command=self.open_camera_window)
         self.button_start_camera.pack(pady=5, fill='x')
 
-        self.button_help = ttk.Button(self.frame_buttons, text="帮助", command=self.show_help)
+        self.button_help = ttk.Button(self.frame_buttons, text=lang["help"], command=self.show_help)
         self.button_help.pack(pady=5, fill='x')
 
         # 添加手动输入路径的功能
         self.frame_manual_path = tk.Frame(root, bg="#2c3e50")
         self.frame_manual_path.pack(pady=10, padx=20, fill='x')
 
-        self.label_manual_path = tk.Label(self.frame_manual_path, text="手动输入文件夹路径:",
-                                          font=("Helvetica", 12),
-                                          bg="#2c3e50",
-                                          fg="#ecf0f1")
+        self.label_manual_path = tk.Label(self.frame_manual_path, text=lang["manual_path_label"],
+                                        font=("Helvetica", 12),
+                                        bg="#2c3e50",
+                                        fg="#ecf0f1")
         self.label_manual_path.pack(side='left', padx=5)
 
         self.entry_manual_path = tk.Entry(self.frame_manual_path, width=50, font=("Helvetica", 12))
         self.entry_manual_path.pack(side='left', padx=5, fill='x', expand=True)
 
-        self.button_browse_path = ttk.Button(self.frame_manual_path, text="浏览", command=self.browse_folder)
+        self.button_browse_path = ttk.Button(self.frame_manual_path, text=lang["browse"], command=self.browse_folder)
         self.button_browse_path.pack(side='left', padx=5)
 
-        self.button_upload_manual_path = ttk.Button(self.frame_manual_path, text="上传", command=self.upload_faces_from_path)
+        self.button_upload_manual_path = ttk.Button(self.frame_manual_path, text=lang["upload"], command=self.upload_faces_from_path)
         self.button_upload_manual_path.pack(side='left', padx=5)
 
         # 创建左侧的文件名列表框架
         self.frame_file_list = tk.Frame(root, bg="#2c3e50")
         self.frame_file_list.pack(pady=10, padx=20, fill='y', side='left')
 
-        self.label_uploaded_files = tk.Label(self.frame_file_list, text="已上传文件列表:",
-                                             font=("Helvetica", 12, "bold"),
-                                             bg="#2c3e50",
-                                             fg="#ecf0f1")
+        self.label_uploaded_files = tk.Label(self.frame_file_list, text=lang["uploaded_files"],
+                                            font=("Helvetica", 12, "bold"),
+                                            bg="#2c3e50",
+                                            fg="#ecf0f1")
         self.label_uploaded_files.pack(pady=5)
 
-                # 创建一个带滚动条的Treeview
         # 创建一个带滚动条的Treeview
         self.scrollbar = tk.Scrollbar(self.frame_file_list, orient=tk.VERTICAL)
         self.tree_files = ttk.Treeview(
@@ -230,8 +235,8 @@ class FaceRecognitionApp:
         self.tree_files.pack(side='left', fill='both', expand=True)
 
         # 定义列标题
-        self.tree_files.heading("Filename", text="文件名")
-        self.tree_files.heading("Status", text="状态")
+        self.tree_files.heading("Filename", text=lang["filename_header"])
+        self.tree_files.heading("Status", text=lang["status_header"])
         self.tree_files.column("Filename", width=250, anchor='w')  # 调整文件名列宽度和对齐方式
         self.tree_files.column("Status", width=100, anchor='center')  # 调整状态列宽度和对齐方式
 
@@ -241,9 +246,6 @@ class FaceRecognitionApp:
 
         # 绑定Treeview的选择事件
         self.tree_files.bind('<<TreeviewSelect>>', self.display_selected_image)
-
-
-
 
         # 创建右侧的图像显示框架
         self.frame_image = tk.Frame(root, bg="#2c3e50", bd=2, relief="groove")
@@ -272,89 +274,101 @@ class FaceRecognitionApp:
 
         # 创建右键菜单
         self.context_menu = tk.Menu(self.root, tearoff=0)
-        self.context_menu.add_command(label="顺时针旋转90°", command=lambda: self.rotate_image(90))
-        self.context_menu.add_command(label="逆时针旋转90°", command=lambda: self.rotate_image(-90))
-        self.context_menu.add_command(label="全屏查看", command=self.fullscreen_view)
+        self.context_menu.add_command(label=lang["rotate_right"], command=lambda: self.rotate_image(90))
+        self.context_menu.add_command(label=lang["rotate_left"], command=lambda: self.rotate_image(-90))
+        self.context_menu.add_command(label=lang["fullscreen_view"], command=self.fullscreen_view)
 
         # 创建图像控制按钮框架
         self.frame_image_controls = tk.Frame(root, bg="#2c3e50")
         self.frame_image_controls.pack(pady=10, padx=20, fill='x')
 
         # 缩放按钮
-        self.button_zoom_in = ttk.Button(self.frame_image_controls, text="放大", command=lambda: self.zoom_image_manual(1.1))
+        self.button_zoom_in = ttk.Button(self.frame_image_controls, text=lang["zoom_in"], command=lambda: self.zoom_image_manual(1.1))
         self.button_zoom_in.pack(side='left', padx=5)
-        ToolTip(self.button_zoom_in, "点击放大图像")
+        self.tooltip_zoom_in = ToolTip(self.button_zoom_in, lang["zoom_in_tooltip"])
 
-        self.button_zoom_out = ttk.Button(self.frame_image_controls, text="缩小", command=lambda: self.zoom_image_manual(0.9))
+        self.button_zoom_out = ttk.Button(self.frame_image_controls, text=lang["zoom_out"], command=lambda: self.zoom_image_manual(0.9))
         self.button_zoom_out.pack(side='left', padx=5)
-        ToolTip(self.button_zoom_out, "点击缩小图像")
+        self.tooltip_zoom_out = ToolTip(self.button_zoom_out, lang["zoom_out_tooltip"])
 
         # 旋转按钮
-        self.button_rotate_left = ttk.Button(self.frame_image_controls, text="逆时针旋转90°", command=lambda: self.rotate_image(-90))
+        self.button_rotate_left = ttk.Button(self.frame_image_controls, text=lang["rotate_left"], command=lambda: self.rotate_image(-90))
         self.button_rotate_left.pack(side='left', padx=5)
-        ToolTip(self.button_rotate_left, "逆时针旋转图像90°")
+        self.tooltip_rotate_left = ToolTip(self.button_rotate_left, lang["rotate_left_tooltip"])
 
-        self.button_rotate_right = ttk.Button(self.frame_image_controls, text="顺时针旋转90°", command=lambda: self.rotate_image(90))
+        self.button_rotate_right = ttk.Button(self.frame_image_controls, text=lang["rotate_right"], command=lambda: self.rotate_image(90))
         self.button_rotate_right.pack(side='left', padx=5)
-        ToolTip(self.button_rotate_right, "顺时针旋转图像90°")
+        self.tooltip_rotate_right = ToolTip(self.button_rotate_right, lang["rotate_right_tooltip"])
 
         # 添加缩放滑块
-        self.scale = tk.Scale(self.frame_image_controls, from_=50, to=200, orient=tk.HORIZONTAL, label="缩放比例 (%)", command=self.scale_image)
+        self.scale = tk.Scale(
+            self.frame_image_controls,
+            from_=10,  # 调整最小值为10%
+            to=200,    # 保持最大值为200%
+            orient=tk.HORIZONTAL,
+            label=lang["scale_label"],
+            command=self.scale_image
+        )
         self.scale.set(100)  # 初始缩放比例为100%
         self.scale.pack(side='left', padx=10)
-        ToolTip(self.scale, "拖动滑块调整图像缩放比例")
-        self.scale.config(state='disabled')  # 初始禁用
+        self.tooltip_scale = ToolTip(self.scale, lang["scale_tooltip"])
+        self.scale.config(state='normal')  # 使能缩放滑块
 
 
 
         # 添加底部版权信息
-        self.footer_label = tk.Label(root, text="face-recognition-system based on Qianwen",
-                                     font=("Helvetica", 10),
-                                     bg="#2c3e50",
-                                     fg="#ecf0f1")
+        self.footer_label = tk.Label(root, text=lang["thank_you"],
+                                    font=("Helvetica", 10),
+                                    bg="#2c3e50",
+                                    fg="#ecf0f1")
         self.footer_label.pack(pady=10)
-
-        # 启动网络状态和时间更新
-        self.check_network()
-        self.update_time()
 
         # 初始化日志列表
         self.logs = []
 
         # 添加导出日志按钮
-        self.button_export_logs = ttk.Button(self.frame_buttons, text="导出使用日志", command=self.export_logs)
+        self.button_export_logs = ttk.Button(self.frame_buttons, text=lang["export_logs"], command=self.export_logs)
         self.button_export_logs.pack(pady=5, fill='x')
-        ToolTip(self.button_export_logs, "将使用日志导出为CSV文件")
+        self.tooltip_export_logs = ToolTip(self.button_export_logs, lang.get("export_logs_tooltip", "将使用日志导出为CSV文件"))
 
-        # 加载语言资源
-        self.languages = self.load_languages()
-        self.current_language = 'zh'  # 默认语言为中文
-        # 添加语言选择下拉菜单
+        # 创建选择语言下拉菜单
         self.language_var = tk.StringVar(value='中文')
         self.dropdown_languages = ttk.Combobox(self.frame_buttons, textvariable=self.language_var, state='readonly')
         self.dropdown_languages['values'] = ['中文', 'English']
         self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
         self.dropdown_languages.pack(pady=5, fill='x')
-        ToolTip(self.dropdown_languages, "选择界面语言")
+        self.tooltip_language = ToolTip(self.dropdown_languages, lang["choose_language_tooltip"])
+
+
+        # 启动网络状态和时间更新
+        self.check_network()
+        self.update_time()
 
         # 设置初始语言
         self.set_language(self.current_language)
 
+        # 添加当前缩放因子
+        self.current_scale = 1.0  # 初始缩放比例为100%
+
+
     def scale_image(self, value):
         """根据Scale控件的值来缩放图像"""
-        scale_factor = int(value) / 100  # 从百分比转化为缩放比例
-        logger.info(f"缩放比例: {scale_factor}")
-        if not self.display_image:
-            logger.warning("没有图像可缩放。")
-            messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
-            return
-        logger.info(f"当前图像大小: {self.display_image.width}x{self.display_image.height}")
-        new_width = int(self.original_image.width * scale_factor)
-        new_height = int(self.original_image.height * scale_factor)
-        logger.info(f"新图像大小: {new_width}x{new_height}")
-
-        # 缩放图像
         try:
+            # 更新当前缩放因子
+            self.current_scale = float(value) / 100  # 从百分比转化为缩放比例
+            logger.info(f"缩放比例: {self.current_scale}")
+
+            if not self.original_image:
+                logger.warning("没有图像可缩放。")
+                messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
+                return
+
+            logger.info(f"原始图像大小: {self.original_image.width}x{self.original_image.height}")
+            new_width = int(self.original_image.width * self.current_scale)
+            new_height = int(self.original_image.height * self.current_scale)
+            logger.info(f"新图像大小: {new_width}x{new_height}")
+
+            # 基于原始图像进行缩放
             self.display_image = self.original_image.resize((new_width, new_height), Image.LANCZOS)
             self.photo_image = ImageTk.PhotoImage(self.display_image)
             logger.info("图像缩放完成。")
@@ -376,6 +390,7 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"缩放图像时发生错误: {e}")
             messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
+
 
 
 
@@ -478,11 +493,40 @@ class FaceRecognitionApp:
         self.button_upload_manual_path.config(text=lang["upload"])
         self.label_uploaded_files.config(text=lang["uploaded_files"])
         self.button_export_logs.config(text=lang["export_logs"])
+
+        # 更新图像控制按钮的文本
+        self.button_zoom_in.config(text=lang["zoom_in"])
+        self.button_zoom_out.config(text=lang["zoom_out"])
+        self.button_rotate_left.config(text=lang["rotate_left"])
+        self.button_rotate_right.config(text=lang["rotate_right"])
+
+        # 更新缩放滑块的标签
+        self.scale.config(label=lang["scale_label"])
+
+        # 更新工具提示
+        self.tooltip_zoom_in.set_text(lang["zoom_in_tooltip"])
+        self.tooltip_zoom_out.set_text(lang["zoom_out_tooltip"])
+        self.tooltip_rotate_left.set_text(lang["rotate_left_tooltip"])
+        self.tooltip_rotate_right.set_text(lang["rotate_right_tooltip"])
+        self.tooltip_scale.set_text(lang["scale_tooltip"])
+        self.tooltip_export_logs.set_text(lang.get("export_logs_tooltip", "将使用日志导出为CSV文件"))
+        self.tooltip_language.set_text(lang["choose_language_tooltip"])
+
+        # 更新Treeview列标题
+        self.tree_files.heading("Filename", text=lang["filename_header"])
+        self.tree_files.heading("Status", text=lang["status_header"])
+
+        # 更新底部版权信息
         self.footer_label.config(text=lang["thank_you"])
 
-        # 更新其他弹窗中的文本将在相关方法中处理
+        # 更新右键菜单的标签
+        self.context_menu.entryconfig("顺时针旋转90°" if lang_code == 'zh' else "Rotate Right 90°", label=lang["rotate_right"])
+        self.context_menu.entryconfig("逆时针旋转90°" if lang_code == 'zh' else "Rotate Left 90°", label=lang["rotate_left"])
+        self.context_menu.entryconfig("全屏查看" if lang_code == 'zh' else "Fullscreen View", label=lang["fullscreen_view"])
 
         logger.info(f"界面语言已切换为: {lang_code}")
+
+
 
     def change_language(self, event):
         """切换界面语言"""
@@ -493,6 +537,7 @@ class FaceRecognitionApp:
             self.current_language = 'en'
         self.set_language(self.current_language)
         logger.info(f"语言切换为: {self.current_language}")
+
 
     def add_log(self, operation, result, matched_person=None):
         """
@@ -701,7 +746,7 @@ class FaceRecognitionApp:
             progress_window.destroy()
             messagebox.showinfo(
                 self.languages[self.current_language]["upload_complete"],
-                self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" +
+                self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" + 
                 self.languages[self.current_language]["upload_failed"].format(failed=failed)
             )
             logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
@@ -905,36 +950,48 @@ class FaceRecognitionApp:
             scale = 1.0
         self.zoom_image_manual(scale)
 
+
+
     def zoom_image_manual(self, scale_factor):
         """通过按钮或鼠标滚轮进行缩放"""
-        if not self.display_image:
+        if not self.original_image:
+            logger.warning("没有图像可缩放。")
+            messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
             return
-        new_width = int(self.display_image.width * scale_factor)
-        new_height = int(self.display_image.height * scale_factor)
+
+        # 计算新的缩放因子
+        new_scale = self.current_scale * scale_factor
 
         # 限制缩放比例
-        if new_width < 50 or new_height < 50:
+        if new_scale < 0.1:  # 将最小缩放因子从0.5调整为0.1（10%）
             messagebox.showwarning("缩放限制", "无法缩放到更小的尺寸。")
             return
-        if new_width > 5000 or new_height > 5000:
+        if new_scale > 5.0:
             messagebox.showwarning("缩放限制", "无法缩放到更大的尺寸。")
             return
 
+        # 更新当前缩放因子
+        self.current_scale = new_scale
+        logger.info(f"新的缩放比例: {self.current_scale}")
+
+        # 更新缩放滑块的位置（以反映当前缩放因子）
+        self.scale.set(int(self.current_scale * 100))
+
+        # 基于原始图像进行缩放
         try:
-            # 基于当前显示的图像进行缩放
-            self.display_image = self.display_image.resize((new_width, new_height), Image.LANCZOS)
+            new_width = int(self.original_image.width * self.current_scale)
+            new_height = int(self.original_image.height * self.current_scale)
+            self.display_image = self.original_image.resize((new_width, new_height), Image.LANCZOS)
             self.photo_image = ImageTk.PhotoImage(self.display_image)
             self.canvas_image.itemconfig(self.image_on_canvas, image=self.photo_image)
 
-            # 确保 Canvas 的尺寸已更新
+            # 确保图像位于Canvas的中心
             self.canvas_image.update_idletasks()
             canvas_width = self.canvas_image.winfo_width()
             canvas_height = self.canvas_image.winfo_height()
-
-            # 将图像重新定位到 Canvas 的中心
             self.canvas_image.coords(self.image_on_canvas, canvas_width // 2, canvas_height // 2)
 
-            # 更新 Canvas 的滚动区域
+            # 更新Canvas的滚动区域
             self.canvas_image.config(scrollregion=self.canvas_image.bbox(tk.ALL))
 
             # 保持对图像的引用
@@ -944,6 +1001,8 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"缩放图像时发生错误: {e}")
             messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
+
+
 
 
     def rotate_image(self, angle):
