@@ -79,7 +79,10 @@
         "matching_images": "正在比对图片",
         "fullscreen_view": "全屏查看",
         "rotate_right": "顺时针旋转90°",
-        "rotate_left": "逆时针旋转90°"
+        "rotate_left": "逆时针旋转90°",
+        "help_tooltip": "查看帮助文档",
+        "language_chinese": "中文",
+        "language_english": "English"
     },
     "en": {
         "network_status": "Network Status: Checking...",
@@ -161,6 +164,9 @@
         "matching_images": "Matching Images",
         "fullscreen_view": "Fullscreen View",
         "rotate_right": "Rotate Right 90°",
-        "rotate_left": "Rotate Left 90°"
+        "rotate_left": "Rotate Left 90°",
+        "help_tooltip": "View Help Documentation",
+        "language_chinese": "Chinese",
+        "language_english": "English"
     }
 }

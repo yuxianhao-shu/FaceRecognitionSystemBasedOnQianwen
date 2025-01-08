@@ -16,6 +16,7 @@ from datetime import datetime  # 用于获取本地时间
 import csv  # 增加了导出日志为csv文件的功能
 from dotenv import load_dotenv  # 从.env文件中读取阿里云信息
 import logging  # 日志
+from PIL import Image, ImageTk
 
 # 加载环境变量
 load_dotenv()
@@ -140,7 +141,6 @@ class FaceRecognitionApp:
         # 用于存储文件名与路径的映射
         self.filename_to_path = {}
 
-
         # 设置按钮样式
         self.style = ttk.Style()
         self.style.theme_use('clam')  # 使用 'clam' 主题，适合自定义样式
@@ -196,9 +196,6 @@ class FaceRecognitionApp:
             "TCombobox",
             fieldbackground=[("readonly", "#ffffff")]
         )
-
-
-
 
         # 创建顶部状态框架
         self.frame_status = tk.Frame(root, bg="#2c3e50")
@@ -262,28 +259,38 @@ class FaceRecognitionApp:
             lang.get("match_faces_tooltip", "上传图片进行人脸比对")
         )
 
-
         # 添加启动摄像头按钮
         self.button_start_camera = ttk.Button(
             self.frame_buttons_inner,
             text=lang["start_camera"],
-            command=self.open_camera_window
+            command=self.open_camera_window,
+            style="TButton"
         )
         self.button_start_camera.grid(row=0, column=2, padx=5, pady=5, sticky='ew')
+        self.tooltip_start_camera = ToolTip(
+            self.button_start_camera,
+            lang.get("start_camera_tooltip", "启动摄像头进行人脸识别")
+        )
 
         # 添加帮助按钮
         self.button_help = ttk.Button(
             self.frame_buttons_inner,
             text=lang["help"],
-            command=self.show_help
+            command=self.show_help,
+            style="TButton"
         )
         self.button_help.grid(row=0, column=3, padx=5, pady=5, sticky='ew')
+        self.tooltip_help_top = ToolTip(
+            self.button_help,
+            lang.get("help_tooltip", "查看帮助文档")
+        )
 
         # 添加导出日志按钮
         self.button_export_logs = ttk.Button(
             self.frame_buttons_inner,
             text=lang["export_logs"],
-            command=self.export_logs
+            command=self.export_logs,
+            style="TButton"
         )
         self.button_export_logs.grid(row=0, column=4, padx=5, pady=5, sticky='ew')
         self.tooltip_export_logs = ToolTip(
@@ -295,7 +302,8 @@ class FaceRecognitionApp:
         self.button_export_matches = ttk.Button(
             self.frame_buttons_inner,
             text=lang["export_matches"],
-            command=self.export_match_results
+            command=self.export_match_results,
+            style="TButton"
         )
         self.button_export_matches.grid(row=0, column=5, padx=5, pady=5, sticky='ew')
         self.tooltip_export_matches = ToolTip(
@@ -315,18 +323,16 @@ class FaceRecognitionApp:
         self.dropdown_languages.grid(row=0, column=6, padx=5, pady=5, sticky='ew')
         self.tooltip_language = ToolTip(
             self.dropdown_languages,
-            lang["choose_language_tooltip"]
+            lang.get("choose_language_tooltip", "选择界面语言")
         )
 
         # 让所有列在内部框架中均分宽度
         for i in range(7):  # 更新列数为7
             self.frame_buttons_inner.grid_columnconfigure(i, weight=1)
 
-
         # 创建分割线
         separator = ttk.Separator(root, orient='horizontal')
         separator.pack(fill='x', padx=20, pady=5)
-
 
         # 添加手动输入路径的功能
         self.frame_manual_path = ttk.LabelFrame(
@@ -345,11 +351,19 @@ class FaceRecognitionApp:
         self.entry_manual_path = tk.Entry(self.frame_manual_path, width=50, font=("Helvetica", 12))
         self.entry_manual_path.pack(side='left', padx=5, fill='x', expand=True)
 
-        self.button_browse_path = ttk.Button(self.frame_manual_path, text=lang["browse"], command=self.browse_folder)
+        self.button_browse_path = ttk.Button(self.frame_manual_path, text=lang["browse"], command=self.browse_folder, style="TButton")
         self.button_browse_path.pack(side='left', padx=5)
+        self.tooltip_browse = ToolTip(
+            self.button_browse_path,
+            lang.get("browse_tooltip", "浏览文件夹")
+        )
 
-        self.button_upload_manual_path = ttk.Button(self.frame_manual_path, text=lang["upload"], command=self.upload_faces_from_path)
+        self.button_upload_manual_path = ttk.Button(self.frame_manual_path, text=lang["upload"], command=self.upload_faces_from_path, style="TButton")
         self.button_upload_manual_path.pack(side='left', padx=5)
+        self.tooltip_upload_manual = ToolTip(
+            self.button_upload_manual_path,
+            lang.get("upload_tooltip", "上传文件夹中的图片")
+        )
 
         # 创建左侧的文件名列表框架
         self.frame_file_list = tk.Frame(root, bg="#2c3e50")
@@ -386,7 +400,6 @@ class FaceRecognitionApp:
         # 定义上传成功和失败的标签
         self.tree_files.tag_configure("success", foreground="green")
         self.tree_files.tag_configure("failure", foreground="red")
-
 
         # 绑定Treeview的选择事件
         self.tree_files.bind('<<TreeviewSelect>>', self.display_selected_image)
@@ -511,19 +524,85 @@ class FaceRecognitionApp:
         # 初始化日志列表
         self.logs = []
 
-
-
         # 启动网络状态和时间更新
         self.check_network()
         self.update_time()
 
-        # 设置初始语言
+        # 加载图标并创建右下角按钮
+        self.load_icons_and_create_bottom_right_buttons(lang)
+
+        # 设置初始语言（确保所有控件已初始化）
         self.set_language(self.current_language)
 
         # 添加当前缩放因子
         self.current_scale = 1.0  # 初始缩放比例为100%
 
+    def load_icons_and_create_bottom_right_buttons(self, lang):
+        """加载图标并创建右下角的帮助和语言选择按钮"""
+        try:
+            # 加载帮助图标
+            help_image = Image.open("icons/info.png")  # 替换为您的帮助图标路径
+            help_image = help_image.resize((32, 32), Image.Resampling.LANCZOS)  # 调整大小
+            self.help_photo = ImageTk.PhotoImage(help_image)
 
+            # 加载语言选择图标
+            lang_image = Image.open("icons/earth.png")  # 替换为您的语言图标路径
+            lang_image = lang_image.resize((32, 32), Image.Resampling.LANCZOS)  # 调整大小
+            self.lang_photo = ImageTk.PhotoImage(lang_image)
+
+            logger.info("图标已成功加载。")
+        except Exception as e:
+            messagebox.showerror("图标加载错误", f"无法加载图标: {e}")
+            logger.error(f"无法加载图标: {e}")
+            raise e
+
+        # 创建一个框架用于右下角的按钮
+        self.frame_bottom_right = tk.Frame(self.root, bg="#2c3e50")
+        self.frame_bottom_right.place(relx=1.0, rely=1.0, anchor='se', x=-20, y=-20)  # 调整x和y以设置距离右下角的距离
+
+        # 创建帮助按钮
+        self.button_help_icon = ttk.Button(
+            self.frame_bottom_right,
+            image=self.help_photo,
+            command=self.show_help,
+            style="Icon.TButton"  # 使用自定义样式
+        )
+        self.button_help_icon.pack(side='right', padx=5)
+
+        self.tooltip_help = ToolTip(
+            self.button_help_icon,
+            lang.get("help_tooltip", "查看帮助文档")
+        )
+
+        # 创建语言选择按钮
+        self.button_lang_icon = ttk.Button(
+            self.frame_bottom_right,
+            image=self.lang_photo,
+            command=self.toggle_language_menu,  # 创建一个方法来切换语言菜单
+            style="Icon.TButton"
+        )
+        self.button_lang_icon.pack(side='right', padx=5)
+
+        self.tooltip_lang = ToolTip(
+            self.button_lang_icon,
+            lang.get("choose_language_tooltip", "选择界面语言")
+        )
+
+        # 创建语言菜单（下拉菜单）
+        self.language_menu = tk.Menu(self.root, tearoff=0)
+        self.language_menu.add_command(label=lang.get("language_chinese", "中文"), command=lambda: self.set_language('zh'))
+        self.language_menu.add_command(label=lang.get("language_english", "English"), command=lambda: self.set_language('en'))
+
+
+    def toggle_language_menu(self):
+        """切换语言选择菜单的显示"""
+        try:
+            # 获取语言按钮的坐标
+            x = self.button_lang_icon.winfo_rootx()
+            y = self.button_lang_icon.winfo_rooty() + self.button_lang_icon.winfo_height()
+            self.language_menu.tk_popup(x, y)
+        finally:
+            self.language_menu.grab_release()
 
     def scale_image(self, value):
         """根据Scale控件的值来缩放图像"""
@@ -565,20 +644,6 @@ class FaceRecognitionApp:
             logger.error(f"缩放图像时发生错误: {e}")
             messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
 
-
-
-
-
-    def show_context_menu(self, event):
-        """显示右键菜单"""
-        self.context_menu.post(event.x_root, event.y_root)
-
-    def option1_action(self):
-        print("Option 1 selected")
-
-    def option2_action(self):
-        print("Option 2 selected")
-
     def load_languages(self):
         """加载语言资源"""
         languages = {}
@@ -617,7 +682,13 @@ class FaceRecognitionApp:
                     "capture_photo": "拍照",
                     "camera_window_title": "摄像头",
                     "help_text": "这是人脸识别系统的帮助文档。您可以上传图片、文件夹中的图片，启动摄像头拍照进行人脸识别。",
-                    "help_window_title": "帮助"
+                    "help_window_title": "帮助",
+                    # 添加工具提示相关键
+                    "zoom_in_tooltip": "放大图片",
+                    "zoom_out_tooltip": "缩小图片",
+                    "rotate_left_tooltip": "逆时针旋转图片",
+                    "rotate_right_tooltip": "顺时针旋转图片",
+                    "scale_tooltip": "缩放图片"
                 },
                 "en": {
                     "network_status": "Network Status: Checking...",
@@ -646,14 +717,37 @@ class FaceRecognitionApp:
                     "capture_photo": "Capture Photo",
                     "camera_window_title": "Camera",
                     "help_text": "This is the help documentation for the Face Recognition System. You can upload images, upload images from a folder, and start the camera to capture photos for face recognition.",
-                    "help_window_title": "Help"
+                    "help_window_title": "Help",
+                    # 添加工具提示相关键
+                    "zoom_in_tooltip": "Zoom in the image",
+                    "zoom_out_tooltip": "Zoom out the image",
+                    "rotate_left_tooltip": "Rotate image counterclockwise",
+                    "rotate_right_tooltip": "Rotate image clockwise",
+                    "scale_tooltip": "Scale the image"
                 }
             }
         return languages
 
+
+
+
+    def show_context_menu(self, event):
+        """显示右键菜单"""
+        self.context_menu.post(event.x_root, event.y_root)
+
+    def option1_action(self):
+        print("Option 1 selected")
+
+    def option2_action(self):
+        print("Option 2 selected")
+
+
+
     def set_language(self, lang_code):
         """设置界面语言"""
         lang = self.languages.get(lang_code, self.languages['zh'])
+        self.current_language = lang_code  # 更新当前语言
+
         # 更新所有文本
         self.network_status_label.config(text=lang["network_status"])
         self.time_label.config(text=f"{lang['current_time']}: --:--:--")
@@ -685,8 +779,9 @@ class FaceRecognitionApp:
         self.tooltip_rotate_right.set_text(lang["rotate_right_tooltip"])
         self.tooltip_scale.set_text(lang["scale_tooltip"])
         self.tooltip_export_logs.set_text(lang.get("export_logs_tooltip", "将使用日志导出为CSV文件"))
-        self.tooltip_export_matches.set_text(lang.get("export_matches_tooltip", "将比对结果导出为CSV文件"))  # 更新导出比对结果工具提示
-        self.tooltip_language.set_text(lang["choose_language_tooltip"])
+        self.tooltip_export_matches.set_text(lang.get("export_matches_tooltip", "将比对结果导出为CSV文件"))
+        self.tooltip_help.set_text(lang.get("help_tooltip", "查看帮助文档"))
+        self.tooltip_lang.set_text(lang.get("choose_language_tooltip", "选择界面语言"))
 
         # 更新Treeview列标题
         self.tree_files.heading("Filename", text=lang["filename_header"])
@@ -696,13 +791,16 @@ class FaceRecognitionApp:
         # 更新底部版权信息
         self.footer_label.config(text=lang["thank_you"])
 
-        # 更新右键菜单的标签
-        self.context_menu.entryconfig(lang_code == 'zh' and "顺时针旋转90°" or "Rotate Right 90°", label=lang["rotate_right"])
-        self.context_menu.entryconfig(lang_code == 'zh' and "逆时针旋转90°" or "Rotate Left 90°", label=lang["rotate_left"])
-        self.context_menu.entryconfig(lang_code == 'zh' and "全屏查看" or "Fullscreen View", label=lang["fullscreen_view"])
+        # 更新上下文菜单的标签（使用索引或标识符）
+        self.context_menu.entryconfig(0, label=lang["rotate_right"])
+        self.context_menu.entryconfig(1, label=lang["rotate_left"])
+        self.context_menu.entryconfig(2, label=lang["fullscreen_view"])
+
+        # 更新语言菜单中的语言选项
+        self.language_menu.entryconfig(0, label=lang.get("language_chinese", "中文"))
+        self.language_menu.entryconfig(1, label=lang.get("language_english", "English"))
 
         logger.info(f"界面语言已切换为: {lang_code}")
-
 
 
 
@@ -790,8 +888,7 @@ class FaceRecognitionApp:
         logger.info(f"增强图片保存为: {enhanced_image_path}")
         return enhanced_image_path
 
-
-
+    def upload_faces(self):
         """上传选定的图片进行人脸识别并比对"""
         logger.info("开始执行 upload_faces 方法")
         
@@ -820,7 +917,6 @@ class FaceRecognitionApp:
             )
             progress_label.pack(pady=20)
 
-
             progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
             progress_bar.pack(pady=20)
 
@@ -838,24 +934,6 @@ class FaceRecognitionApp:
 
                     logger.info(f"开始上传图片: {enhanced_image_path}")
                     print(f"开始上传图片: {enhanced_image_path}")  # 临时打印
-
-                    # 打开图片并处理
-                    try:
-                        img = Image.open(enhanced_image_path)
-                    except (IOError, SyntaxError) as e:
-                        logger.error(f"无法打开图片 {image_path}: {e}")
-                        self.add_log("上传图片", f"失败：无法打开图片 {image_path}")
-                        # 仍然添加到 Treeview 以显示上传失败
-                        filename = os.path.basename(image_path)
-                        item_id = self.tree_files.insert(
-                            "",
-                            "end",
-                            values=(filename, "失败", "N/A"),  # 设置比对结果为"N/A"
-                            tags=("failure",)
-                        )
-                        self.filename_to_path[item_id] = image_path
-                        failed += 1
-                        continue  # 跳过损坏的文件
 
                     # 使用 SDK 构建请求
                     request = CommonRequest()
@@ -879,49 +957,33 @@ class FaceRecognitionApp:
                         status = "成功"
                         tag = "success"
                         uploaded += 1
+                        self.add_log("上传图片到人脸库", "成功", os.path.basename(image_path))
                     else:
                         status = "失败"
                         tag = "failure"
                         failed += 1
-
-                    # 进行人脸比对
-                    if status == "成功":
-                        match_result, matched_person = self.match_face(enhanced_image_path)
-                        if match_result:
-                            match_display = matched_person
-                        else:
-                            match_display = "未匹配"
-                    else:
-                        match_display = "N/A"
+                        self.add_log("上传图片到人脸库", f"失败：{result.get('Message', '未知错误')}")
 
                     # 添加到文件列表并设置颜色
                     filename = os.path.basename(image_path)
                     item_id = self.tree_files.insert(
                         "",
                         "end",
-                        values=(filename, status, match_display),
+                        values=(filename, status, "N/A"),  # 不进行比对，Match Result 设置为 "N/A"
                         tags=(tag,)
                     )
                     self.filename_to_path[item_id] = image_path  # 使用 item_id 作为键
-                    logger.info(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")
-                    print(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")  # 临时打印
-
-                    if status == "成功":
-                        if match_result:
-                            self.add_log("上传图片并比对", f"成功: 匹配到 {matched_person}")
-                        else:
-                            self.add_log("上传图片并比对", "成功: 未匹配到任何人")
-                    else:
-                        self.add_log("上传图片", f"失败：{json.dumps(result)}")
+                    logger.info(f"添加到列表: {filename} - {status}, 路径: {image_path}")
+                    print(f"添加到列表: {filename} - {status}, 路径: {image_path}")  # 临时打印
 
                     # 更新进度条
-                    progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(self.selected_image_paths)})")
+                    progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(file_paths)})")
                     progress_bar["value"] = i
                     progress_window.update_idletasks()
 
                 except Exception as e:
                     logger.error(f"上传 {image_path} 时发生错误: {e}")
-                    self.add_log("上传图片", f"失败：{e}")
+                    self.add_log("上传图片到人脸库", f"失败：{e}")
                     # 添加到 Treeview 即使出现异常
                     filename = os.path.basename(image_path)
                     item_id = self.tree_files.insert(
@@ -949,22 +1011,26 @@ class FaceRecognitionApp:
             logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
             print(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")  # 临时打印
 
-            # 自动显示第一张图片
-            if self.selected_image_paths:
+            # 自动显示第一张图片（仅上传成功的图片）
+            if uploaded > 0:
                 # 获取所有项
                 all_items = self.tree_files.get_children()
                 if all_items:
-                    first_item = all_items[0]
-                    self.tree_files.selection_set(first_item)
-                    self.tree_files.focus(first_item)
-                    self.tree_files.event_generate("<<TreeviewSelect>>")
+                    for item in all_items:
+                        status = self.tree_files.item(item, 'values')[1]
+                        if status == "成功":
+                            self.tree_files.selection_set(item)
+                            self.tree_files.focus(item)
+                            self.tree_files.event_generate("<<TreeviewSelect>>")
+                            break
 
         except Exception as e:
-            logger.error(f"upload_faces 方法执行时发生未捕获的异常: {e}")
-            messagebox.showerror("错误", f"上传过程中发生错误: {e}")
-
-
-
+            logger.error(f"上传过程中发生错误: {e}")
+            messagebox.showerror(
+                self.languages[self.current_language]["error"],
+                f"上传过程中发生错误: {e}"
+            )
+            progress_window.destroy()
 
 
 
@@ -1069,9 +1135,6 @@ class FaceRecognitionApp:
             self.add_log("人脸识别", f"失败：{e}")
             return False, None
 
-
-
-
     def display_selected_image(self, event):
         """显示选中的图片"""
         # 获取选中的行
@@ -1121,15 +1184,6 @@ class FaceRecognitionApp:
                 logger.error(f"无法打开图片 {filename}: {e}")
                 print(f"错误详情: {e}")
                 self.scale.config(state='disabled')  # 禁用缩放滑块
-
-
-
-
-
-
-
-
-
     def zoom_image(self, event):
         """使用鼠标滚轮进行缩放"""
         if event.num == 4 or event.delta > 0:
@@ -1139,8 +1193,6 @@ class FaceRecognitionApp:
         else:
             scale = 1.0
         self.zoom_image_manual(scale)
-
-
 
     def zoom_image_manual(self, scale_factor):
         """通过按钮或鼠标滚轮进行缩放"""
@@ -1191,9 +1243,6 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"缩放图像时发生错误: {e}")
             messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
-
-
-
 
     def rotate_image(self, angle):
         """旋转图像"""
@@ -1444,7 +1493,6 @@ class FaceRecognitionApp:
                     self.tree_files.selection_set(first_item)
                     self.tree_files.focus(first_item)
                     self.tree_files.event_generate("<<TreeviewSelect>>")
-
 
     def check_network(self):
         """定期检查网络连接状态"""
