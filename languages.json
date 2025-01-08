@@ -82,7 +82,15 @@
         "rotate_left": "逆时针旋转90°",
         "help_tooltip": "查看帮助文档",
         "language_chinese": "中文",
-        "language_english": "English"
+        "language_english": "English",
+        "recognition_frequency_label": "实时检测频率 (每分钟次数):",
+        "settings_tooltip": "设置实时检测频率",
+        "settings_title": "设置",
+        "save": "保存",
+        "cancel": "取消",
+        "invalid_frequency_error": "请输入有效的每分钟识别次数（整数，1-60）。",
+        "settings_saved": "设置已保存。",
+        "settings_button_tooltip": "打开设置窗口"
     },
     "en": {
         "network_status": "Network Status: Checking...",
@@ -167,6 +175,14 @@
         "rotate_left": "Rotate Left 90°",
         "help_tooltip": "View Help Documentation",
         "language_chinese": "Chinese",
-        "language_english": "English"
+        "language_english": "English",
+        "recognition_frequency_label": "Recognition Frequency (per minute):",
+        "settings_tooltip": "Set real-time recognition frequency",
+        "settings_title": "Settings",
+        "save": "Save",
+        "cancel": "Cancel",
+        "invalid_frequency_error": "Please enter a valid recognition frequency (integer, 1-60).",
+        "settings_saved": "Settings have been saved.",
+        "settings_button_tooltip": "Open settings window"
     }
 }

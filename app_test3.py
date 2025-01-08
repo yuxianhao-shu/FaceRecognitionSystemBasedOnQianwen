@@ -19,6 +19,7 @@ import logging  # 日志
 from PIL import Image, ImageTk
 from threading import Thread
 import numpy as np
+import time
 # 加载环境变量
 load_dotenv()
 
@@ -516,6 +517,10 @@ class FaceRecognitionApp:
 
         # 添加当前缩放因子
         self.current_scale = 1.0  # 初始缩放比例为100%
+        # 初始化识别频率设置
+        self.recognition_frequency = 30  # 默认每分钟30次
+        self.recognition_interval_seconds = 60 / self.recognition_frequency
+        self.last_recognition_time = time.time()
 
         # 标记初始化完成
         self.initializing = False
@@ -528,6 +533,11 @@ class FaceRecognitionApp:
             help_image = Image.open("icons/info.png")  # 替换为您的帮助图标路径
             help_image = help_image.resize((32, 32), Image.Resampling.LANCZOS)  # 调整大小
             self.help_photo = ImageTk.PhotoImage(help_image)
+
+            # 加载设置图标
+            settings_image = Image.open("icons/settings.png")  # 替换为您的设置图标路径
+            settings_image = settings_image.resize((32, 32), Image.Resampling.LANCZOS)  # 调整大小
+            self.settings_photo = ImageTk.PhotoImage(settings_image)
 
             # 加载语言选择图标
             lang_image = Image.open("icons/earth.png")  # 替换为您的语言图标路径
@@ -543,6 +553,20 @@ class FaceRecognitionApp:
         # 创建一个框架用于右下角的按钮
         self.frame_bottom_right = tk.Frame(self.root, bg="#2c3e50")
         self.frame_bottom_right.place(relx=1.0, rely=1.0, anchor='se', x=-20, y=-20)  # 调整x和y以设置距离右下角的距离
+
+        # 创建设置按钮
+        self.button_settings_icon = ttk.Button(
+            self.frame_bottom_right,
+            image=self.settings_photo,
+            command=self.open_settings_window,
+            style="Icon.TButton"  # 使用自定义样式
+        )
+        self.button_settings_icon.pack(side='right', padx=5)
+
+        self.tooltip_settings = ToolTip(
+            self.button_settings_icon,
+            lang.get("settings_tooltip", "设置实时检测频率")
+        )
 
         # 创建帮助按钮
         self.button_help_icon = ttk.Button(
@@ -1765,44 +1789,22 @@ class FaceRecognitionApp:
                 self.close_camera_window()
                 return
 
-            # 将帧编码为Base64
-            _, buffer = cv2.imencode('.jpg', frame)
-            img_bytes = buffer.tobytes()
-            img_base64 = base64.b64encode(img_bytes).decode('utf-8')
+            # 转换颜色为RGB
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            img = Image.fromarray(frame)
+            img = img.resize((600, 400), Image.LANCZOS)
+            self.current_frame = img  # 保存当前帧用于拍照
 
-            # 每隔一定帧数进行识别
-            recognition_interval = 10  # 每10帧识别一次，调整以优化性能
+            # 每帧显示视频
+            img_tk = ImageTk.PhotoImage(img)
+            self.video_label.imgtk = img_tk  # 保持引用
+            self.video_label.config(image=img_tk)
 
-            if self.frame_count % recognition_interval == 0:
-                # 调用阿里云人脸检测和识别API
-                faces_info = self.detect_and_recognize_faces(img_base64)
-
-                # 处理识别结果
-                for face in faces_info:
-                    x = face['Left']
-                    y = face['Top']
-                    w = face['Width']
-                    h = face['Height']
-                    matched_name = face['Name']
-
-                    # 绘制矩形框
-                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
-
-                    # 显示匹配结果
-                    label = matched_name if matched_name else "未知"
-                    cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
-                                0.9, (36, 255, 12), 2)
-
-            self.frame_count += 1
-
-            # 转换颜色格式为 RGB
-            cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            img = Image.fromarray(cv2image)
-            imgtk = ImageTk.PhotoImage(image=img)
-
-            # 更新视频显示
-            self.video_label.imgtk = imgtk
-            self.video_label.configure(image=imgtk)
+            current_time = time.time()
+            if current_time - self.last_recognition_time >= self.recognition_interval_seconds:
+                self.last_recognition_time = current_time
+                # 进行人脸识别
+                self.perform_realtime_recognition(frame)
 
         except Exception as e:
             logger.error(f"视频循环出错：{e}")
@@ -1812,6 +1814,7 @@ class FaceRecognitionApp:
 
         # 调度下一帧
         self.camera_window.after(30, self.video_loop)  # 每30ms调用一次，大约33fps
+
 
     def detect_and_recognize_faces(self, img_base64):
         """
@@ -1933,6 +1936,115 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"人脸搜索出错: {e}")
             return None
+    def open_settings_window(self):
+        """打开设置窗口，让用户设置每分钟识别次数"""
+        settings_window = tk.Toplevel(self.root)
+        settings_window.title(self.languages[self.current_language]["settings_title"])
+        settings_window.geometry("300x150")
+        settings_window.configure(bg="#2c3e50")
+
+        # 标签
+        label = tk.Label(
+            settings_window,
+            text=self.languages[self.current_language]["recognition_frequency_label"],
+            font=("Helvetica", 12),
+            bg="#2c3e50",
+            fg="#ecf0f1"
+        )
+        label.pack(pady=10)
+
+        # 输入框（使用 Spinbox 限制输入范围）
+        self.recognition_frequency_var = tk.IntVar(value=5)  # 默认每分钟5次
+        spinbox = tk.Spinbox(
+            settings_window,
+            from_=1,
+            to=60,
+            textvariable=self.recognition_frequency_var,
+            font=("Helvetica", 12),
+            width=5
+        )
+        spinbox.pack(pady=5)
+
+        # 按钮框架
+        button_frame = tk.Frame(settings_window, bg="#2c3e50")
+        button_frame.pack(pady=10)
+
+        # 保存按钮
+        save_button = ttk.Button(
+            button_frame,
+            text=self.languages[self.current_language]["save"],
+            command=lambda: self.save_settings(settings_window),
+            style="TButton"
+        )
+        save_button.pack(side='left', padx=10)
+
+        # 取消按钮
+        cancel_button = ttk.Button(
+            button_frame,
+            text=self.languages[self.current_language]["cancel"],
+            command=settings_window.destroy,
+            style="TButton"
+        )
+        cancel_button.pack(side='left', padx=10)
+    def save_settings(self, window):
+        """保存用户设置的每分钟识别次数"""
+        frequency = self.recognition_frequency_var.get()
+        if not isinstance(frequency, int) or not (1 <= frequency <= 60):
+            messagebox.showerror(
+                self.languages[self.current_language]["error"],
+                self.languages[self.current_language]["invalid_frequency_error"]
+            )
+            return
+
+        self.recognition_frequency = frequency
+        self.recognition_interval_seconds = 60 / self.recognition_frequency
+        messagebox.showinfo(
+            self.languages[self.current_language]["settings_title"],
+            self.languages[self.current_language]["settings_saved"]
+        )
+        logger.info(f"实时检测频率设置为每分钟 {self.recognition_frequency} 次。")
+        window.destroy()
+    def perform_realtime_recognition(self, frame):
+        """
+        在给定的帧上进行人脸检测和识别。
+        
+        参数:
+            frame (numpy.ndarray): 当前视频帧。
+        """
+        try:
+            # 将帧编码为Base64
+            _, buffer = cv2.imencode('.jpg', frame)
+            img_bytes = buffer.tobytes()
+            img_base64 = base64.b64encode(img_bytes).decode('utf-8')
+
+            # 调用阿里云人脸检测和搜索API
+            faces_info = self.detect_and_recognize_faces(img_base64)
+
+            # 处理识别结果
+            for face in faces_info:
+                x = face['Left']
+                y = face['Top']
+                w = face['Width']
+                h = face['Height']
+                matched_name = face['Name']
+
+                # 绘制矩形框
+                cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+                # 显示匹配结果
+                label = matched_name if matched_name else "未知"
+                cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
+                            0.9, (36, 255, 12), 2)
+
+                # 添加日志记录
+                if matched_name:
+                    self.add_log("实时识别", "成功", matched_name)
+                else:
+                    self.add_log("实时识别", "失败：未匹配到任何人")
+
+        except Exception as e:
+            logger.error(f"实时识别出错：{e}")
+            self.add_log("实时识别", f"失败：{e}")
 
 # 以下是主程序启动部分
 if __name__ == "__main__":
