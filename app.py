@@ -17,19 +17,26 @@ import csv  # 增加了导出日志为csv文件的功能
 from dotenv import load_dotenv  # 从.env文件中读取阿里云信息
 import logging  # 日志
 from PIL import Image, ImageTk
+import locale
+import numpy as np
 
 # 加载环境变量
 load_dotenv()
 
 # 初始化logger
+#配置日志基本信息，设置日志级别为INFO
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
+    formatter='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt = '%Y-%m-%d %H:%M:%S',
+
     handlers=[
         logging.FileHandler("app.log"),
-        logging.StreamHandler()
+        logging.StreamHandler(),
+        loging.setFormatter(formatter)
     ]
 )
+
 logger = logging.getLogger(__name__)
 
 class ToolTip(object):
@@ -39,8 +46,8 @@ class ToolTip(object):
         self.tipwindow = None
         self.id = None
         self.x = self.y = 0
-        self.widget.bind("<Enter>", self.enter)
-        self.widget.bind("<Leave>", self.leave)
+        self.widget.bind("<Enter>", self.show_tooltip)
+        self.widget.bind("<Leave>", self.hide_tooltip)
 
     def set_text(self, new_text):
         """动态更新提示文本"""
@@ -63,26 +70,30 @@ class ToolTip(object):
         if id_:
             self.widget.after_cancel(id_)
 
-    def showtip(self, event=None):
+    def show_tooltip(self, event=None):
         if self.tipwindow or not self.text:
             return
         # 获取控件的位置
         x, y, cx, cy = self.widget.bbox("insert") if self.widget.winfo_class() == 'Entry' else (0, 0, 0, 0)
-        x = x + self.widget.winfo_rootx() + 25
-        y = y + self.widget.winfo_rooty() + 20
+        x = self.widget.winfo_rootx() + 25
+        y = self.widget.winfo_rooty() + 20
         self.tipwindow = tw = tk.Toplevel(self.widget)
-        tw.wm_overrideredirect(True)  # 去除窗口装饰
+
+        # 去除窗口装饰
+        tw.wm_overrideredirect(True)  
+
         tw.wm_geometry("+%d+%d" % (x, y))
         label = tk.Label(tw, text=self.text, justify=tk.LEFT,
                          background="#ffffe0", relief=tk.SOLID, borderwidth=1,
                          font=("Helvetica", "10", "normal"))
+        # label组件内部的左右两侧各添加1像素的空白
         label.pack(ipadx=1)
 
-    def hidetip(self):
-        tw = self.tipwindow
-        self.tipwindow = None
+    def hide_tooltip(self,event=None):
         if tw:
             tw.destroy()
+            tw = None
+
 
 # 定义 FaceRecognitionApp 类
 class FaceRecognitionApp:
@@ -92,15 +103,27 @@ class FaceRecognitionApp:
         self.root.geometry("1200x800")  # 增加宽度以适应列表和控制面板
         self.root.configure(bg="#2c3e50")  # 深蓝灰色背景
 
-        # 创建临时文件夹及其子文件夹
+        # 创建临时文件夹
         self.temp_dir = tempfile.mkdtemp(prefix="face_recognition_")
+
+        # 创建子文件夹
         self.uploaded_dir = os.path.join(self.temp_dir, "uploaded")
         self.camera_dir = os.path.join(self.temp_dir, "camera")
+
+        # 创建目录
         os.makedirs(self.uploaded_dir, exist_ok=True)
         os.makedirs(self.camera_dir, exist_ok=True)
 
-        # 注册程序退出时清理临时文件夹
-        atexit.register(self.cleanup_temp_dir)
+        # 定义清理临时文件夹的函数
+        def cleanup_temp_folder():
+            self.temp_dir.cleanup
+            
+        try:
+            print(f"临时文件夹路径：{self.temp_dir.name}")
+        
+        finally:
+            # 注册程序退出时清理临时文件夹
+            atexit.register(cleanup_temp_dir)
 
         # 阿里云 Access Key
         self.access_key_id = os.getenv('access_key_id')  # 从环境变量中读取 AccessKeyId
@@ -119,14 +142,49 @@ class FaceRecognitionApp:
         self.face_lib_id = os.getenv('face_lib_id', 'default')  # 从环境变量中读取 FaceLibId
 
         # 加载语言资源
-        self.languages = self.load_languages()
-        self.current_language = 'zh'  # 默认语言为中文
-        lang = self.languages.get(self.current_language, self.languages['zh'])
+        def load_languages(self):
+            languages = {}
+
+        # 改变默认语言
+        try:
+            # 设置默认语言环境为简体中文
+            locale.setlocale(locale.LC_ALL, 'zh_CN.UTF-8')
+            print('当前语言环境已设置成简体中文')
+        except local.Error as e:
+            print (f'设置语言环境时出现错误：{e}')
+
+        try:
+            # 设置默认语言环境为英语（美国）
+            locale.setlocale(locale.LC_ALL,'en_US.UTF-8')
+            print('当前语言已设置成英语（美国）')
+        except locale.Error as e:
+            print(f'设置语言环境时出现错误：{e}')
+        
+    
 
         # 创建阿里云客户端
         try:
-            self.client = AcsClient(self.access_key_id, self.access_key_secret, 'cn-shanghai')
+            client = AcsClient(
+                access_key_id = 'your_access_key_id',
+                access_key_secret = 'your_access_key_secret',
+                region_id = 'cn-shanghai'
+            )
+
+            #创建请求
+            request = CommonRequest()
+            request.set_accept_format('json')
+            request.set_domain('ecs.aliyuncs.com')
+            request.set_method('POST')
+            request.set_protocol_type('https') # https | http
+            request.set_version('2014-05-26')
+            request.set_action_name('DescribeInstances')
+
+            # 发起请求并获取响应
+            response = client.do_action_with_exception(request)
+            print(str(response), encoding = 'utf-8')
+
             logger.info("阿里云客户端已初始化。")
+
         except Exception as e:
             messagebox.showerror("阿里云客户端错误", f"初始化阿里云客户端失败: {e}")
             logger.error(f"初始化阿里云客户端失败: {e}")
@@ -843,18 +901,23 @@ class FaceRecognitionApp:
         logger.info(f"压缩图片保存为: {compressed_image_path}")
         return compressed_image_path
 
-    def enhance_image(self, image_path):
-        """增强图片"""
-        img = Image.open(image_path)
+    def enhance_image_opencv(image_path):
+        """读取图像"""
+        img = cv2.imread(image_path)
+
+        # 转换为HSV颜色空间，方便调整亮度、饱和度
+        hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        h, s, v = cv2.split(hsv)
 
         # 亮度增强（如果图像过暗）
         enhancer = ImageEnhance.Brightness(img)
         img = enhancer.enhance(1.5)  # 调高亮度
 
-        # 对比度增强
-        enhancer = ImageEnhance.Contrast(img)
-        img = enhancer.enhance(1.5)  # 增强对比度
-
+        # 直方图均衡化（对比度增强）
+        gray = cv2.cvtColor(enhanced_image, cv2.COLOR_BGR2GRAY)
+        equalized = cv2.equalizeHist(gray)
+        enhanced_image = cv2.cvtColor(equalized, cv2.COLOR_GRAY2BGR)
+        
         # 锐化
         enhancer = ImageEnhance.Sharpness(img)
         img = enhancer.enhance(2.0)  # 锐化增强
@@ -862,6 +925,7 @@ class FaceRecognitionApp:
         enhanced_image_path = os.path.join(self.uploaded_dir, "enhanced_" + os.path.basename(image_path))
         img.save(enhanced_image_path)
         logger.info(f"增强图片保存为: {enhanced_image_path}")
+
         return enhanced_image_path
 
     def upload_faces(self):
