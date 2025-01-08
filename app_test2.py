@@ -272,18 +272,7 @@ class FaceRecognitionApp:
             lang.get("start_camera_tooltip", "启动摄像头进行人脸识别")
         )
 
-        # 添加帮助按钮
-        self.button_help = ttk.Button(
-            self.frame_buttons_inner,
-            text=lang["help"],
-            command=self.show_help,
-            style="TButton"
-        )
-        self.button_help.grid(row=0, column=3, padx=5, pady=5, sticky='ew')
-        self.tooltip_help_top = ToolTip(
-            self.button_help,
-            lang.get("help_tooltip", "查看帮助文档")
-        )
+
 
         # 添加导出日志按钮
         self.button_export_logs = ttk.Button(
@@ -292,7 +281,7 @@ class FaceRecognitionApp:
             command=self.export_logs,
             style="TButton"
         )
-        self.button_export_logs.grid(row=0, column=4, padx=5, pady=5, sticky='ew')
+        self.button_export_logs.grid(row=0, column=3, padx=5, pady=5, sticky='ew')
         self.tooltip_export_logs = ToolTip(
             self.button_export_logs,
             lang.get("export_logs_tooltip", "将使用日志导出为CSV文件")
@@ -305,29 +294,16 @@ class FaceRecognitionApp:
             command=self.export_match_results,
             style="TButton"
         )
-        self.button_export_matches.grid(row=0, column=5, padx=5, pady=5, sticky='ew')
+        self.button_export_matches.grid(row=0, column=4, padx=5, pady=5, sticky='ew')
         self.tooltip_export_matches = ToolTip(
             self.button_export_matches,
             lang.get("export_matches_tooltip", "将比对结果导出为CSV文件")
         )
 
-        # 创建选择语言下拉菜单
-        self.language_var = tk.StringVar(value='中文')
-        self.dropdown_languages = ttk.Combobox(
-            self.frame_buttons_inner,
-            textvariable=self.language_var,
-            state='readonly'
-        )
-        self.dropdown_languages['values'] = ['中文', 'English']
-        self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
-        self.dropdown_languages.grid(row=0, column=6, padx=5, pady=5, sticky='ew')
-        self.tooltip_language = ToolTip(
-            self.dropdown_languages,
-            lang.get("choose_language_tooltip", "选择界面语言")
-        )
+
 
         # 让所有列在内部框架中均分宽度
-        for i in range(7):  # 更新列数为7
+        for i in range(5):  # 更新列数为7
             self.frame_buttons_inner.grid_columnconfigure(i, weight=1)
 
         # 创建分割线
@@ -755,7 +731,7 @@ class FaceRecognitionApp:
         self.button_upload_to_library.config(text=lang["upload_images"])
         self.button_match_faces.config(text=lang["match_faces"])  # 更新比对按钮文本
         self.button_start_camera.config(text=lang["start_camera"])
-        self.button_help.config(text=lang["help"])
+        #self.button_help.config(text=lang["help"])
         self.label_manual_path.config(text=lang["manual_path_label"])
         self.button_browse_path.config(text=lang["browse"])
         self.button_upload_manual_path.config(text=lang["upload"])
