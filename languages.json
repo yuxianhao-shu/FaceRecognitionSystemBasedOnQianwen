@@ -7,7 +7,7 @@
         "title": "人脸识别系统",
         "upload_images": "上传图片至人脸库",
         "upload_folder_images": "上传文件夹图片",
-        "start_camera": "启动摄像头",
+        "start_camera": "实时检测",
         "help": "帮助",
         "manual_path_label": "手动输入文件夹路径:",
         "browse": "浏览",

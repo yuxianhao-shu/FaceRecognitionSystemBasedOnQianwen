@@ -17,7 +17,8 @@ import csv  # 增加了导出日志为csv文件的功能
 from dotenv import load_dotenv  # 从.env文件中读取阿里云信息
 import logging  # 日志
 from PIL import Image, ImageTk
-
+from threading import Thread
+import numpy as np
 # 加载环境变量
 load_dotenv()
 
@@ -91,6 +92,9 @@ class FaceRecognitionApp:
         self.root.title("人脸识别系统")
         self.root.geometry("1200x800")  # 增加宽度以适应列表和控制面板
         self.root.configure(bg="#2c3e50")  # 深蓝灰色背景
+
+        # 初始化标志
+        self.initializing = True
 
         # 创建临时文件夹及其子文件夹
         self.temp_dir = tempfile.mkdtemp(prefix="face_recognition_")
@@ -513,6 +517,10 @@ class FaceRecognitionApp:
         # 添加当前缩放因子
         self.current_scale = 1.0  # 初始缩放比例为100%
 
+        # 标记初始化完成
+        self.initializing = False
+        logger.info("初始化完成。")
+
     def load_icons_and_create_bottom_right_buttons(self, lang):
         """加载图标并创建右下角的帮助和语言选择按钮"""
         try:
@@ -582,6 +590,9 @@ class FaceRecognitionApp:
 
     def scale_image(self, value):
         """根据Scale控件的值来缩放图像"""
+        if self.initializing:
+            return  # 初始化期间不执行任何操作
+
         try:
             # 更新当前缩放因子
             self.current_scale = float(value) / 100  # 从百分比转化为缩放比例
@@ -589,7 +600,8 @@ class FaceRecognitionApp:
 
             if not self.original_image:
                 logger.warning("没有图像可缩放。")
-                messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
+                if not self.initializing:  # 如果初始化未完成，则弹出警告
+                    messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
                 return
 
             logger.info(f"原始图像大小: {self.original_image.width}x{self.original_image.height}")
@@ -619,6 +631,7 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"缩放图像时发生错误: {e}")
             messagebox.showerror("缩放错误", f"缩放图像时发生错误: {e}")
+
 
     def load_languages(self):
         """加载语言资源"""
@@ -1162,6 +1175,8 @@ class FaceRecognitionApp:
                 self.scale.config(state='disabled')  # 禁用缩放滑块
     def zoom_image(self, event):
         """使用鼠标滚轮进行缩放"""
+        if self.initializing:
+            return  # 初始化期间不执行任何操作
         if event.num == 4 or event.delta > 0:
             scale = 1.1
         elif event.num == 5 or event.delta < 0:
@@ -1172,6 +1187,8 @@ class FaceRecognitionApp:
 
     def zoom_image_manual(self, scale_factor):
         """通过按钮或鼠标滚轮进行缩放"""
+        if self.initializing:
+            return  # 初始化期间不执行任何操作
         if not self.original_image:
             logger.warning("没有图像可缩放。")
             messagebox.showwarning("缩放警告", "当前没有图像可缩放。")
@@ -1282,43 +1299,59 @@ class FaceRecognitionApp:
         top.bind("<Escape>", lambda e: top.destroy())
 
     def open_camera_window(self):
-        """打开摄像头窗口"""
+        """打开摄像头窗口并进行实时人脸检测和识别"""
         try:
-            self.cap = cv2.VideoCapture(0)
-            if not self.cap.isOpened():
-                raise Exception(self.languages[self.current_language]["error"] + ": 摄像头无法打开。")
+            # 创建摄像头窗口
             self.camera_window = tk.Toplevel(self.root)
-            self.camera_window.title(self.languages[self.current_language]["camera_window_title"])
-            self.camera_window.geometry("650x550")
+            self.camera_window.title("实时人脸识别")
+            self.camera_window.geometry("800x600")
             self.camera_window.configure(bg="#2c3e50")
 
-            # 禁用主窗口
-            self.root.attributes("-disabled", True)
+            # 视频显示标签
+            self.video_label = tk.Label(self.camera_window, bg="#2c3e50")
+            self.video_label.pack(padx=10, pady=10, fill='both', expand=True)
 
-            # 处理窗口关闭事件
-            self.camera_window.protocol("WM_DELETE_WINDOW", self.close_camera_window)
+            # 退出按钮
+            self.button_close_camera = ttk.Button(
+                self.camera_window,
+                text=self.languages[self.current_language].get("close_camera", "关闭摄像头"),
+                command=self.close_camera_window,
+                style="TButton"
+            )
+            self.button_close_camera.pack(pady=10)
 
-            # 创建摄像头画面显示标签
-            self.camera_label = tk.Label(self.camera_window, bg="#34495e")
-            self.camera_label.pack(pady=20, padx=20, fill='both', expand=True)
+            # 打开摄像头
+            self.cap = cv2.VideoCapture(0)
+            if not self.cap.isOpened():
+                raise IOError("无法打开摄像头。")
 
-            # 创建“拍照”按钮
-            self.capture_button = ttk.Button(self.camera_window, text=self.languages[self.current_language]["capture_photo"], command=self.capture_photo)
-            self.capture_button.pack(pady=10)
-            ToolTip(self.capture_button, "点击拍照并进行人脸识别")
+            # 初始化帧计数器
+            self.frame_count = 0
 
-            # 启动视频流更新
-            self.update_camera_frame()
+            # 启动视频循环
+            self.running = True
+            self.video_loop()  # 使用after方法启动视频循环
 
-            self.add_log("启动摄像头", "成功")
-            logger.info("摄像头已启动。")
+            logger.info("摄像头窗口已打开并开始实时检测。")
 
         except Exception as e:
-            messagebox.showerror(self.languages[self.current_language]["error"], str(e))
+            # 获取错误消息的多语言支持
+            error_title = self.languages[self.current_language].get("error", "错误")
+            error_message = str(e)
+
+            # 显示错误消息给用户
+            messagebox.showerror(error_title, error_message)
+
+            # 记录错误日志
             logger.error(f"启动摄像头失败：{e}")
+
+            # 添加日志记录
             self.add_log("启动摄像头", f"失败：{e}")
+
+            # 确保摄像头资源被释放，并关闭窗口
             self.close_camera_window()
-            return
+
+
 
     def update_camera_frame(self):
         """更新摄像头画面"""
@@ -1362,113 +1395,11 @@ class FaceRecognitionApp:
 
     def close_camera_window(self):
         """关闭摄像头窗口并释放资源"""
-        if hasattr(self, 'cap') and self.cap.isOpened():
+        self.running = False
+        if self.cap.isOpened():
             self.cap.release()
-            logger.info("摄像头已释放。")
-            self.add_log("关闭摄像头", "成功")
-        if hasattr(self, 'camera_window') and self.camera_window.winfo_exists():
-            self.camera_window.destroy()
-        # 重新启用主窗口
-        self.root.attributes("-disabled", False)
-        cv2.destroyAllWindows()
-
-        """上传图片"""
-        file_paths = filedialog.askopenfilenames(
-            title="选择图片",
-            filetypes=[("Image Files", "*.jpg;*.jpeg;*.png")]
-        )
-        if file_paths:
-            logger.info(f"选择的图片路径: {file_paths}")
-
-            # 将图片复制到上传文件夹
-            copied_image_paths = []
-            for image_path in file_paths:
-                try:
-                    dest_path = os.path.join(self.uploaded_dir, os.path.basename(image_path))
-                    shutil.copy2(image_path, dest_path)
-                    copied_image_paths.append(dest_path)
-                    logger.info(f"复制图片 {image_path} 到 {dest_path}")
-                except Exception as e:
-                    logger.error(f"复制图片 {image_path} 时发生错误: {e}")
-                    print(f"复制图片 {image_path} 时发生错误: {e}")
-
-            if not copied_image_paths:
-                messagebox.showerror("错误", "没有图片被复制到上传文件夹！")
-                logger.error("上传失败：没有图片被复制到上传文件夹。")
-                self.add_log("上传图片", "失败：没有图片被复制到上传文件夹")
-                return
-
-            self.selected_image_paths = copied_image_paths
-            logger.info(f"已复制 {len(self.selected_image_paths)} 张图片到上传文件夹。")
-            self.add_log("上传图片", f"成功：复制了 {len(self.selected_image_paths)} 张图片")
-
-            # 调用 upload_faces 处理并显示图片
-            self.upload_faces()
-
-            # 自动显示第一张图片
-            if self.selected_image_paths:
-                # 获取所有项
-                all_items = self.tree_files.get_children()
-                if all_items:
-                    first_item = all_items[0]
-                    self.tree_files.selection_set(first_item)
-                    self.tree_files.focus(first_item)
-                    self.tree_files.event_generate("<<TreeviewSelect>>")
-
-
-
-
-        """上传文件夹中的图片"""
-        folder_path = filedialog.askdirectory(title="选择包含图片的文件夹")
-        if folder_path:
-            # 遍历文件夹中的所有图片文件
-            image_extensions = (".jpg", ".jpeg", ".png")
-            image_paths = [
-                os.path.join(folder_path, filename) for filename in os.listdir(folder_path)
-                if filename.lower().endswith(image_extensions)
-            ]
-
-            # 如果文件夹没有图片，弹出提示
-            if not image_paths:
-                messagebox.showwarning("无图片", "该文件夹中没有支持的图片文件（.jpg, .jpeg, .png）！")
-                logger.warning(f"上传文件夹警告：文件夹 {folder_path} 中没有支持的图片文件。")
-                self.add_log("上传文件夹", f"失败：文件夹 {folder_path} 中没有支持的图片文件")
-                return
-
-            logger.info(f"选择的文件夹: {folder_path}")
-            logger.info(f"找到 {len(image_paths)} 张图片")
-
-            # 将图片复制到上传文件夹
-            copied_image_paths = []
-            for image_path in image_paths:
-                try:
-                    dest_path = os.path.join(self.uploaded_dir, os.path.basename(image_path))
-                    shutil.copy2(image_path, dest_path)
-                    copied_image_paths.append(dest_path)
-                    logger.info(f"复制图片 {image_path} 到 {dest_path}")
-                except Exception as e:
-                    logger.error(f"复制图片 {image_path} 时发生错误: {e}")
-                    print(f"复制图片 {image_path} 时发生错误: {e}")
-
-            if not copied_image_paths:
-                messagebox.showerror("错误", "没有图片被复制到上传文件夹！")
-                logger.error(f"上传文件夹失败：没有图片被复制到上传文件夹 {self.uploaded_dir}")
-                self.add_log("上传文件夹", "失败：没有图片被复制到上传文件夹")
-                return
-
-            self.selected_image_paths = copied_image_paths
-            logger.info(f"已复制 {len(self.selected_image_paths)} 张图片到上传文件夹。")
-            self.add_log("上传文件夹", f"成功：复制了 {len(self.selected_image_paths)} 张图片")
-
-            # 自动显示第一张图片
-            if self.selected_image_paths:
-                # 获取所有项
-                all_items = self.tree_files.get_children()
-                if all_items:
-                    first_item = all_items[0]
-                    self.tree_files.selection_set(first_item)
-                    self.tree_files.focus(first_item)
-                    self.tree_files.event_generate("<<TreeviewSelect>>")
+        self.camera_window.destroy()
+        logger.info("摄像头窗口已关闭并释放资源。")
 
     def check_network(self):
         """定期检查网络连接状态"""
@@ -1821,6 +1752,187 @@ class FaceRecognitionApp:
                         self.tree_files.focus(item)
                         self.tree_files.event_generate("<<TreeviewSelect>>")
                         break
+
+    def video_loop(self):
+        """视频循环，实时检测和识别"""
+        if not self.running:
+            return
+
+        try:
+            ret, frame = self.cap.read()
+            if not ret:
+                logger.error("无法读取摄像头帧。")
+                self.close_camera_window()
+                return
+
+            # 将帧编码为Base64
+            _, buffer = cv2.imencode('.jpg', frame)
+            img_bytes = buffer.tobytes()
+            img_base64 = base64.b64encode(img_bytes).decode('utf-8')
+
+            # 每隔一定帧数进行识别
+            recognition_interval = 10  # 每10帧识别一次，调整以优化性能
+
+            if self.frame_count % recognition_interval == 0:
+                # 调用阿里云人脸检测和识别API
+                faces_info = self.detect_and_recognize_faces(img_base64)
+
+                # 处理识别结果
+                for face in faces_info:
+                    x = face['Left']
+                    y = face['Top']
+                    w = face['Width']
+                    h = face['Height']
+                    matched_name = face['Name']
+
+                    # 绘制矩形框
+                    cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+
+                    # 显示匹配结果
+                    label = matched_name if matched_name else "未知"
+                    cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,
+                                0.9, (36, 255, 12), 2)
+
+            self.frame_count += 1
+
+            # 转换颜色格式为 RGB
+            cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            img = Image.fromarray(cv2image)
+            imgtk = ImageTk.PhotoImage(image=img)
+
+            # 更新视频显示
+            self.video_label.imgtk = imgtk
+            self.video_label.configure(image=imgtk)
+
+        except Exception as e:
+            logger.error(f"视频循环出错：{e}")
+            self.add_log("视频循环", f"失败：{e}")
+            self.close_camera_window()
+            return
+
+        # 调度下一帧
+        self.camera_window.after(30, self.video_loop)  # 每30ms调用一次，大约33fps
+
+    def detect_and_recognize_faces(self, img_base64):
+        """
+        调用阿里云人脸检测和搜索API，返回检测到的人脸信息。
+        
+        参数:
+            img_base64 (str): Base64编码的JPEG图像数据。
+        
+        返回:
+            list: 包含每张人脸的字典，包含位置信息和匹配的姓名。
+        """
+        faces_info = []
+        try:
+            # 调用人脸检测API
+            detect_request = CommonRequest()
+            detect_request.set_accept_format('json')
+            detect_request.set_domain(self.url)
+            detect_request.set_method('POST')
+            detect_request.set_version('2019-12-30')
+            detect_request.set_action_name('DetectFace')
+
+            # 添加参数
+            detect_request.add_query_param('Image', img_base64)
+            detect_request.add_query_param('ImageType', 'BASE64')
+            detect_request.add_query_param('MaxFaceNumber', '10')  # 根据需求调整
+            detect_request.add_query_param('FaceCategory', '0')    # 0: 未分类, 1: 人脸检测
+
+            # 发送请求
+            detect_response = self.client.do_action_with_exception(detect_request)
+            detect_result = json.loads(detect_response)
+
+            logger.debug(f"人脸检测响应: {detect_result}")
+
+            if 'Faces' in detect_result:
+                for face in detect_result['Faces']:
+                    # 获取人脸位置信息
+                    face_rectangle = face.get('FaceRectangle', {})
+                    left = face_rectangle.get('Left', 0)
+                    top = face_rectangle.get('Top', 0)
+                    width = face_rectangle.get('Width', 0)
+                    height = face_rectangle.get('Height', 0)
+
+                    # 提取人脸区域
+                    # 解码Base64图像
+                    img_data = base64.b64decode(img_base64)
+                    np_arr = np.frombuffer(img_data, np.uint8)
+                    img_np = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+
+                    # 裁剪人脸区域，确保裁剪区域有效
+                    face_roi = img_np[top:top + height, left:left + width]
+                    if face_roi.size == 0:
+                        logger.warning(f"裁剪的人脸区域无效: 左={left}, 上={top}, 宽={width}, 高={height}")
+                        continue
+
+                    # 编码为JPEG并Base64
+                    _, buffer = cv2.imencode('.jpg', face_roi)
+                    face_bytes = buffer.tobytes()
+                    face_base64 = base64.b64encode(face_bytes).decode('utf-8')
+
+                    # 调用人脸搜索API
+                    matched_name = self.search_face(face_base64)
+
+                    # 添加到faces_info列表
+                    faces_info.append({
+                        'Left': left,
+                        'Top': top,
+                        'Width': width,
+                        'Height': height,
+                        'Name': matched_name
+                    })
+            else:
+                logger.info("未检测到人脸。")
+
+        except Exception as e:
+            logger.error(f"人脸检测和识别出错: {e}")
+
+        return faces_info
+
+    def search_face(self, face_base64):
+        """
+        调用阿里云人脸搜索API，返回匹配的姓名。
+        
+        参数:
+            face_base64 (str): Base64编码的JPEG人脸图像数据。
+        
+        返回:
+            str: 匹配的姓名或None。
+        """
+        try:
+            # 调用人脸搜索API
+            search_request = CommonRequest()
+            search_request.set_accept_format('json')
+            search_request.set_domain(self.url)
+            search_request.set_method('POST')
+            search_request.set_version('2019-12-30')
+            search_request.set_action_name('SearchFace')
+
+            # 添加参数
+            search_request.add_query_param('FaceLibId', self.face_lib_id)
+            search_request.add_query_param('Image', face_base64)
+            search_request.add_query_param('ImageType', 'BASE64')
+            search_request.add_query_param('MaxFaceNumber', '1')  # 只搜索一张脸
+
+            # 发送请求
+            search_response = self.client.do_action_with_exception(search_request)
+            search_result = json.loads(search_response)
+
+            logger.debug(f"人脸搜索响应: {search_result}")
+
+            # 解析响应
+            if 'Results' in search_result and len(search_result['Results']) > 0:
+                top_result = search_result['Results'][0]
+                # 获取匹配的姓名
+                matched_name = top_result.get('Name', None)
+                return matched_name
+            else:
+                return None
+
+        except Exception as e:
+            logger.error(f"人脸搜索出错: {e}")
+            return None
 
 # 以下是主程序启动部分
 if __name__ == "__main__":
