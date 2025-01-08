@@ -5,7 +5,7 @@
         "network_status_disconnected": "网络状态: 未连接",
         "current_time": "当前时间",
         "title": "人脸识别系统",
-        "upload_images": "上传图片",
+        "upload_images": "上传图片至人脸库",
         "upload_folder_images": "上传文件夹图片",
         "start_camera": "启动摄像头",
         "help": "帮助",
@@ -69,7 +69,17 @@
         "copy_image_error": "复制图片 {image_path} 时发生错误: {error}",
         "image_not_found_error": "没有找到图片。",
         "filename_header": "文件名",
-        "status_header": "状态"
+        "status_header": "状态",
+        "match_result_header": "匹配结果",
+        "export_matches": "导出比对结果",
+        "export_matches_tooltip": "将比对结果导出为CSV文件",
+        "match_faces": "比对图片",
+        "match_faces_tooltip": "上传图片进行人脸比对",
+        "match_progress_title": "比对进度",
+        "matching_images": "正在比对图片",
+        "fullscreen_view": "全屏查看",
+        "rotate_right": "顺时针旋转90°",
+        "rotate_left": "逆时针旋转90°"
     },
     "en": {
         "network_status": "Network Status: Checking...",
@@ -141,6 +151,16 @@
         "copy_image_error": "Error copying image {image_path}: {error}",
         "image_not_found_error": "No images found.",
         "filename_header": "filename",
-        "status_header": "status"
+        "status_header": "status",
+        "match_result_header": "Match Result",
+        "export_matches": "Export Match Results",
+        "export_matches_tooltip": "Export match results to a CSV file",
+        "match_faces": "Match Faces",
+        "match_faces_tooltip": "Upload images for face matching",
+        "match_progress_title": "Matching Progress",
+        "matching_images": "Matching Images",
+        "fullscreen_view": "Fullscreen View",
+        "rotate_right": "Rotate Right 90°",
+        "rotate_left": "Rotate Left 90°"
     }
 }
