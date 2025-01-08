@@ -140,17 +140,65 @@ class FaceRecognitionApp:
         # 用于存储文件名与路径的映射
         self.filename_to_path = {}
 
+
         # 设置按钮样式
         self.style = ttk.Style()
         self.style.theme_use('clam')  # 使用 'clam' 主题，适合自定义样式
-        self.style.configure("TButton",
-                            font=("Helvetica", 12, "bold"),
-                            padding=10,
-                            relief="flat",
-                            background="#1abc9c",  # 青绿色
-                            foreground="white")
-        self.style.map("TButton",
-                    background=[('active', '#16a085')])  # 鼠标悬停时颜色变化
+
+        # 定义自定义颜色
+        PRIMARY_COLOR = "#34495e"      # 主背景色（深蓝灰）
+        SECONDARY_COLOR = "#2c3e50"    # 次背景色
+        ACCENT_COLOR = "#1abc9c"       # 按钮和一些高亮色（青绿色）
+        ACCENT_COLOR_ACTIVE = "#16a085"  
+        TEXT_COLOR = "#ecf0f1"         # 前景色（淡灰/白）
+
+        # 配置全局控件样式
+        self.style.configure(
+            ".",  # '.' 表示全局
+            font=("Microsoft YaHei", 11),
+            background=PRIMARY_COLOR
+        )
+
+        # 配置 TFrame 样式
+        self.style.configure(
+            "TFrame",
+            background=PRIMARY_COLOR
+        )
+
+        # 配置 TLabel 样式
+        self.style.configure(
+            "TLabel",
+            background=PRIMARY_COLOR,
+            foreground=TEXT_COLOR
+        )
+
+        # 配置 TButton 样式
+        self.style.configure(
+            "TButton",
+            font=("Microsoft YaHei", 11, "bold"),
+            padding=10,
+            relief="flat",
+            background=ACCENT_COLOR,
+            foreground="white"
+        )
+        self.style.map(
+            "TButton",
+            background=[('active', ACCENT_COLOR_ACTIVE)]
+        )
+
+        # 配置 TCombobox 样式
+        self.style.configure(
+            "TCombobox",
+            foreground="black",
+            fieldbackground="#ffffff"
+        )
+        self.style.map(
+            "TCombobox",
+            fieldbackground=[("readonly", "#ffffff")]
+        )
+
+
+
 
         # 创建顶部状态框架
         self.frame_status = tk.Frame(root, bg="#2c3e50")
@@ -171,30 +219,121 @@ class FaceRecognitionApp:
         self.time_label.pack(side='right', padx=10)
 
         # 创建顶部标题
-        self.title_label = tk.Label(root, text=lang["title"],
-                                    font=("Helvetica", 18, "bold"),
-                                    bg="#2c3e50",
-                                    fg="#ecf0f1")
+        self.title_label = ttk.Label(
+            root,
+            text=lang["title"],
+            style="TLabel"
+        )
+        # 然后单独修改字体：
+        self.title_label.configure(font=("Microsoft YaHei", 18, "bold"))
         self.title_label.pack(pady=20)
 
-        # 创建选择图片按钮框架
-        self.frame_buttons = tk.Frame(root, bg="#2c3e50")
+        # 创建按钮框架
+        self.frame_buttons = ttk.Frame(root, style="TFrame")
         self.frame_buttons.pack(pady=10, padx=20, fill='x')
 
-        self.button_open_images = ttk.Button(self.frame_buttons, text=lang["upload_images"], command=self.open_images)
-        self.button_open_images.pack(pady=5, fill='x')
+        # 创建内部按钮框架以使用 grid 布局
+        self.frame_buttons_inner = tk.Frame(self.frame_buttons, bg="#2c3e50")
+        self.frame_buttons_inner.pack(fill='x')
 
-        self.button_open_folder = ttk.Button(self.frame_buttons, text=lang["upload_folder_images"], command=self.open_folder)
-        self.button_open_folder.pack(pady=5, fill='x')
+        # 添加上传图片到人脸库按钮
+        self.button_upload_to_library = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["upload_images"],
+            command=self.upload_faces_to_library,
+            style="TButton"
+        )
+        self.button_upload_to_library.grid(row=0, column=0, padx=5, pady=5, sticky='ew')
+        self.tooltip_upload_to_library = ToolTip(
+            self.button_upload_to_library,
+            lang.get("upload_images_tooltip", "上传图片到人脸库")
+        )
 
-        self.button_start_camera = ttk.Button(self.frame_buttons, text=lang["start_camera"], command=self.open_camera_window)
-        self.button_start_camera.pack(pady=5, fill='x')
+        # 添加比对图片按钮
+        self.button_match_faces = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["match_faces"],
+            command=self.match_faces_from_images,
+            style="TButton"
+        )
+        self.button_match_faces.grid(row=0, column=1, padx=5, pady=5, sticky='ew')
+        self.tooltip_match_faces = ToolTip(
+            self.button_match_faces,
+            lang.get("match_faces_tooltip", "上传图片进行人脸比对")
+        )
 
-        self.button_help = ttk.Button(self.frame_buttons, text=lang["help"], command=self.show_help)
-        self.button_help.pack(pady=5, fill='x')
+
+        # 添加启动摄像头按钮
+        self.button_start_camera = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["start_camera"],
+            command=self.open_camera_window
+        )
+        self.button_start_camera.grid(row=0, column=2, padx=5, pady=5, sticky='ew')
+
+        # 添加帮助按钮
+        self.button_help = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["help"],
+            command=self.show_help
+        )
+        self.button_help.grid(row=0, column=3, padx=5, pady=5, sticky='ew')
+
+        # 添加导出日志按钮
+        self.button_export_logs = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["export_logs"],
+            command=self.export_logs
+        )
+        self.button_export_logs.grid(row=0, column=4, padx=5, pady=5, sticky='ew')
+        self.tooltip_export_logs = ToolTip(
+            self.button_export_logs,
+            lang.get("export_logs_tooltip", "将使用日志导出为CSV文件")
+        )
+
+        # 添加导出比对结果按钮（保持现有功能）
+        self.button_export_matches = ttk.Button(
+            self.frame_buttons_inner,
+            text=lang["export_matches"],
+            command=self.export_match_results
+        )
+        self.button_export_matches.grid(row=0, column=5, padx=5, pady=5, sticky='ew')
+        self.tooltip_export_matches = ToolTip(
+            self.button_export_matches,
+            lang.get("export_matches_tooltip", "将比对结果导出为CSV文件")
+        )
+
+        # 创建选择语言下拉菜单
+        self.language_var = tk.StringVar(value='中文')
+        self.dropdown_languages = ttk.Combobox(
+            self.frame_buttons_inner,
+            textvariable=self.language_var,
+            state='readonly'
+        )
+        self.dropdown_languages['values'] = ['中文', 'English']
+        self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
+        self.dropdown_languages.grid(row=0, column=6, padx=5, pady=5, sticky='ew')
+        self.tooltip_language = ToolTip(
+            self.dropdown_languages,
+            lang["choose_language_tooltip"]
+        )
+
+        # 让所有列在内部框架中均分宽度
+        for i in range(7):  # 更新列数为7
+            self.frame_buttons_inner.grid_columnconfigure(i, weight=1)
+
+
+        # 创建分割线
+        separator = ttk.Separator(root, orient='horizontal')
+        separator.pack(fill='x', padx=20, pady=5)
+
 
         # 添加手动输入路径的功能
-        self.frame_manual_path = tk.Frame(root, bg="#2c3e50")
+        self.frame_manual_path = ttk.LabelFrame(
+            root, 
+            text="手动导入",  # 在这里加一个简短标题
+            style="TFrame"
+        )
         self.frame_manual_path.pack(pady=10, padx=20, fill='x')
 
         self.label_manual_path = tk.Label(self.frame_manual_path, text=lang["manual_path_label"],
@@ -226,8 +365,8 @@ class FaceRecognitionApp:
         self.scrollbar = tk.Scrollbar(self.frame_file_list, orient=tk.VERTICAL)
         self.tree_files = ttk.Treeview(
             self.frame_file_list,
-            columns=("Filename", "Status"),
-            show='headings',  # 只显示定义的列
+            columns=("Filename", "Status", "Match Result"),  # 包含所有列
+            show='headings',
             yscrollcommand=self.scrollbar.set
         )
         self.scrollbar.config(command=self.tree_files.yview)
@@ -237,12 +376,17 @@ class FaceRecognitionApp:
         # 定义列标题
         self.tree_files.heading("Filename", text=lang["filename_header"])
         self.tree_files.heading("Status", text=lang["status_header"])
-        self.tree_files.column("Filename", width=250, anchor='w')  # 调整文件名列宽度和对齐方式
-        self.tree_files.column("Status", width=100, anchor='center')  # 调整状态列宽度和对齐方式
+        self.tree_files.heading("Match Result", text=lang["match_result_header"])  # 新增标题
+
+        # 设置列宽和对齐方式
+        self.tree_files.column("Filename", width=250, anchor='w')
+        self.tree_files.column("Status", width=100, anchor='center')
+        self.tree_files.column("Match Result", width=150, anchor='center')  # 设置新列宽度
 
         # 定义上传成功和失败的标签
         self.tree_files.tag_configure("success", foreground="green")
         self.tree_files.tag_configure("failure", foreground="red")
+
 
         # 绑定Treeview的选择事件
         self.tree_files.bind('<<TreeviewSelect>>', self.display_selected_image)
@@ -278,29 +422,62 @@ class FaceRecognitionApp:
         self.context_menu.add_command(label=lang["rotate_left"], command=lambda: self.rotate_image(-90))
         self.context_menu.add_command(label=lang["fullscreen_view"], command=self.fullscreen_view)
 
-        # 创建图像控制按钮框架
-        self.frame_image_controls = tk.Frame(root, bg="#2c3e50")
+        # 创建图像控制按钮框架（2x2 网格排列）
+        self.frame_image_controls = ttk.Frame(root, style="TFrame")
         self.frame_image_controls.pack(pady=10, padx=20, fill='x')
 
-        # 缩放按钮
-        self.button_zoom_in = ttk.Button(self.frame_image_controls, text=lang["zoom_in"], command=lambda: self.zoom_image_manual(1.1))
-        self.button_zoom_in.pack(side='left', padx=5)
-        self.tooltip_zoom_in = ToolTip(self.button_zoom_in, lang["zoom_in_tooltip"])
+        # 使用 grid 布局将按钮安排为 2x2
+        # 第1行 - 放大和缩小按钮
+        self.button_zoom_in = ttk.Button(
+            self.frame_image_controls,
+            text=lang["zoom_in"],
+            command=lambda: self.zoom_image_manual(1.1),
+            style="TButton"
+        )
+        self.button_zoom_in.grid(row=0, column=0, padx=10, pady=5, sticky='nsew')
+        self.tooltip_zoom_in = ToolTip(
+            self.button_zoom_in,
+            lang.get("zoom_in_tooltip", "放大图片")
+        )
 
-        self.button_zoom_out = ttk.Button(self.frame_image_controls, text=lang["zoom_out"], command=lambda: self.zoom_image_manual(0.9))
-        self.button_zoom_out.pack(side='left', padx=5)
-        self.tooltip_zoom_out = ToolTip(self.button_zoom_out, lang["zoom_out_tooltip"])
+        self.button_zoom_out = ttk.Button(
+            self.frame_image_controls,
+            text=lang["zoom_out"],
+            command=lambda: self.zoom_image_manual(0.9),
+            style="TButton"
+        )
+        self.button_zoom_out.grid(row=0, column=1, padx=10, pady=5, sticky='nsew')
+        self.tooltip_zoom_out = ToolTip(
+            self.button_zoom_out,
+            lang.get("zoom_out_tooltip", "缩小图片")
+        )
 
-        # 旋转按钮
-        self.button_rotate_left = ttk.Button(self.frame_image_controls, text=lang["rotate_left"], command=lambda: self.rotate_image(-90))
-        self.button_rotate_left.pack(side='left', padx=5)
-        self.tooltip_rotate_left = ToolTip(self.button_rotate_left, lang["rotate_left_tooltip"])
+        # 第2行 - 顺时针和逆时针旋转按钮
+        self.button_rotate_left = ttk.Button(
+            self.frame_image_controls,
+            text=lang["rotate_left"],
+            command=lambda: self.rotate_image(-90),
+            style="TButton"
+        )
+        self.button_rotate_left.grid(row=1, column=0, padx=10, pady=5, sticky='nsew')
+        self.tooltip_rotate_left = ToolTip(
+            self.button_rotate_left,
+            lang.get("rotate_left_tooltip", "逆时针旋转图片")
+        )
 
-        self.button_rotate_right = ttk.Button(self.frame_image_controls, text=lang["rotate_right"], command=lambda: self.rotate_image(90))
-        self.button_rotate_right.pack(side='left', padx=5)
-        self.tooltip_rotate_right = ToolTip(self.button_rotate_right, lang["rotate_right_tooltip"])
+        self.button_rotate_right = ttk.Button(
+            self.frame_image_controls,
+            text=lang["rotate_right"],
+            command=lambda: self.rotate_image(90),
+            style="TButton"
+        )
+        self.button_rotate_right.grid(row=1, column=1, padx=10, pady=5, sticky='nsew')
+        self.tooltip_rotate_right = ToolTip(
+            self.button_rotate_right,
+            lang.get("rotate_right_tooltip", "顺时针旋转图片")
+        )
 
-        # 添加缩放滑块
+        # 第3行 - 缩放滑块
         self.scale = tk.Scale(
             self.frame_image_controls,
             from_=10,  # 调整最小值为10%
@@ -310,11 +487,19 @@ class FaceRecognitionApp:
             command=self.scale_image
         )
         self.scale.set(100)  # 初始缩放比例为100%
-        self.scale.pack(side='left', padx=10)
-        self.tooltip_scale = ToolTip(self.scale, lang["scale_tooltip"])
+        self.scale.grid(row=2, column=0, columnspan=2, padx=10, pady=10, sticky='ew')
+        self.tooltip_scale = ToolTip(
+            self.scale,
+            lang.get("scale_tooltip", "缩放图片")
+        )
         self.scale.config(state='normal')  # 使能缩放滑块
 
-
+        # 设置 grid 中的行和列权重，使按钮和滑块均匀扩展
+        self.frame_image_controls.grid_columnconfigure(0, weight=1)
+        self.frame_image_controls.grid_columnconfigure(1, weight=1)
+        self.frame_image_controls.grid_rowconfigure(0, weight=1)
+        self.frame_image_controls.grid_rowconfigure(1, weight=1)
+        self.frame_image_controls.grid_rowconfigure(2, weight=1)  # 新增第三行
 
         # 添加底部版权信息
         self.footer_label = tk.Label(root, text=lang["thank_you"],
@@ -326,18 +511,6 @@ class FaceRecognitionApp:
         # 初始化日志列表
         self.logs = []
 
-        # 添加导出日志按钮
-        self.button_export_logs = ttk.Button(self.frame_buttons, text=lang["export_logs"], command=self.export_logs)
-        self.button_export_logs.pack(pady=5, fill='x')
-        self.tooltip_export_logs = ToolTip(self.button_export_logs, lang.get("export_logs_tooltip", "将使用日志导出为CSV文件"))
-
-        # 创建选择语言下拉菜单
-        self.language_var = tk.StringVar(value='中文')
-        self.dropdown_languages = ttk.Combobox(self.frame_buttons, textvariable=self.language_var, state='readonly')
-        self.dropdown_languages['values'] = ['中文', 'English']
-        self.dropdown_languages.bind('<<ComboboxSelected>>', self.change_language)
-        self.dropdown_languages.pack(pady=5, fill='x')
-        self.tooltip_language = ToolTip(self.dropdown_languages, lang["choose_language_tooltip"])
 
 
         # 启动网络状态和时间更新
@@ -349,6 +522,7 @@ class FaceRecognitionApp:
 
         # 添加当前缩放因子
         self.current_scale = 1.0  # 初始缩放比例为100%
+
 
 
     def scale_image(self, value):
@@ -484,8 +658,8 @@ class FaceRecognitionApp:
         self.network_status_label.config(text=lang["network_status"])
         self.time_label.config(text=f"{lang['current_time']}: --:--:--")
         self.title_label.config(text=lang["title"])
-        self.button_open_images.config(text=lang["upload_images"])
-        self.button_open_folder.config(text=lang["upload_folder_images"])
+        self.button_upload_to_library.config(text=lang["upload_images"])
+        self.button_match_faces.config(text=lang["match_faces"])  # 更新比对按钮文本
         self.button_start_camera.config(text=lang["start_camera"])
         self.button_help.config(text=lang["help"])
         self.label_manual_path.config(text=lang["manual_path_label"])
@@ -493,6 +667,7 @@ class FaceRecognitionApp:
         self.button_upload_manual_path.config(text=lang["upload"])
         self.label_uploaded_files.config(text=lang["uploaded_files"])
         self.button_export_logs.config(text=lang["export_logs"])
+        self.button_export_matches.config(text=lang["export_matches"])  # 更新导出比对结果按钮
 
         # 更新图像控制按钮的文本
         self.button_zoom_in.config(text=lang["zoom_in"])
@@ -510,21 +685,25 @@ class FaceRecognitionApp:
         self.tooltip_rotate_right.set_text(lang["rotate_right_tooltip"])
         self.tooltip_scale.set_text(lang["scale_tooltip"])
         self.tooltip_export_logs.set_text(lang.get("export_logs_tooltip", "将使用日志导出为CSV文件"))
+        self.tooltip_export_matches.set_text(lang.get("export_matches_tooltip", "将比对结果导出为CSV文件"))  # 更新导出比对结果工具提示
         self.tooltip_language.set_text(lang["choose_language_tooltip"])
 
         # 更新Treeview列标题
         self.tree_files.heading("Filename", text=lang["filename_header"])
         self.tree_files.heading("Status", text=lang["status_header"])
+        self.tree_files.heading("Match Result", text=lang["match_result_header"])  # 更新新列标题
 
         # 更新底部版权信息
         self.footer_label.config(text=lang["thank_you"])
 
         # 更新右键菜单的标签
-        self.context_menu.entryconfig("顺时针旋转90°" if lang_code == 'zh' else "Rotate Right 90°", label=lang["rotate_right"])
-        self.context_menu.entryconfig("逆时针旋转90°" if lang_code == 'zh' else "Rotate Left 90°", label=lang["rotate_left"])
-        self.context_menu.entryconfig("全屏查看" if lang_code == 'zh' else "Fullscreen View", label=lang["fullscreen_view"])
+        self.context_menu.entryconfig(lang_code == 'zh' and "顺时针旋转90°" or "Rotate Right 90°", label=lang["rotate_right"])
+        self.context_menu.entryconfig(lang_code == 'zh' and "逆时针旋转90°" or "Rotate Left 90°", label=lang["rotate_left"])
+        self.context_menu.entryconfig(lang_code == 'zh' and "全屏查看" or "Fullscreen View", label=lang["fullscreen_view"])
 
         logger.info(f"界面语言已切换为: {lang_code}")
+
+
 
 
 
@@ -557,6 +736,7 @@ class FaceRecognitionApp:
         }
         self.logs.append(log_entry)
         logger.info(f"日志记录：{log_entry}")
+
 
     def cleanup_temp_dir(self):
         """在程序退出时清理临时文件夹"""
@@ -611,10 +791,10 @@ class FaceRecognitionApp:
         return enhanced_image_path
 
 
-    def upload_faces(self):
-        """上传选定的图片进行人脸识别"""
-        logger.info("开始执行 upload_faces 方法")  # 确认方法被调用
 
+        """上传选定的图片进行人脸识别并比对"""
+        logger.info("开始执行 upload_faces 方法")
+        
         if not self.selected_image_paths:
             self.root.after(0, lambda: messagebox.showerror(
                 self.languages[self.current_language]["error"],
@@ -627,15 +807,19 @@ class FaceRecognitionApp:
         try:
             # 创建一个顶层弹窗来显示处理状态
             progress_window = tk.Toplevel(self.root)
-            progress_window.title(self.languages[self.current_language]["upload_progress_title"])
+            progress_window.title(self.languages[self.current_language]["match_progress_title"])  # 使用比对相关标题
             progress_window.geometry("400x200")
             progress_window.configure(bg="#2c3e50")
 
-            progress_label = tk.Label(progress_window, text=self.languages[self.current_language]["uploading_images"],
-                                    font=("Helvetica", 12),
-                                    bg="#2c3e50",
-                                    fg="#ecf0f1")
+            progress_label = tk.Label(
+                progress_window,
+                text=self.languages[self.current_language]["matching_images"],  # 使用比对相关文本
+                font=("Helvetica", 12),
+                bg="#2c3e50",
+                fg="#ecf0f1"
+            )
             progress_label.pack(pady=20)
+
 
             progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
             progress_bar.pack(pady=20)
@@ -666,7 +850,7 @@ class FaceRecognitionApp:
                         item_id = self.tree_files.insert(
                             "",
                             "end",
-                            values=(filename, "失败"),
+                            values=(filename, "失败", "N/A"),  # 设置比对结果为"N/A"
                             tags=("failure",)
                         )
                         self.filename_to_path[item_id] = image_path
@@ -700,20 +884,33 @@ class FaceRecognitionApp:
                         tag = "failure"
                         failed += 1
 
+                    # 进行人脸比对
+                    if status == "成功":
+                        match_result, matched_person = self.match_face(enhanced_image_path)
+                        if match_result:
+                            match_display = matched_person
+                        else:
+                            match_display = "未匹配"
+                    else:
+                        match_display = "N/A"
+
                     # 添加到文件列表并设置颜色
                     filename = os.path.basename(image_path)
                     item_id = self.tree_files.insert(
                         "",
                         "end",
-                        values=(filename, status),
+                        values=(filename, status, match_display),
                         tags=(tag,)
                     )
                     self.filename_to_path[item_id] = image_path  # 使用 item_id 作为键
-                    logger.info(f"添加到列表: {filename} - {status}, 路径: {image_path}")
-                    print(f"添加到列表: {filename} - {status}, 路径: {image_path}")  # 临时打印
+                    logger.info(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")
+                    print(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")  # 临时打印
 
                     if status == "成功":
-                        self.add_log("上传图片", "成功", filename)
+                        if match_result:
+                            self.add_log("上传图片并比对", f"成功: 匹配到 {matched_person}")
+                        else:
+                            self.add_log("上传图片并比对", "成功: 未匹配到任何人")
                     else:
                         self.add_log("上传图片", f"失败：{json.dumps(result)}")
 
@@ -730,7 +927,7 @@ class FaceRecognitionApp:
                     item_id = self.tree_files.insert(
                         "",
                         "end",
-                        values=(filename, "失败"),
+                        values=(filename, "失败", "N/A"),
                         tags=("failure",)
                     )
                     self.filename_to_path[item_id] = image_path
@@ -765,6 +962,7 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"upload_faces 方法执行时发生未捕获的异常: {e}")
             messagebox.showerror("错误", f"上传过程中发生错误: {e}")
+
 
 
 
@@ -844,18 +1042,8 @@ class FaceRecognitionApp:
 
     def match_face(self, image_path):
         """进行人脸匹配"""
-        with open(image_path, "rb") as image_file:
-            files = {
-                'file': ('image.jpg', image_file, 'image/jpeg')
-            }
-
-            data = {
-                'Action': 'SearchFace',  # 搜索人脸库中是否有匹配
-                'Version': '2019-12-30',  # 版本号
-                'FaceLibId': self.face_lib_id,  # 人脸库ID
-            }
-
-            try:
+        try:
+            with open(image_path, "rb") as image_file:
                 # 使用 SDK 构建请求
                 request = CommonRequest()
                 request.set_accept_format('json')
@@ -876,11 +1064,13 @@ class FaceRecognitionApp:
                     return True, matched_person  # 匹配成功
                 else:
                     return False, None  # 匹配失败
-            except Exception as e:
-                messagebox.showerror("识别失败", f"识别失败: {e}\n请确保摄像头正常工作并重新尝试。")
-                logger.error(f"识别失败：{e}")
-                self.add_log("人脸识别", f"失败：{e}")
-                return False, None
+        except Exception as e:
+            logger.error(f"识别失败：{e}")
+            self.add_log("人脸识别", f"失败：{e}")
+            return False, None
+
+
+
 
     def display_selected_image(self, event):
         """显示选中的图片"""
@@ -1157,7 +1347,6 @@ class FaceRecognitionApp:
         self.root.attributes("-disabled", False)
         cv2.destroyAllWindows()
 
-    def open_images(self):
         """上传图片"""
         file_paths = filedialog.askopenfilenames(
             title="选择图片",
@@ -1203,7 +1392,7 @@ class FaceRecognitionApp:
 
 
 
-    def open_folder(self):
+
         """上传文件夹中的图片"""
         folder_path = filedialog.askdirectory(title="选择包含图片的文件夹")
         if folder_path:
@@ -1323,8 +1512,291 @@ class FaceRecognitionApp:
         help_textbox.insert(tk.END, help_text)
         help_textbox.config(state='disabled')  # 只读
 
-    # 以下是集成的图像交互功能方法
-    # (这些方法已经在类的其他部分定义过，无需再次定义)
+    def export_match_results(self):
+        """导出比对结果为CSV文件"""
+        export_path = filedialog.asksaveasfilename(
+            defaultextension=".csv",
+            filetypes=[("CSV files", "*.csv"), ("All files", "*.*")]
+        )
+
+        if export_path:
+            try:
+                with open(export_path, mode='w', newline='', encoding='utf-8-sig') as csv_file:
+                    fieldnames = ["Filename", "Status", "Match Result"]
+                    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+                    writer.writeheader()
+                    for item in self.tree_files.get_children():
+                        filename, status, match_result = self.tree_files.item(item, 'values')
+                        writer.writerow({
+                            "Filename": filename,
+                            "Status": status,
+                            "Match Result": match_result
+                        })
+
+                messagebox.showinfo("导出成功", f"比对结果已成功导出到 {export_path}")
+                logger.info(f"比对结果已导出到 {export_path}")
+            except Exception as e:
+                messagebox.showerror("导出失败", f"导出比对结果失败: {e}")
+                logger.error(f"导出比对结果失败: {e}")
+
+
+    def upload_faces_to_library(self):
+        """上传图片到人脸库"""
+        # 允许用户选择单张或多张图片
+        file_paths = filedialog.askopenfilenames(
+            title=self.languages[self.current_language]["upload_images"],
+            filetypes=[("Image Files", "*.jpg;*.jpeg;*.png")]
+        )
+        
+        if not file_paths:
+            messagebox.showwarning("警告", "未选择任何图片进行上传。")
+            logger.warning("上传失败：未选择任何图片。")
+            self.add_log("上传图片到人脸库", "失败：未选择任何图片")
+            return
+        
+        # 创建一个顶层弹窗来显示处理状态
+        progress_window = tk.Toplevel(self.root)
+        progress_window.title(self.languages[self.current_language]["upload_progress_title"])
+        progress_window.geometry("400x200")
+        progress_window.configure(bg="#2c3e50")
+
+        progress_label = tk.Label(
+            progress_window,
+            text=self.languages[self.current_language]["uploading_images"],
+            font=("Helvetica", 12),
+            bg="#2c3e50",
+            fg="#ecf0f1"
+        )
+        progress_label.pack(pady=20)
+
+        progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
+        progress_bar.pack(pady=20)
+
+        # 设置进度条最大值为图片数量
+        progress_bar["maximum"] = len(file_paths)
+
+        uploaded = 0
+        failed = 0
+
+        for i, image_path in enumerate(file_paths, start=1):
+            try:
+                # 压缩并增强图片
+                compressed_image_path = self.compress_image(image_path)  # 压缩图片
+                enhanced_image_path = self.enhance_image(compressed_image_path)  # 增强图片
+
+                logger.info(f"开始上传图片: {enhanced_image_path}")
+                print(f"开始上传图片: {enhanced_image_path}")  # 临时打印
+
+                # 使用 SDK 构建请求
+                request = CommonRequest()
+                request.set_accept_format('json')
+                request.set_domain(self.url)
+                request.set_method('POST')
+                request.set_version('2019-12-30')
+                request.set_action_name('AddFace')
+                request.add_query_param('FaceLibId', self.face_lib_id)
+                request.add_file_param('file', enhanced_image_path)
+
+                # 发送请求
+                response = self.client.do_action_with_exception(request)
+                result = json.loads(response)
+
+                logger.debug(f"上传响应: {result}")
+                print(f"上传响应: {result}")  # 临时打印
+
+                # 判断上传是否成功
+                if 'FaceRecords' in result and len(result['FaceRecords']) > 0:
+                    status = "成功"
+                    tag = "success"
+                    uploaded += 1
+                    self.add_log("上传图片到人脸库", "成功", os.path.basename(image_path))
+                else:
+                    status = "失败"
+                    tag = "failure"
+                    failed += 1
+                    self.add_log("上传图片到人脸库", f"失败：{result.get('Message', '未知错误')}")
+                
+                # 添加到文件列表并设置颜色
+                filename = os.path.basename(image_path)
+                item_id = self.tree_files.insert(
+                    "",
+                    "end",
+                    values=(filename, status, "N/A"),  # 不进行比对，Match Result 设置为 "N/A"
+                    tags=(tag,)
+                )
+                self.filename_to_path[item_id] = image_path  # 使用 item_id 作为键
+                logger.info(f"添加到列表: {filename} - {status}, 路径: {image_path}")
+                print(f"添加到列表: {filename} - {status}, 路径: {image_path}")  # 临时打印
+
+                # 更新进度条
+                progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(file_paths)})")
+                progress_bar["value"] = i
+                progress_window.update_idletasks()
+
+            except Exception as e:
+                logger.error(f"上传 {image_path} 时发生错误: {e}")
+                self.add_log("上传图片到人脸库", f"失败：{e}")
+                # 添加到 Treeview 即使出现异常
+                filename = os.path.basename(image_path)
+                item_id = self.tree_files.insert(
+                    "",
+                    "end",
+                    values=(filename, "失败", "N/A"),
+                    tags=("failure",)
+                )
+                self.filename_to_path[item_id] = image_path
+                failed += 1
+                messagebox.showerror(
+                    self.languages[self.current_language]["error"],
+                    self.languages[self.current_language]["upload_image_error"].format(
+                        image=filename, error=str(e)
+                    )
+                )
+        
+        # 上传完成后关闭进度窗口并显示结果
+        progress_window.destroy()
+        messagebox.showinfo(
+            self.languages[self.current_language]["upload_complete"],
+            self.languages[self.current_language]["upload_success"].format(uploaded=uploaded) + "\n" + 
+            self.languages[self.current_language]["upload_failed"].format(failed=failed)
+        )
+        logger.info(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")
+        print(f"批量上传完成！成功上传: {uploaded} 张图片，失败: {failed} 张图片")  # 临时打印
+
+        # 自动显示第一张图片（仅上传成功的图片）
+        if uploaded > 0:
+            # 获取所有项
+            all_items = self.tree_files.get_children()
+            if all_items:
+                for item in all_items:
+                    status = self.tree_files.item(item, 'values')[1]
+                    if status == "成功":
+                        self.tree_files.selection_set(item)
+                        self.tree_files.focus(item)
+                        self.tree_files.event_generate("<<TreeviewSelect>>")
+                        break
+
+    def match_faces_from_images(self):
+        """上传图片进行人脸比对"""
+        # 允许用户选择单张或多张图片
+        file_paths = filedialog.askopenfilenames(
+            title=self.languages[self.current_language]["match_faces"],
+            filetypes=[("Image Files", "*.jpg;*.jpeg;*.png")]
+        )
+        
+        if not file_paths:
+            messagebox.showwarning("警告", "未选择任何图片进行比对。")
+            logger.warning("比对失败：未选择任何图片。")
+            self.add_log("比对图片", "失败：未选择任何图片")
+            return
+        
+        # 创建一个顶层弹窗来显示处理状态
+        progress_window = tk.Toplevel(self.root)
+        progress_window.title(self.languages[self.current_language]["upload_progress_title"])  # 可更改为比对相关标题
+        progress_window.geometry("400x200")
+        progress_window.configure(bg="#2c3e50")
+
+        progress_label = tk.Label(
+            progress_window,
+            text=self.languages[self.current_language]["uploading_images"],  # 可更改为比对相关文本
+            font=("Helvetica", 12),
+            bg="#2c3e50",
+            fg="#ecf0f1"
+        )
+        progress_label.pack(pady=20)
+
+        progress_bar = ttk.Progressbar(progress_window, length=300, mode='determinate')
+        progress_bar.pack(pady=20)
+
+        # 设置进度条最大值为图片数量
+        progress_bar["maximum"] = len(file_paths)
+
+        matched = 0
+        unmatched = 0
+
+        for i, image_path in enumerate(file_paths, start=1):
+            try:
+                # 压缩并增强图片（可选，根据需要决定）
+                compressed_image_path = self.compress_image(image_path)  # 压缩图片
+                enhanced_image_path = self.enhance_image(compressed_image_path)  # 增强图片
+
+                logger.info(f"开始比对图片: {enhanced_image_path}")
+                print(f"开始比对图片: {enhanced_image_path}")  # 临时打印
+
+                # 进行人脸比对
+                match_result, matched_person = self.match_face(enhanced_image_path)
+
+                if match_result:
+                    status = "成功"
+                    match_display = matched_person
+                    matched += 1
+                    self.add_log("比对图片", "成功", matched_person)
+                else:
+                    status = "失败"
+                    match_display = "未匹配"
+                    unmatched += 1
+                    self.add_log("比对图片", "失败：未匹配到任何人")
+
+                # 添加到文件列表并设置颜色
+                filename = os.path.basename(image_path)
+                item_id = self.tree_files.insert(
+                    "",
+                    "end",
+                    values=(filename, status, match_display),
+                    tags=(tag := "success" if match_result else "failure",)
+                )
+                self.filename_to_path[item_id] = image_path  # 使用 item_id 作为键
+                logger.info(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")
+                print(f"添加到列表: {filename} - {status} - {match_display}, 路径: {image_path}")  # 临时打印
+
+                # 更新进度条
+                progress_label.config(text=f"{self.languages[self.current_language]['uploading_images']} ({i}/{len(file_paths)})")  # 可更改为比对相关文本
+                progress_bar["value"] = i
+                progress_window.update_idletasks()
+
+            except Exception as e:
+                logger.error(f"比对 {image_path} 时发生错误: {e}")
+                self.add_log("比对图片", f"失败：{e}")
+                # 添加到 Treeview 即使出现异常
+                filename = os.path.basename(image_path)
+                item_id = self.tree_files.insert(
+                    "",
+                    "end",
+                    values=(filename, "失败", "N/A"),
+                    tags=("failure",)
+                )
+                self.filename_to_path[item_id] = image_path
+                unmatched += 1
+                messagebox.showerror(
+                    self.languages[self.current_language]["error"],
+                    self.languages[self.current_language]["upload_image_error"].format(
+                        image=filename, error=str(e)
+                    )
+                )
+        
+        # 比对完成后关闭进度窗口并显示结果
+        progress_window.destroy()
+        messagebox.showinfo(
+            self.languages[self.current_language]["upload_complete"],  # 可更改为比对相关标题
+            self.languages[self.current_language]["upload_success"].format(uploaded=matched) + "\n" + 
+            self.languages[self.current_language]["upload_failed"].format(failed=unmatched)
+        )
+        logger.info(f"批量比对完成！成功匹配: {matched} 张图片，失败: {unmatched} 张图片")
+        print(f"批量比对完成！成功匹配: {matched} 张图片，失败: {unmatched} 张图片")  # 临时打印
+
+        # 自动显示第一张匹配成功的图片
+        if matched > 0:
+            # 获取所有项
+            all_items = self.tree_files.get_children()
+            if all_items:
+                for item in all_items:
+                    status = self.tree_files.item(item, 'values')[1]
+                    if status == "成功":
+                        self.tree_files.selection_set(item)
+                        self.tree_files.focus(item)
+                        self.tree_files.event_generate("<<TreeviewSelect>>")
+                        break
 
 # 以下是主程序启动部分
 if __name__ == "__main__":
