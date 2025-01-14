@@ -33,7 +33,7 @@ logging.basicConfig(
     handlers=[
         logging.FileHandler("app.log"),
         logging.StreamHandler(),
-        loging.setFormatter(formatter)
+        logging.setFormatter(formatter)
     ]
 )
 
