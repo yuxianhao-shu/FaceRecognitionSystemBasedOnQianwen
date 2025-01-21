@@ -20,9 +20,44 @@ from PIL import Image, ImageTk
 from threading import Thread
 import numpy as np
 import time
+from alibabacloud_facebody20191230.client import Client
+from alibabacloud_facebody20191230.models import CompareFaceRequest
+from alibabacloud_tea_openapi.models import Config
+from alibabacloud_tea_util.models import RuntimeOptions
+from alibabacloud_facebody20191230.client import Client as facebody20191230Client
+from alibabacloud_tea_openapi import models as open_api_models
+from alibabacloud_facebody20191230 import models as facebody_20191230_models
+from alibabacloud_tea_util import models as util_models
+from alibabacloud_tea_util.client import Client as UtilClient
+import sys
+from typing import List
 # 加载环境变量
 load_dotenv()
-
+config = Config(
+access_key_id=os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_ID'),
+    access_key_secret=os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_SECRET'),
+    # 访问的域名
+    endpoint='facebody.cn-shanghai.aliyuncs.com',
+    # 访问的域名对应的region
+    region_id='cn-shanghai'
+)
+compare_face_request = CompareFaceRequest(
+    image_urla='http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/facebody/CompareFace/CompareFace-right1.png',
+    image_urlb='http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/facebody/CompareFace/CompareFace-left1.png'
+)
+runtime_option = RuntimeOptions()
+try:
+    # 初始化Client
+    client = Client(config)
+    response = client.compare_face_with_options(compare_face_request, runtime_option)
+    # 获取整体结果
+    print(response.body)
+except Exception as error:
+    # 获取整体报错信息
+    print(error)
+    # 获取单个字段
+    print(error.code)
+    # tips: 可通过error.__dict__查看属性名称
 # 初始化logger
 logging.basicConfig(
     level=logging.INFO,
@@ -108,9 +143,9 @@ class FaceRecognitionApp:
         atexit.register(self.cleanup_temp_dir)
 
         # 阿里云 Access Key
-        self.access_key_id = os.getenv('access_key_id')  # 从环境变量中读取 AccessKeyId
-        self.access_key_secret = os.getenv('access_key_secret')  # 从环境变量中读取 AccessKeySecret
-
+        self.access_key_id =os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_ID') # 从环境变量中读取 AccessKeyId
+        self.access_key_secret =os.environ.get('ALIBABA_CLOUD_ACCESS_KEY_SECRET')  # 从环境变量中读取 AccessKeySecret
+        
         # 检查必要的环境变量是否存在
         if not self.access_key_id or not self.access_key_secret:
             messagebox.showerror("环境变量错误", "未设置必要的环境变量：access_key_id 或 access_key_secret。")
@@ -2045,6 +2080,31 @@ class FaceRecognitionApp:
         except Exception as e:
             logger.error(f"实时识别出错：{e}")
             self.add_log("实时识别", f"失败：{e}")
+    def preprocess_image(image_path):
+        # 1. 读取图像（PIL -> OpenCV 格式）
+        pil_img = Image.open(image_path).convert("RGB")
+        open_cv_image = np.array(pil_img)  # shape: (H, W, 3)
+        # 转换为 BGR 排列，以便用 OpenCV 函数处理
+        open_cv_image = open_cv_image[:, :, ::-1].copy()
+
+        # 2. 中值滤波去除椒盐噪声（若需多种滤波，可再视情况叠加）
+        denoised = cv2.medianBlur(open_cv_image, ksize=3)
+
+        # 3. 转灰度并直方图均衡
+        gray = cv2.cvtColor(denoised, cv2.COLOR_BGR2GRAY)
+        equalized = cv2.equalizeHist(gray)
+
+        # 4. 归一化到 [0, 255]
+        normalized = cv2.normalize(equalized, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX)
+
+        # 5. 转回 BGR（如果后续需要三通道，可跳过此步若只需灰度）
+        final_bgr = cv2.cvtColor(normalized, cv2.COLOR_GRAY2BGR)
+
+        # 6. 转回 PIL 便于后续合并
+        final_rgb = final_bgr[:, :, ::-1]
+        pil_final = Image.fromarray(final_rgb)
+
+        return pil_final
 
 # 以下是主程序启动部分
 if __name__ == "__main__":

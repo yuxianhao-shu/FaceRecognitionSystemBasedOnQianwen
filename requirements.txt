@@ -1,5 +1,7 @@
-aliyun_python_sdk_core==2.16.0
-opencv_python==4.10.0.84
-Pillow==11.0.0
-python-dotenv==1.0.1
-Requests==2.32.3
+Pillow
+opencv-python
+requests
+python-dotenv
+alibabacloud_facebody20191230
+tkinter
+numpy

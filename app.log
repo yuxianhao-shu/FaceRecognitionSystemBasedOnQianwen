@@ -271,3 +271,112 @@
 2025-01-12 22:19:15,149 - INFO - 网络状态: 已连接
 2025-01-12 22:19:20,755 - INFO - 网络状态: 已连接
 2025-01-12 22:19:26,609 - INFO - 网络状态: 已连接
+2025-01-15 00:53:20,756 - INFO - 语言资源加载成功。
+2025-01-15 00:53:20,760 - INFO - 阿里云客户端已初始化。
+2025-01-15 00:53:25,942 - WARNING - 网络状态: 未连接
+2025-01-15 00:53:26,020 - INFO - 图标已成功加载。
+2025-01-15 00:53:26,028 - INFO - 界面语言已切换为: zh
+2025-01-15 00:53:26,030 - INFO - 初始化完成。
+2025-01-15 00:53:26,131 - INFO - 缩放比例: 1.0
+2025-01-15 00:53:26,131 - WARNING - 没有图像可缩放。
+2025-01-15 00:53:35,946 - WARNING - 网络状态: 未连接
+2025-01-15 00:53:36,295 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 00:53:36,330 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:53:36,330 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:53:36,330 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 00:53:36,330 - INFO - 日志记录：{'Timestamp': '2025-01-15 00:53:36', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 00:53:45,960 - WARNING - 网络状态: 未连接
+2025-01-15 00:53:47,110 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 00:53:47,890 - WARNING - 没有图像在Canvas上，无法移动。
+2025-01-15 00:53:47,910 - WARNING - 没有图像在Canvas上，无法移动。
+2025-01-15 00:53:55,971 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:05,981 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:07,505 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:07,540 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:07,540 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:07,540 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 00:54:07,540 - INFO - 日志记录：{'Timestamp': '2025-01-15 00:54:07', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 00:54:15,998 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:17,162 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 00:54:19,739 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:19,764 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:19,764 - INFO - 开始比对图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 00:54:19,775 - ERROR - 识别失败：'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 00:54:19,775 - INFO - 日志记录：{'Timestamp': '2025-01-15 00:54:19', 'Operation': '人脸识别', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 00:54:19,775 - INFO - 日志记录：{'Timestamp': '2025-01-15 00:54:19', 'Operation': '比对图片', 'Result': '失败：未匹配到任何人', 'Matched_Person': '无'}
+2025-01-15 00:54:19,775 - INFO - 添加到列表: 微信图片_20250105230803.jpg - 失败 - 未匹配, 路径: D:/photos/sucai/微信图片_20250105230803.jpg
+2025-01-15 00:54:20,738 - INFO - 批量比对完成！成功匹配: 0 张图片，失败: 1 张图片
+2025-01-15 00:54:26,007 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:26,030 - INFO - 显示图片: 微信图片_20250105230803.jpg
+2025-01-15 00:54:26,060 - INFO - 显示图片: 微信图片_20250105230803.jpg
+2025-01-15 00:54:28,753 - WARNING - 上传失败：未选择任何图片。
+2025-01-15 00:54:28,754 - INFO - 日志记录：{'Timestamp': '2025-01-15 00:54:28', 'Operation': '上传图片到人脸库', 'Result': '失败：未选择任何图片', 'Matched_Person': '无'}
+2025-01-15 00:54:29,824 - INFO - 显示图片: 微信图片_20250105230803.jpg
+2025-01-15 00:54:30,155 - INFO - 显示图片: 微信图片_20250105230803.jpg
+2025-01-15 00:54:36,019 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:38,865 - ERROR - ServerException occurred. Host:facebody.cn-shanghai.aliyuncs.com SDK-Version:2.16.0 ServerException:HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: BED73859-4422-5471-92DF-8F91263982E9
+2025-01-15 00:54:38,865 - ERROR - 人脸检测和识别出错: HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: BED73859-4422-5471-92DF-8F91263982E9
+2025-01-15 00:54:38,865 - INFO - 摄像头窗口已打开并开始实时检测。
+2025-01-15 00:54:41,639 - ERROR - ServerException occurred. Host:facebody.cn-shanghai.aliyuncs.com SDK-Version:2.16.0 ServerException:HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: 735E345F-7A22-54A8-B3C5-D3E2720412D9
+2025-01-15 00:54:41,640 - ERROR - 人脸检测和识别出错: HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: 735E345F-7A22-54A8-B3C5-D3E2720412D9
+2025-01-15 00:54:41,640 - INFO - 摄像头窗口已打开并开始实时检测。
+2025-01-15 00:54:46,667 - WARNING - 网络状态: 未连接
+2025-01-15 00:54:46,740 - ERROR - ServerException occurred. Host:facebody.cn-shanghai.aliyuncs.com SDK-Version:2.16.0 ServerException:HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: 76BE8A92-3B79-59E7-BD22-E3AD7E8F3845
+2025-01-15 00:54:46,740 - ERROR - 人脸检测和识别出错: HTTP Status: 400 Error:InvalidImageType Specified parameter ImageType is not valid. RequestID: 76BE8A92-3B79-59E7-BD22-E3AD7E8F3845
+2025-01-15 00:54:46,787 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_jlcimouh 已删除。
+2025-01-15 01:02:06,392 - INFO - 语言资源加载成功。
+2025-01-15 01:02:06,395 - INFO - 阿里云客户端已初始化。
+2025-01-15 01:02:11,451 - WARNING - 网络状态: 未连接
+2025-01-15 01:02:11,470 - INFO - 图标已成功加载。
+2025-01-15 01:02:11,470 - INFO - 界面语言已切换为: zh
+2025-01-15 01:02:11,470 - INFO - 初始化完成。
+2025-01-15 01:02:11,542 - INFO - 缩放比例: 1.0
+2025-01-15 01:02:11,542 - WARNING - 没有图像可缩放。
+2025-01-15 01:02:15,580 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:15,609 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:15,609 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:15,609 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 01:02:15,609 - INFO - 日志记录：{'Timestamp': '2025-01-15 01:02:15', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 01:02:21,479 - WARNING - 网络状态: 未连接
+2025-01-15 01:02:22,551 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 01:02:31,487 - WARNING - 网络状态: 未连接
+2025-01-15 01:02:31,819 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:31,853 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:31,854 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:02:31,854 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 01:02:31,854 - INFO - 日志记录：{'Timestamp': '2025-01-15 01:02:31', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 01:02:41,516 - WARNING - 网络状态: 未连接
+2025-01-15 01:02:41,524 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 01:02:43,244 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_19p4dgmi 已删除。
+2025-01-15 01:08:40,238 - INFO - 语言资源加载成功。
+2025-01-15 01:08:40,238 - INFO - 阿里云客户端已初始化。
+2025-01-15 01:08:45,290 - WARNING - 网络状态: 未连接
+2025-01-15 01:08:45,306 - INFO - 图标已成功加载。
+2025-01-15 01:08:45,308 - INFO - 界面语言已切换为: zh
+2025-01-15 01:08:45,308 - INFO - 初始化完成。
+2025-01-15 01:08:45,376 - INFO - 缩放比例: 1.0
+2025-01-15 01:08:45,376 - WARNING - 没有图像可缩放。
+2025-01-15 01:08:49,157 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_1vz_8rdo\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 01:08:49,178 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_1vz_8rdo\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:08:49,178 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_1vz_8rdo\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:08:49,178 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 01:08:49,178 - INFO - 日志记录：{'Timestamp': '2025-01-15 01:08:49', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 01:08:55,309 - WARNING - 网络状态: 未连接
+2025-01-15 01:08:56,119 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 01:08:57,146 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_1vz_8rdo 已删除。
+2025-01-15 01:17:43,806 - INFO - 语言资源加载成功。
+2025-01-15 01:17:43,814 - INFO - 阿里云客户端已初始化。
+2025-01-15 01:17:48,836 - WARNING - 网络状态: 未连接
+2025-01-15 01:17:48,852 - INFO - 图标已成功加载。
+2025-01-15 01:17:48,857 - INFO - 界面语言已切换为: zh
+2025-01-15 01:17:48,857 - INFO - 初始化完成。
+2025-01-15 01:17:48,921 - INFO - 缩放比例: 1.0
+2025-01-15 01:17:48,921 - WARNING - 没有图像可缩放。
+2025-01-15 01:17:52,426 - INFO - 压缩图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_ciixxf3o\uploaded\compressed_微信图片_20250105230803.jpg
+2025-01-15 01:17:52,456 - INFO - 增强图片保存为: C:\Users\yushi\AppData\Local\Temp\face_recognition_ciixxf3o\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:17:52,456 - INFO - 开始上传图片: C:\Users\yushi\AppData\Local\Temp\face_recognition_ciixxf3o\uploaded\enhanced_compressed_微信图片_20250105230803.jpg
+2025-01-15 01:17:52,456 - ERROR - 上传 D:/photos/sucai/微信图片_20250105230803.jpg 时发生错误: 'CommonRequest' object has no attribute 'add_file_param'
+2025-01-15 01:17:52,456 - INFO - 日志记录：{'Timestamp': '2025-01-15 01:17:52', 'Operation': '上传图片到人脸库', 'Result': "失败：'CommonRequest' object has no attribute 'add_file_param'", 'Matched_Person': '无'}
+2025-01-15 01:17:58,856 - WARNING - 网络状态: 未连接
+2025-01-15 01:17:59,718 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
+2025-01-15 01:18:01,843 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_ciixxf3o 已删除。
