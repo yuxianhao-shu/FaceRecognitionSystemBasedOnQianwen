@@ -3,5 +3,6 @@ opencv-python
 requests
 python-dotenv
 alibabacloud_facebody20191230
-tkinter
 numpy
+aliyunsdkcore
+pycryptodome

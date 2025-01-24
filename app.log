@@ -380,3 +380,9 @@
 2025-01-15 01:17:58,856 - WARNING - 网络状态: 未连接
 2025-01-15 01:17:59,718 - INFO - 批量上传完成！成功上传: 0 张图片，失败: 1 张图片
 2025-01-15 01:18:01,843 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_ciixxf3o 已删除。
+2025-01-21 21:36:38,519 - INFO - 语言资源加载成功。
+2025-01-21 21:36:41,154 - ERROR - 初始化阿里云客户端失败: name 'AcsClient' is not defined
+2025-01-21 21:36:41,160 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_wvyqb9mz 已删除。
+2025-01-21 21:36:44,951 - INFO - 语言资源加载成功。
+2025-01-21 21:36:46,322 - ERROR - 初始化阿里云客户端失败: name 'AcsClient' is not defined
+2025-01-21 21:36:46,328 - INFO - 临时文件夹 C:\Users\yushi\AppData\Local\Temp\face_recognition_p2x89wgy 已删除。
